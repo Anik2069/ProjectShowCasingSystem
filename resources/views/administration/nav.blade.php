@@ -23,9 +23,9 @@
             </li>
             <li class="dropdown">
                 <a href="#" class="menu-toggle nav-link has-dropdown"><i
-                        data-feather="briefcase"></i><span>Sub Admin</span></a>
+                        data-feather="briefcase"></i><span>Convener</span></a>
                 <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="widget-chart.html">Add New Sub Admin</a></li>
+                    <li><a class="nav-link" href="/administration/convener">Add New Convener</a></li>
                     <li><a class="nav-link" href="widget-data.html">VIew Admin</a></li>
                 </ul>
             </li>

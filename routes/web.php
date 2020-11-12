@@ -18,7 +18,8 @@ Route::get('/', function () {
 });
 Route::get("/administration/login","administration@index");
 Route::get("/administration/dashboard","administration@dashboard");
-
+Route::get("/administration/convener","ConvenerController@index");
+Route::post("/administration/convener","ConvenerController@store")->name("convener.store");
 
 Auth::routes();
 
