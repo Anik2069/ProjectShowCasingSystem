@@ -4,17 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>Otika - Admin Dashboard Template</title>
+    <title>Project ShowCasing System</title>
     <!-- General CSS Files -->
-    <link rel="stylesheet" href="assets/css/app.min.css">
-    <link rel="stylesheet" href="assets/bundles/jqvmap/dist/jqvmap.min.css">
-    <link rel="stylesheet" href="assets/bundles/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="../../assets/css/app.min.css">
+    <link rel="stylesheet" href="../../assets/bundles/jqvmap/dist/jqvmap.min.css">
+    <link rel="stylesheet" href="../../assets/bundles/flag-icon-css/css/flag-icon.min.css">
     <!-- Template CSS -->
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/components.css">
     <!-- Custom style CSS -->
-    <link rel="stylesheet" href="assets/css/custom.css">
-    <link rel='shortcut icon' type='image/x-icon' href='assets/img/favicon.ico'/>
+    <link rel="stylesheet" href="../../assets/css/custom.css">
+    <link rel='shortcut icon' type='image/x-icon' href='../../assets/img/favicon.ico'/>
 </head>
 
 <body>
@@ -28,8 +28,8 @@
                     <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg
 									collapse-btn"> <i data-feather="align-justify"></i></a></li>
                     <li><a href="#" class="nav-link nav-link-lg fullscreen-btn">
-                        <i data-feather="maximize"></i>
-                    </a></li>
+                            <i data-feather="maximize"></i>
+                        </a></li>
                     <li>
                         <form class="form-inline mr-auto">
                             <div class="search-element">
@@ -46,8 +46,8 @@
             <ul class="navbar-nav navbar-right">
                 <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown"
                                                              class="nav-link nav-link-lg message-toggle"><i
-                        data-feather="mail"></i>
-                    <span class="badge headerBadge1">
+                            data-feather="mail"></i>
+                        <span class="badge headerBadge1">
                 6 </span> </a>
                     <div class="dropdown-menu dropdown-list dropdown-menu-right pullDown">
                         <div class="dropdown-header">
@@ -58,7 +58,7 @@
                         </div>
                         <div class="dropdown-list-content dropdown-list-message">
                             <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar
-											text-white"> <img alt="image" src="assets/img/users/user-1.png"
+											text-white"> <img alt="image" src="../../assets/img/users/user-1.png"
                                                               class="rounded-circle">
                   </span> <span class="dropdown-item-desc"> <span class="message-user">John
                       Deo</span>
@@ -66,41 +66,41 @@
                     <span class="time">2 Min Ago</span>
                   </span>
                             </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar text-white">
-                    <img alt="image" src="assets/img/users/user-2.png" class="rounded-circle">
+                    <img alt="image" src="../../assets/img/users/user-2.png" class="rounded-circle">
                   </span> <span class="dropdown-item-desc"> <span class="message-user">Sarah
                       Smith</span> <span class="time messege-text">Request for leave
                       application</span>
                     <span class="time">5 Min Ago</span>
                   </span>
-                        </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar text-white">
-                    <img alt="image" src="assets/img/users/user-5.png" class="rounded-circle">
+                            </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar text-white">
+                    <img alt="image" src="../../assets/img/users/user-5.png" class="rounded-circle">
                   </span> <span class="dropdown-item-desc"> <span class="message-user">Jacob
                       Ryan</span> <span class="time messege-text">Your payment invoice is
                       generated.</span> <span class="time">12 Min Ago</span>
                   </span>
-                        </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar text-white">
-                    <img alt="image" src="assets/img/users/user-4.png" class="rounded-circle">
+                            </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar text-white">
+                    <img alt="image" src="../../assets/img/users/user-4.png" class="rounded-circle">
                   </span> <span class="dropdown-item-desc"> <span class="message-user">Lina
                       Smith</span> <span class="time messege-text">hii John, I have upload
                       doc
                       related to task.</span> <span class="time">30
                       Min Ago</span>
                   </span>
-                        </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar text-white">
-                    <img alt="image" src="assets/img/users/user-3.png" class="rounded-circle">
+                            </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar text-white">
+                    <img alt="image" src="../../assets/img/users/user-3.png" class="rounded-circle">
                   </span> <span class="dropdown-item-desc"> <span class="message-user">Jalpa
                       Joshi</span> <span class="time messege-text">Please do as specify.
                       Let me
                       know if you have any query.</span> <span class="time">1
                       Days Ago</span>
                   </span>
-                        </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar text-white">
-                    <img alt="image" src="assets/img/users/user-2.png" class="rounded-circle">
+                            </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar text-white">
+                    <img alt="image" src="../../assets/img/users/user-2.png" class="rounded-circle">
                   </span> <span class="dropdown-item-desc"> <span class="message-user">Sarah
                       Smith</span> <span class="time messege-text">Client Requirements</span>
                     <span class="time">2 Days Ago</span>
                   </span>
-                        </a>
+                            </a>
                         </div>
                         <div class="dropdown-footer text-center">
                             <a href="#">View All <i class="fas fa-chevron-right"></i></a>
@@ -109,8 +109,8 @@
                 </li>
                 <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown"
                                                              class="nav-link notification-toggle nav-link-lg"><i
-                        data-feather="bell" class="bell"></i>
-                </a>
+                            data-feather="bell" class="bell"></i>
+                    </a>
                     <div class="dropdown-menu dropdown-list dropdown-menu-right pullDown">
                         <div class="dropdown-header">
                             Notifications
@@ -127,33 +127,34 @@
                       Ago</span>
                   </span>
                             </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-icon bg-info text-white"> <i
-                                class="far
+                                        class="far
 												fa-user"></i>
                   </span> <span class="dropdown-item-desc"> <b>You</b> and <b>Dedik
                       Sugiharto</b> are now friends <span class="time">10 Hours
                       Ago</span>
                   </span>
-                        </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-icon bg-success text-white"> <i
-                                class="fas
+                            </a> <a href="#" class="dropdown-item"> <span
+                                    class="dropdown-item-icon bg-success text-white"> <i
+                                        class="fas
 												fa-check"></i>
                   </span> <span class="dropdown-item-desc"> <b>Kusnaedi</b> has
                     moved task <b>Fix bug header</b> to <b>Done</b> <span class="time">12
                       Hours
                       Ago</span>
                   </span>
-                        </a> <a href="#" class="dropdown-item"> <span
-                                class="dropdown-item-icon bg-danger text-white"> <i
-                                class="fas fa-exclamation-triangle"></i>
+                            </a> <a href="#" class="dropdown-item"> <span
+                                    class="dropdown-item-icon bg-danger text-white"> <i
+                                        class="fas fa-exclamation-triangle"></i>
                   </span> <span class="dropdown-item-desc"> Low disk space. Let's
                     clean it! <span class="time">17 Hours Ago</span>
                   </span>
-                        </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-icon bg-info text-white"> <i
-                                class="fas
+                            </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-icon bg-info text-white"> <i
+                                        class="fas
 												fa-bell"></i>
                   </span> <span class="dropdown-item-desc"> Welcome to Otika
                     template! <span class="time">Yesterday</span>
                   </span>
-                        </a>
+                            </a>
                         </div>
                         <div class="dropdown-footer text-center">
                             <a href="#">View All <i class="fas fa-chevron-right"></i></a>
@@ -162,18 +163,18 @@
                 </li>
                 <li class="dropdown"><a href="#" data-toggle="dropdown"
                                         class="nav-link dropdown-toggle nav-link-lg nav-link-user"> <img alt="image"
-                                                                                                         src="assets/img/user.png"
+                                                                                                         src="../../assets/img/user.png"
                                                                                                          class="user-img-radious-style">
-                    <span class="d-sm-none d-lg-inline-block"></span></a>
+                        <span class="d-sm-none d-lg-inline-block"></span></a>
                     <div class="dropdown-menu dropdown-menu-right pullDown">
                         <div class="dropdown-title">Hello Sarah Smith</div>
                         <a href="profile.html" class="dropdown-item has-icon"> <i class="far
 										fa-user"></i> Profile
                         </a> <a href="timeline.html" class="dropdown-item has-icon"> <i class="fas fa-bolt"></i>
-                        Activities
-                    </a> <a href="#" class="dropdown-item has-icon"> <i class="fas fa-cog"></i>
-                        Settings
-                    </a>
+                            Activities
+                        </a> <a href="#" class="dropdown-item has-icon"> <i class="fas fa-cog"></i>
+                            Settings
+                        </a>
                         <div class="dropdown-divider"></div>
                         <a href="auth-login.html" class="dropdown-item has-icon text-danger"> <i
                                 class="fas fa-sign-out-alt"></i>
@@ -203,35 +204,35 @@
                             <li><a class="nav-link" href="widget-data.html">View Panel</a></li>
                         </ul>
                     </li>
-                  <li class="dropdown active">
-                    <a href="index.html" class="nav-link"><i data-feather="monitor"></i><span>Program</span></a>
-                  </li>
-                  <li class="dropdown">
-                    <a href="#" class="menu-toggle nav-link has-dropdown"><i
-                            data-feather="briefcase"></i><span>Sub Admin</span></a>
-                    <ul class="dropdown-menu">
-                      <li><a class="nav-link" href="widget-chart.html">Add New Sub Admin</a></li>
-                      <li><a class="nav-link" href="widget-data.html">VIew Admin</a></li>
-                    </ul>
-                  </li>
-                  <li class="menu-header">Setting</li>
-                  <li class="dropdown">
-                    <a href="#" class="menu-toggle nav-link has-dropdown"><i
-                            data-feather="briefcase"></i><span>System Settings</span></a>
-                    <ul class="dropdown-menu">
-                      <li><a class="nav-link" href="widget-chart.html">Add New Menu</a></li>
-                      <li><a class="nav-link" href="widget-data.html">Menu List</a></li>
-                      <li><a class="nav-link" href="widget-data.html">Panel Settings</a></li>
-                      <li><a class="nav-link" href="widget-data.html">User Access Settings</a></li>
-                    </ul>
-                  </li>
+                    <li class="dropdown active">
+                        <a href="index.html" class="nav-link"><i data-feather="monitor"></i><span>Program</span></a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="menu-toggle nav-link has-dropdown"><i
+                                data-feather="briefcase"></i><span>Sub Admin</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a class="nav-link" href="widget-chart.html">Add New Sub Admin</a></li>
+                            <li><a class="nav-link" href="widget-data.html">VIew Admin</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-header">Setting</li>
+                    <li class="dropdown">
+                        <a href="#" class="menu-toggle nav-link has-dropdown"><i
+                                data-feather="briefcase"></i><span>System Settings</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a class="nav-link" href="widget-chart.html">Add New Menu</a></li>
+                            <li><a class="nav-link" href="widget-data.html">Menu List</a></li>
+                            <li><a class="nav-link" href="widget-data.html">Panel Settings</a></li>
+                            <li><a class="nav-link" href="widget-data.html">User Access Settings</a></li>
+                        </ul>
+                    </li>
 
-                  <li class="dropdown active">
-                    <a href="index.html" class="nav-link"><i data-feather="monitor"></i><span>Change Password</span></a>
-                  </li>
-                  <li class="dropdown active">
-                    <a href="index.html" class="nav-link"><i data-feather="monitor"></i><span>Log out</span></a>
-                  </li>
+                    <li class="dropdown active">
+                        <a href="index.html" class="nav-link"><i data-feather="monitor"></i><span>Change Password</span></a>
+                    </li>
+                    <li class="dropdown active">
+                        <a href="index.html" class="nav-link"><i data-feather="monitor"></i><span>Log out</span></a>
+                    </li>
                     <!--
 
                                       <li class="dropdown">
@@ -542,28 +543,28 @@
                                 <div class="statistic-details mt-1">
                                     <div class="statistic-details-item">
                                         <div class="text-small text-muted"><span class="text-primary"><i
-                                                class="fas fa-caret-up"></i></span> 12%
+                                                    class="fas fa-caret-up"></i></span> 12%
                                         </div>
                                         <div class="detail-value">$125</div>
                                         <div class="detail-name">Today</div>
                                     </div>
                                     <div class="statistic-details-item">
                                         <div class="text-small text-muted"><span class="text-danger"><i
-                                                class="fas fa-caret-down"></i></span> 33%
+                                                    class="fas fa-caret-down"></i></span> 33%
                                         </div>
                                         <div class="detail-value">$3,564</div>
                                         <div class="detail-name">This Week</div>
                                     </div>
                                     <div class="statistic-details-item">
                                         <div class="text-small text-muted"><span class="text-primary"><i
-                                                class="fas fa-caret-up"></i></span>19%
+                                                    class="fas fa-caret-up"></i></span>19%
                                         </div>
                                         <div class="detail-value">$14,687</div>
                                         <div class="detail-name">This Month</div>
                                     </div>
                                     <div class="statistic-details-item">
                                         <div class="text-small text-muted"><span class="text-primary"><i
-                                                class="fas fa-caret-up"></i></span>29%
+                                                    class="fas fa-caret-up"></i></span>29%
                                         </div>
                                         <div class="detail-value">$88,568</div>
                                         <div class="detail-name">This Year</div>
@@ -581,21 +582,21 @@
                                         <div class="browser browser-chrome"></div>
                                         <div class="mt-2 font-weight-bold">Chrome</div>
                                         <div class="text-small text-muted"><span class="text-primary"><i
-                                                class="fas fa-caret-up"></i></span> 38%
+                                                    class="fas fa-caret-up"></i></span> 38%
                                         </div>
                                     </div>
                                     <div class="col mb-4 mb-lg-0 text-center">
                                         <div class="browser browser-firefox"></div>
                                         <div class="mt-2 font-weight-bold">Firefox</div>
                                         <div class="text-small text-muted"><span class="text-primary"><i
-                                                class="fas fa-caret-up"></i></span> 22%
+                                                    class="fas fa-caret-up"></i></span> 22%
                                         </div>
                                     </div>
                                     <div class="col mb-4 mb-lg-0 text-center">
                                         <div class="browser browser-safari"></div>
                                         <div class="mt-2 font-weight-bold">Safari</div>
                                         <div class="text-small text-muted"><span class="text-danger"><i
-                                                class="fas fa-caret-down"></i></span> 27%
+                                                    class="fas fa-caret-down"></i></span> 27%
                                         </div>
                                     </div>
                                     <div class="col mb-4 mb-lg-0 text-center">
@@ -607,7 +608,7 @@
                                         <div class="browser browser-internet-explorer"></div>
                                         <div class="mt-2 font-weight-bold">IE</div>
                                         <div class="text-small text-muted"><span class="text-primary"><i
-                                                class="fas fa-caret-up"></i></span> 4%
+                                                    class="fas fa-caret-up"></i></span> 4%
                                         </div>
                                     </div>
                                 </div>
@@ -1238,20 +1239,20 @@
     </div>
 </div>
 <!-- General JS Scripts -->
-<script src="assets/js/app.min.js"></script>
+<script src="../../assets/js/app.min.js"></script>
 <!-- JS Libraies -->
-<script src="assets/bundles/chartjs/chart.min.js"></script>
-<script src="assets/bundles/jquery.sparkline.min.js"></script>
-<script src="assets/bundles/apexcharts/apexcharts.min.js"></script>
-<script src="assets/bundles/jqvmap/dist/jquery.vmap.min.js"></script>
-<script src="assets/bundles/jqvmap/dist/maps/jquery.vmap.world.js"></script>
-<script src="assets/bundles/jqvmap/dist/maps/jquery.vmap.indonesia.js"></script>
+<script src="../../assets/bundles/chartjs/chart.min.js"></script>
+<script src="../../assets/bundles/jquery.sparkline.min.js"></script>
+<script src="../../assets/bundles/apexcharts/apexcharts.min.js"></script>
+<script src="../../assets/bundles/jqvmap/dist/jquery.vmap.min.js"></script>
+<script src="../../assets/bundles/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+<script src="../../assets/bundles/jqvmap/dist/maps/jquery.vmap.indonesia.js"></script>
 <!-- Page Specific JS File -->
-<script src="assets/js/page/widget-chart.js"></script>
+<script src="../../assets/js/page/widget-chart.js"></script>
 <!-- Template JS File -->
-<script src="assets/js/scripts.js"></script>
+<script src="../../assets/js/scripts.js"></script>
 <!-- Custom JS File -->
-<script src="assets/js/custom.js"></script>
+<script src="../../assets/js/custom.js"></script>
 </body>
 
 
