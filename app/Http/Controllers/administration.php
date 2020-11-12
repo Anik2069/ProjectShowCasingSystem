@@ -12,7 +12,7 @@ class administration extends Controller
         return view("administration.login");
     }
     public function dashboard(){
-        return view("administration.master");
+        return view("administration.index");
     }
 
 
