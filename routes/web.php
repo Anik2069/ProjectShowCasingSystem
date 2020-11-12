@@ -19,3 +19,7 @@ Route::get('/', function () {
 Route::get("/administration_login","administration@index");
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
