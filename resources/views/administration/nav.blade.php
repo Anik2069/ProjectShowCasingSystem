@@ -45,8 +45,12 @@
                 <a href="index.html" class="nav-link"><i data-feather="monitor"></i><span>Change Password</span></a>
             </li>
             <li class="dropdown active">
-                <a href="index.html" class="nav-link"><i data-feather="monitor"></i><span>Log out</span></a>
+                <a class="nav-link" href="{{ route('logout') }}"
+                   onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i data-feather="monitor"></i><span>Log out</span></a>
             </li>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+            </form>
         </ul>
     </aside>
 </div>
