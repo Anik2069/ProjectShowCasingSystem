@@ -14,8 +14,8 @@
                 <a href="#" class="menu-toggle nav-link has-dropdown"><i
                         data-feather="briefcase"></i><span>Panel Maintaintence</span></a>
                 <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="widget-chart.html">Create Panel</a></li>
-                    <li><a class="nav-link" href="widget-data.html">View Panel</a></li>
+                    <li><a class="nav-link" href="/administration/create_panel">Create Panel</a></li>
+                    <li><a class="nav-link" href="/administration/view_panel">View Panel</a></li>
                 </ul>
             </li>
             <li class="dropdown active">
