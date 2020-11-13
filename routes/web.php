@@ -23,4 +23,4 @@ Route::post("/administration/convener","ConvenerController@store")->name("conven
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'administration@dashboard')->name('home');

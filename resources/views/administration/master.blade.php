@@ -198,6 +198,7 @@
     </div>
 </div>
 <!-- General JS Scripts -->
+<script src="../..//js/app.js"></script>
 <script src="../../assets/js/app.min.js"></script>
 <!-- JS Libraies -->
 <script src="../../assets/bundles/chartjs/chart.min.js"></script>

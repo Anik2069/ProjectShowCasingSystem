@@ -6,6 +6,7 @@
                 <div class="row">
 
                     <div class="col-12 col-md-12 col-lg-12">
+                       @include("alert_message")
                         <div class="card">
                             <form class="needs-validation" novalidate="" action="{{ route("convener.store") }}"
                                   method="post">
@@ -16,21 +17,21 @@
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label>Convener Name</label>
-                                        <input type="text" class="form-control" required="">
+                                        <input type="text" class="form-control" required="" name="name">
                                         <div class="invalid-feedback">
                                             What's Program or Organization Name name?
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label>Convener Email</label>
-                                        <input type="text" class="form-control" required="">
+                                        <input type="email" class="form-control" required="" name="email">
                                         <div class="invalid-feedback">
-                                            What's Program or Organization Name name?
+                                            What's Your email?
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label>Convener Mobile Number</label>
-                                        <input type="text" class="form-control" required="">
+                                        <input type="text" class="form-control" required="" name="mobile">
                                         <div class="invalid-feedback">
                                             What's Program or Organization Name name?
                                         </div>
@@ -39,7 +40,7 @@
 
                                     <div class="form-group">
                                         <label>Address</label>
-                                        <textarea name="" class="form-control" id="" cols="30" rows="10"></textarea>
+                                        <textarea name="address" class="form-control" id="" cols="30" rows="10" ></textarea>
                                         <div class="invalid-feedback">
                                             What's Program or Address?
                                         </div>
@@ -47,7 +48,7 @@
                                     <div class="form-group row">
                                         <div class="col-md-4">
                                             <label>DOB</label>
-                                            <input type="date" class="form-control">
+                                            <input type="date" name="dob" class="form-control">
                                             <div class="valid-feedback">
                                                 Good job!
                                             </div>
@@ -55,7 +56,7 @@
 
                                         <div class="col-md-4">
                                             <label>Organization</label>
-                                            <input type="email" class="form-control">
+                                            <input type="text" name="organization" class="form-control">
                                             <div class="valid-feedback">
                                                 Good job!
                                             </div>
@@ -64,7 +65,7 @@
 
                                         <div class="col-md-4">
                                             <label>Org Address</label>
-                                            <input type="email" class="form-control">
+                                            <input type="text" class="form-control" name="org_address">
                                             <div class="valid-feedback">
                                                 Good job!
                                             </div>
@@ -82,14 +83,14 @@
                                     <div class="form-group row">
                                         <div class="col-md-4">
                                             <label>User Name</label>
-                                            <input type="text" name="" class="form-control ">
+                                            <input type="text" name="username" class="form-control ">
                                             <div class="valid-feedback">
                                                 Good job!
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <label>Password</label>
-                                            <input type="password" name="" class="form-control ">
+                                            <input type="password" name="password" class="form-control ">
                                             <div class="valid-feedback">
                                                 Good job!
                                             </div>
@@ -105,7 +106,7 @@
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-md-4">
-                                            <input  type="checkbox" value="1"> <label> Status</label>
+                                            <input  type="checkbox" value="1" name="status"> <label> Status</label>
                                         </div>
 
                                     </div>
