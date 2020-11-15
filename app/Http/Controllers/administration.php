@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class administration extends Controller
 {
@@ -15,7 +16,14 @@ class administration extends Controller
         return view("administration.login");
     }
     public function dashboard(){
-        return view("administration.index");
+        $user = Auth::user();
+        if($user->userType==1){
+            return view("administration.index");
+        }
+        else{
+            return view("convener.index");
+        }
+
     }
 
 
