@@ -62,7 +62,19 @@ $(function () {
             return form.valid();
         },
         onFinished: function (event, currentIndex) {
-            alert("Good job!", "Submitted!", "success");
+            var data = $('#wizard_with_validation').serialize();
+            var respondUrl = $('#wizard_with_validation').attr('action');
+            $.ajax({
+                url: respondUrl,
+                data: data,
+                type: 'POST',
+                success: function (data) {
+                    // do something with the result
+                    alert("Good job!", "Submitted!", "success");
+                    window.location.reload();
+                }
+            });
+            //
         }
     });
 
