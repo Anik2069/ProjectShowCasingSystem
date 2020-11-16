@@ -6,16 +6,7 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
     <title>Project ShowCasing System</title>
     <!-- General CSS Files -->
-    <link rel="stylesheet" href="../../assets/css/app.min.css">
-    <link rel="stylesheet" href="../../assets/bundles/jqvmap/dist/jqvmap.min.css">
-    <link rel="stylesheet" href="../../assets/bundles/flag-icon-css/css/flag-icon.min.css">
-    <!-- Template CSS -->
-    <link rel="stylesheet" href="../../assets/css/style.css">
-    <link rel="stylesheet" href="../../assets/css/components.css">
-    <link rel="stylesheet" href="../../assets/bundles/datatables/datatables.min.css">
-    <!-- Custom style CSS -->
-    <link rel="stylesheet" href="../../assets/css/custom.css">
-    <link rel='shortcut icon' type='image/x-icon' href='../../assets/img/favicon.ico'/>
+    @stack("convener_css")
 </head>
 
 <body>
@@ -199,25 +190,7 @@
     </div>
 </div>
 <!-- General JS Scripts -->
-
-<script src="../../assets/bundles/datatables/datatables.min.js"></script>
-<script src="../../assets/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js"></script>
-<script src="../..//js/app.js"></script>
-<script src="../../assets/js/app.min.js"></script>
-<!-- JS Libraies -->
-<script src="../../assets/bundles/chartjs/chart.min.js"></script>
-<script src="../../assets/bundles/jquery.sparkline.min.js"></script>
-<script src="../../assets/bundles/apexcharts/apexcharts.min.js"></script>
-<script src="../../assets/bundles/jqvmap/dist/jquery.vmap.min.js"></script>
-<script src="../../assets/bundles/jqvmap/dist/maps/jquery.vmap.world.js"></script>
-<script src="../../assets/bundles/jqvmap/dist/maps/jquery.vmap.indonesia.js"></script>
-
-<!-- Page Specific JS File -->
-<script src="../../assets/js/page/widget-chart.js"></script>
-<!-- Template JS File -->
-<script src="../../assets/js/scripts.js"></script>
-<!-- Custom JS File -->
-<script src="../../assets/js/custom.js"></script>
+@stack("convener_js")
 </body>
 
 
