@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../../assets/css/custom.css">
     <link rel='shortcut icon' type='image/x-icon' href='../../assets/img/favicon.ico' />
 @endpush
-
+@section("content")
 <div class="main-content">
     <section class="section">
         <div class="section-body">
@@ -85,10 +85,33 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="form-group form-float hidden">
+                                    <div class="form-group form-float d-none">
                                         <div class="form-line">
                                             <label class="form-label">Transaction</label>
-                                            <input type="date" name="txid" class="form-control">
+                                            <input type="text" name="txid" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <label class="form-label">Banner Info</label>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <input type="text" class="form-control" placeholder="Banner Text">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <input type="file" class="form-control">
+                                                </div>
+
+                                            </div>
+                                            <div class="row pt-2">
+                                                <div class="col-md-6">
+                                                    <input type="text" class="form-control" placeholder="Banner Text">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <input type="file" class="form-control">
+                                                </div>
+
+                                            </div>
                                         </div>
                                     </div>
                                 </fieldset>
@@ -200,6 +223,7 @@
         </div>
     </div>
 </div>
+@endsection
 <!-- General JS Scripts -->
 @push("convener_js")
     <script src="../../assets/js/app.min.js"></script>

@@ -28,6 +28,8 @@ Route::get("/administration/view_panel","PanelController@view");
 Route::get("/convener/view_panel","ConvenerController@view_panel");
 Route::post("/convener/store","ProgramController@store")->name("programe.store");
 Route::get("/convener/program","ProgramController@index");
+Route::get("/convener/view_program","ProgramController@view_program");
+Route::get("/convener/supervisor_judges","MemberController@index");
 Auth::routes();
 
 Route::get('/home', 'administration@dashboard')->name('home');
