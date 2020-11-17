@@ -96,19 +96,19 @@
                                             <label class="form-label">Banner Info</label>
                                             <div class="row">
                                                 <div class="col-md-6">
-                                                    <input type="text" class="form-control" placeholder="Banner Text">
+                                                    <input type="text" name="banner_txt[]" class="form-control" placeholder="Banner Text">
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <input type="file" class="form-control">
+                                                    <input type="file" class="form-control" name="b_image_0">
                                                 </div>
 
                                             </div>
                                             <div class="row pt-2">
                                                 <div class="col-md-6">
-                                                    <input type="text" class="form-control" placeholder="Banner Text">
+                                                    <input type="text" class="form-control" placeholder="Banner Text" name="banner_txt[]">
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <input type="file" class="form-control">
+                                                    <input type="file" class="form-control" name="b_image_1">
                                                 </div>
 
                                             </div>

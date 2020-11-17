@@ -11,63 +11,81 @@
     <link rel="stylesheet" href="../../assets/css/custom.css">
     <link rel='shortcut icon' type='image/x-icon' href='../../assets/img/favicon.ico'/>
 @endpush
+
+
 @section("content")
-    <div class="main-content" style="min-height: 659px;">
+    <div class="main-content">
         <section class="section">
             <div class="section-body">
                 <div class="row">
-                    <div class="col-12 col-md-12 col-lg-12">
-                        @include("alert_message")
+                    <div class="col-12">
                         <div class="card">
-                            <form action="/convener/supervisor_judges" method="post">
-                                @csrf
-                                <div class="card-header">
-                                    <h4>User Info</h4>
-                                </div>
-                                <div class="card-body">
-                                    <div class="form-group">
-                                        <label>Role Type *</label>
-                                        <select class="form-control" name="role_type" required>
-                                            <option value="">Select One</option>
-                                            <option value="1">Judges</option>
-                                            <option value="2">Supervisor</option>
-                                            <option value="3">Both</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Name *</label>
-                                        <input type="text" class="form-control" name="name" required="">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Email * </label>
-                                        <input type="email" class="form-control"  name="email" required="">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Phone Number</label>
-                                        <input type="text" class="form-control" name="phone_number">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Address</label>
-                                        <input type="text" class="form-control" name="address">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Current workplace/Job Sector</label>
-                                        <input type="text" class="form-control" name="job">
-                                    </div>
-                                    <div class="form-group mb-0">
-                                        <label>Descripiton</label>
-                                        <textarea class="form-control" name="description" ></textarea>
-                                    </div>
-                                    <div class="form-group mb-0">
-                                        <input type="checkbox" name="status" value="1">
-                                        <label>Status</label>
-                                    </div>
+                            <div class="card-header">
+                                <h4>User Info</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped" id="table-1">
+                                        <thead>
+                                        <tr>
+                                            <th class="text-center">
+                                                #
+                                            </th>
+                                            <th>Role Type</th>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Phone</th>
+                                            <th>Job Title</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @if(!empty($member))
+                                            @foreach($member as $value)
+                                                <tr>
+                                                    <td>
+                                                        {{$loop->iteration}}
+                                                    </td>
+                                                    <td>
+                                                        @if($value->role_type == 1)
+                                                            <div class="badge badge-success badge-shadow">Judges</div>
+                                                        @elseif($value->role_type == 2)
+                                                            <div class="badge badge-info badge-shadow">Supervisor</div>
+                                                        @else
+                                                            <div class="badge badge-primary badge-shadow">Both</div>
+                                                        @endif
 
+                                                    </td>
+                                                    <td class="align-middle">
+                                                        {{$value->name  }}
+                                                    </td>
+                                                    <td>
+                                                        {{$value->email  }}
+                                                    </td>
+
+                                                    <td>
+                                                        {{$value->phone_number  }}
+                                                    </td>
+                                                    <td>
+                                                        {{$value->job  }}
+                                                    </td>
+                                                    <td>
+                                                        @if($value->status == 1)
+                                                            <div class="badge badge-success badge-shadow">Active</div>
+                                                        @else
+                                                            <div class="badge badge-danger badge-shadow">InActive</div>
+
+                                                        @endif
+                                                    </td>
+                                                    <td><a href="#" class="btn btn-primary">Detail</a></td>
+                                                </tr>
+                                            @endforeach
+                                        @endif
+                                        </tbody>
+                                    </table>
                                 </div>
-                                <div class="card-footer text-right">
-                                    <button class="btn btn-primary" type="submit">Submit</button>
-                                </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -76,8 +94,7 @@
         <div class="settingSidebar">
             <a href="javascript:void(0)" class="settingPanelToggle"> <i class="fa fa-spin fa-cog"></i>
             </a>
-            <div class="settingSidebar-body ps-container ps-theme-default" tabindex="2"
-                 style="overflow: hidden; outline: none;">
+            <div class="settingSidebar-body ps-container ps-theme-default">
                 <div class=" fade show active">
                     <div class="setting-panel-header">Setting Panel
                     </div>
@@ -86,7 +103,7 @@
                         <div class="selectgroup layout-color w-50">
                             <label class="selectgroup-item">
                                 <input type="radio" name="value" value="1" class="selectgroup-input-radio select-layout"
-                                       checked="">
+                                       checked>
                                 <span class="selectgroup-button">Light</span>
                             </label>
                             <label class="selectgroup-item">
@@ -107,7 +124,7 @@
                             </label>
                             <label class="selectgroup-item">
                                 <input type="radio" name="icon-input" value="2" class="selectgroup-input select-sidebar"
-                                       checked="">
+                                       checked>
                                 <span class="selectgroup-button selectgroup-button-icon" data-toggle="tooltip"
                                       data-original-title="Dark Sidebar"><i class="fas fa-moon"></i></span>
                             </label>
@@ -168,23 +185,20 @@
                     </div>
                 </div>
             </div>
-            <div id="ascrail2001" class="nicescroll-rails nicescroll-rails-vr"
-                 style="width: 8px; z-index: 999; cursor: default; position: absolute; top: 0px; left: 272px; height: 754.4px; display: none;">
-                <div class="nicescroll-cursors"
-                     style="position: relative; top: 0px; float: right; width: 6px; height: 0px; background-color: rgb(66, 66, 66); border: 1px solid rgb(255, 255, 255); background-clip: padding-box; border-radius: 5px;"></div>
-            </div>
-            <div id="ascrail2001-hr" class="nicescroll-rails nicescroll-rails-hr"
-                 style="height: 8px; z-index: 999; top: 746.4px; left: 0px; position: absolute; cursor: default; display: none;">
-                <div class="nicescroll-cursors"
-                     style="position: absolute; top: 0px; height: 6px; width: 0px; background-color: rgb(66, 66, 66); border: 1px solid rgb(255, 255, 255); background-clip: padding-box; border-radius: 5px;"></div>
-            </div>
         </div>
     </div>
+
+
 @endsection
+
 @push("convener_js")
     <script src="../../assets/js/app.min.js"></script>
     <!-- JS Libraies -->
+    <script src="../../assets/bundles/datatables/datatables.min.js"></script>
+    <script src="../../assets/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js"></script>
+    <script src="../../assets/bundles/jquery-ui/jquery-ui.min.js"></script>
     <!-- Page Specific JS File -->
+    <script src="../../assets/js/page/datatables.js"></script>
     <!-- Template JS File -->
     <script src="../../assets/js/scripts.js"></script>
     <!-- Custom JS File -->

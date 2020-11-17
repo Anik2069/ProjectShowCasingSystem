@@ -1,14 +1,16 @@
 <div class="main-sidebar sidebar-style-2">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-            <a href="/administratration/dashboard"> <img alt="image" src="../../assets/img/logo.png" class="header-logo"/> <span
+            <a href="/administratration/dashboard"> <img alt="image" src="../../assets/img/logo.png"
+                                                         class="header-logo"/> <span
                     class="logo-name">Admin</span>
             </a>
         </div>
         <ul class="sidebar-menu">
             <li class="menu-header">Main</li>
             <li class="dropdown active">
-                <a href="/administration/dashboard" class="nav-link"><i data-feather="monitor"></i><span>Dashboard</span></a>
+                <a href="/administration/dashboard" class="nav-link"><i
+                        data-feather="monitor"></i><span>Dashboard</span></a>
             </li>
             <li class="dropdown">
                 <a href="#" class="menu-toggle nav-link has-dropdown"><i
@@ -28,10 +30,11 @@
             </li>
             <li class="dropdown">
                 <a href="#" class="menu-toggle nav-link has-dropdown"><i
-                        data-feather="briefcase"></i><span>Judges</span></a>
+                        data-feather="briefcase"></i><span>Judges & Supervisor</span></a>
                 <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="/convener/program">Add New Judges</a></li>
-                    <li><a class="nav-link" href="/convener/view_program">VIew Program</a></li>
+                    <li><a class="nav-link" href="/convener/supervisor_judges">Add New Judges/Supervisor </a></li>
+                    <li><a class="nav-link" href="/convener/view_judges">VIew Judges</a></li>
+                    <li><a class="nav-link" href="/convener/view_supervisor">VIew Supervisor</a></li>
                 </ul>
             </li>
             <li class="menu-header">Setting</li>
@@ -51,7 +54,8 @@
             </li>
             <li class="dropdown active">
                 <a class="nav-link" href="{{ route('logout') }}"
-                   onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i data-feather="monitor"></i><span>Log out</span></a>
+                   onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i
+                        data-feather="monitor"></i><span>Log out</span></a>
             </li>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                 @csrf
