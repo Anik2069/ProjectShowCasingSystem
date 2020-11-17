@@ -8,7 +8,7 @@
         <ul class="sidebar-menu">
             <li class="menu-header">Main</li>
             <li class="dropdown active">
-                <a href="/administratration/dashboard" class="nav-link"><i data-feather="monitor"></i><span>Dashboard</span></a>
+                <a href="/administration/dashboard" class="nav-link"><i data-feather="monitor"></i><span>Dashboard</span></a>
             </li>
             <li class="dropdown">
                 <a href="#" class="menu-toggle nav-link has-dropdown"><i
@@ -23,7 +23,15 @@
                         data-feather="briefcase"></i><span>Program</span></a>
                 <ul class="dropdown-menu">
                     <li><a class="nav-link" href="/convener/program">Add New Program</a></li>
-                    <li><a class="nav-link" href="widget-data.html">VIew Program</a></li>
+                    <li><a class="nav-link" href="/convener/view_program">VIew Program</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="menu-toggle nav-link has-dropdown"><i
+                        data-feather="briefcase"></i><span>Judges</span></a>
+                <ul class="dropdown-menu">
+                    <li><a class="nav-link" href="/convener/program">Add New Judges</a></li>
+                    <li><a class="nav-link" href="/convener/view_program">VIew Program</a></li>
                 </ul>
             </li>
             <li class="menu-header">Setting</li>

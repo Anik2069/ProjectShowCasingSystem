@@ -31,4 +31,7 @@ class ProgramController extends Controller
         $program->save();
        // return redirect("/convener/program")->with("success", "Programe Inserted Succeefully !!!!");
     }
+    public function view_program(){
+        return view("convener.program_info");
+    }
 }
