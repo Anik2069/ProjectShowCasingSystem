@@ -30,6 +30,11 @@ Route::post("/convener/store","ProgramController@store")->name("programe.store")
 Route::get("/convener/program","ProgramController@index");
 Route::get("/convener/view_program","ProgramController@view_program");
 Route::get("/convener/supervisor_judges","MemberController@index");
+Route::post("/convener/supervisor_judges","MemberController@store");
+Route::get("/convener/view_supervisor","MemberController@index");
+Route::get("/convener/view_judges","MemberController@judges");
+
+
 Auth::routes();
 
 Route::get('/home', 'administration@dashboard')->name('home');
