@@ -62,12 +62,19 @@ $(function () {
             return form.valid();
         },
         onFinished: function (event, currentIndex) {
-            var data = $('#wizard_with_validation').serialize();
+            //var data = $('#wizard_with_validation').serialize();
+            var data = new FormData($('#wizard_with_validation')[0]);
             var respondUrl = $('#wizard_with_validation').attr('action');
+
             $.ajax({
                 url: respondUrl,
                 data: data,
                 type: 'POST',
+                contentType: false,
+                processData: false,
+
+                enctype: 'multipart/form-data',
+
                 success: function (data) {
                     // do something with the result
                     alert("Good job!", "Submitted!", "success");

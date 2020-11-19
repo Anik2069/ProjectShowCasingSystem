@@ -33,22 +33,21 @@ class ProgramController extends Controller
         $program->insertedBy = Auth::id();
         $program->panel_info = $request->panel_info;
         $program->save();
-
         $LastInsertId = $program->id;
-
-
         $banner_txt = $request->banner_txt;
         //$banner_img = $request->image;
         for ($i = 0; $i < count($banner_txt); $i++) {
             $banner = new banner();
             $banner->banner_text = $banner_txt[$i];
-            if ($request->hasFile('b_image' . $i)) {
-                $file = $request->file('b_image' . $i);
+
+            if ($request->hasFile('b_image_' . $i)) {
+                $file = $request->file('b_image_'. $i);
                 $extension = $file->getClientOriginalExtension();
                 $filename = time() . '1.' . $extension;
                 $file->move('uploads/banner/', $filename);
                 $banner->image = $filename;
             }
+            $banner->program_id =$LastInsertId;
             $banner->inserted_by= Auth::id();
             $banner->save();
         }

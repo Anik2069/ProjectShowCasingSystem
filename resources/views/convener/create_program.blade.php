@@ -20,7 +20,7 @@
                         </div>
                         <div class="card-body">
                             <form id="wizard_with_validation" action="{{ route("programe.store") }}"
-                                  method="POST">
+                                  method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <h3>Programe Information</h3>
                                 <fieldset>
