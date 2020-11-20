@@ -76,8 +76,9 @@
         <div class="wm-main-header">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-3"><a href="index-2.html" class="wm-logo"><img src="{{"assets"}}/public/images/diu.png"
-                                                                                      alt=""></a></div>
+                    <div class="col-md-3"><a href="index-2.html" class="wm-logo"><img
+                                src="{{"assets"}}/public/images/diu.png"
+                                alt=""></a></div>
                     <div class="col-md-9">
                         <!--// Navigation \\-->
                         <nav class="navbar navbar-default">
@@ -228,35 +229,25 @@
 
         <div class="wm-banner-one">
             <div class="wm-banner-one-for">
-                <div class="wm-banner-one-for-layer"><img src="{{"assets"}}/public/extra-images/banner-view1-1.jpg" alt=""></div>
-                <div class="wm-banner-one-for-layer"><img src="{{"assets"}}/public/extra-images/banner-view1-2.jpg" alt=""></div>
-                <div class="wm-banner-one-for-layer"><img src="{{"assets"}}/public/extra-images/banner-view1-3.jpg" alt=""></div>
-                <div class="wm-banner-one-for-layer"><img src="{{"assets"}}/public/extra-images/banner-view1-1.jpg" alt=""></div>
+                @if(!empty($program))
+                    @foreach($program as $value)
+                        <div class="wm-banner-one-for-layer"><img src="uploads/banner/{{$value->image}}"
+                                                                  alt=""></div>
+                    @endforeach
+                @endif
+
             </div>
             <div class="wm-banner-one-nav">
-                <div class="wm-banner-one-nav-layer">
-                    <h1>International Programmes</h1>
-                    <p>The study programmes of the Enroll Campus University are open to people from all
-                        nationalities.</p>
-                    <a href="#" class="wm-banner-btn">learn more</a>
-                </div>
-                <div class="wm-banner-one-nav-layer">
-                    <h1>UA Degree Programmes</h1>
-                    <p>We offer companies the opportunity to access the technology and knowledge developed at the Enroll
-                        Campus University.</p>
-                    <a href="#" class="wm-banner-btn">know more</a>
-                </div>
-                <div class="wm-banner-one-nav-layer banner-bgcolor">
-                    <h1>Research & Business</h1>
-                    <p>The scientific community nominates CRISPR System, based on research developed at the UA.</p>
-                    <a href="#" class="wm-banner-btn">learn more</a>
-                </div>
-                <div class="wm-banner-one-nav-layer">
-                    <h1>International Programmes</h1>
-                    <p>The study programmes of the Enroll Campus University are open to people from all
-                        nationalities.</p>
-                    <a href="#" class="wm-banner-btn">learn more</a>
-                </div>
+                @if(!empty($program))
+                    @foreach($program as $value)
+                        <div class="wm-banner-one-nav-layer">
+                            <h1>{{$value->program_name}}</h1>
+                            <p>{{$value->purpose}}</p>
+                            <a href="#" class="wm-banner-btn">Registrer Now !!!!!</a>
+                        </div>
+                    @endforeach
+                @endif
+
             </div>
         </div>
 
@@ -265,7 +256,55 @@
 
     <!--// Main Content \\-->
     <div class="wm-main-content">
+        <div class="wm-main-section wm-courses-popular-full">
+            <div class="container">
+                <div class="row">
 
+                    <div class="col-md-12">
+                        <div class="wm-fancy-title"><h2>Recent <span>Programe</span></h2></div>
+                        <div class="wm-courses wm-courses-popular">
+                            <ul class="row">
+                                @if(!empty($program))
+                                    @foreach($program as $value)
+                                        <li class="col-md-3">
+                                            <div class="wm-courses-popular-wrap">
+                                                <figure><a href="#"><img
+                                                            src="uploads/banner/{{$value->image}}"
+                                                            alt="">
+                                                        <span
+                                                            class="wm-popular-hover"> <small>see course</small> </span>
+                                                    </a>
+                                                    <figcaption>
+                                                        <img
+                                                            src="{{"assets"}}/public/extra-images/papular-courses-thumb-1.jpg"
+                                                            alt="">
+                                                        <h6><a href="#">Team Testing</a></h6>
+                                                    </figcaption>
+                                                </figure>
+                                                <div class="wm-popular-courses-text">
+                                                    <h6><a href="#">{{$value->program_name}}</a></h6>
+                                                    <div class="wm-courses-price"><span></span></div>
+                                                    <ul>
+                                                        <li><a href="#" class="wm-color"><i class="wmicon-social7"></i>
+                                                                {{$value->no_of_student}}</a>
+                                                        </li>
+                                                        <li><a href="#" class="wm-color"><i class="wmicon-social6"></i>
+                                                                {{$value->no_of_judges}}</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    @endforeach
+                                @endif
+
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
         <!--// Main Section \\-->
         <div class="wm-main-section">
             <div class="container">
@@ -369,105 +408,7 @@
         <!--// Main Section \\-->
 
         <!--// Main Section \\-->
-        <div class="wm-main-section wm-courses-popular-full">
-            <div class="container">
-                <div class="row">
 
-                    <div class="col-md-12">
-                        <div class="wm-fancy-title"><h2>Popular <span>Courses</span></h2></div>
-                        <div class="wm-courses wm-courses-popular">
-                            <ul class="row">
-                                <li class="col-md-3">
-                                    <div class="wm-courses-popular-wrap">
-                                        <figure><a href="#"><img src="{{"assets"}}/public/extra-images/papular-courses-1.jpg" alt=""> <span
-                                                    class="wm-popular-hover"> <small>see course</small> </span> </a>
-                                            <figcaption>
-                                                <img src="{{"assets"}}/public/extra-images/papular-courses-thumb-1.jpg" alt="">
-                                                <h6><a href="#">Shelly T. Forrester</a></h6>
-                                            </figcaption>
-                                        </figure>
-                                        <div class="wm-popular-courses-text">
-                                            <h6><a href="#">Advanced Architectural Research</a></h6>
-                                            <div class="wm-courses-price"><span>$32</span></div>
-                                            <ul>
-                                                <li><a href="#" class="wm-color"><i class="wmicon-social7"></i> 342</a>
-                                                </li>
-                                                <li><a href="#" class="wm-color"><i class="wmicon-social6"></i> 10</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="col-md-3">
-                                    <div class="wm-courses-popular-wrap">
-                                        <figure><a href="#"><img src="{{"assets"}}/public/extra-images/papular-courses-2.jpg" alt=""> <span
-                                                    class="wm-popular-hover"> <small>see course</small> </span> </a>
-                                            <figcaption>
-                                                <img src="{{"assets"}}/public/extra-images/papular-courses-thumb-2.jpg" alt="">
-                                                <h6><a href="#">Sam K. Harrington</a></h6>
-                                            </figcaption>
-                                        </figure>
-                                        <div class="wm-popular-courses-text">
-                                            <h6><a href="#">Advanced Landscape & Urbanism</a></h6>
-                                            <div class="wm-courses-price"><span>Free</span></div>
-                                            <ul>
-                                                <li><a href="#" class="wm-color"><i class="wmicon-social7"></i> 438</a>
-                                                </li>
-                                                <li><a href="#" class="wm-color"><i class="wmicon-social6"></i> 28</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="col-md-3">
-                                    <div class="wm-courses-popular-wrap">
-                                        <figure><a href="#"><img src="{{"assets"}}/public/extra-images/papular-courses-3.jpg" alt=""> <span
-                                                    class="wm-popular-hover"> <small>see course</small> </span> </a>
-                                            <figcaption>
-                                                <img src="{{"assets"}}/public/extra-images/papular-courses-thumb-3.jpg" alt="">
-                                                <h6><a href="#">Sara A. Shirley</a></h6>
-                                            </figcaption>
-                                        </figure>
-                                        <div class="wm-popular-courses-text">
-                                            <h6><a href="#">Transdisciplinary Design</a></h6>
-                                            <div class="wm-courses-price"><span>$79</span></div>
-                                            <ul>
-                                                <li><a href="#" class="wm-color"><i class="wmicon-social7"></i> 309</a>
-                                                </li>
-                                                <li><a href="#" class="wm-color"><i class="wmicon-social6"></i> 19</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="col-md-3">
-                                    <div class="wm-courses-popular-wrap">
-                                        <figure><a href="#"><img src="{{"assets"}}/public/extra-images/papular-courses-4.jpg" alt=""> <span
-                                                    class="wm-popular-hover"> <small>see course</small> </span> </a>
-                                            <figcaption>
-                                                <img src="{{"assets"}}/public/extra-images/papular-courses-thumb-4.jpg" alt="">
-                                                <h6><a href="#">Julius M. Lepage</a></h6>
-                                            </figcaption>
-                                        </figure>
-                                        <div class="wm-popular-courses-text">
-                                            <h6><a href="#">Financial Information Systems</a></h6>
-                                            <div class="wm-courses-price"><span>$50</span></div>
-                                            <ul>
-                                                <li><a href="#" class="wm-color"><i class="wmicon-social7"></i> 298</a>
-                                                </li>
-                                                <li><a href="#" class="wm-color"><i class="wmicon-social6"></i> 11</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
         <!--// Main Section \\-->
 
         <!--// Main Section \\-->
@@ -518,7 +459,8 @@
                         <div class="wm-learn-listing">
                             <ul class="row">
                                 <li class="col-md-6">
-                                    <figure><a href="#"><img src="{{"assets"}}/public/extra-images/learn-listing-1.png" alt=""></a>
+                                    <figure><a href="#"><img src="{{"assets"}}/public/extra-images/learn-listing-1.png"
+                                                             alt=""></a>
                                         <figcaption>
                                             <h2>Research</h2>
                                             <a href="#" class="wm-banner-btn">Read More</a>
@@ -526,7 +468,8 @@
                                     </figure>
                                 </li>
                                 <li class="col-md-6">
-                                    <figure><a href="#"><img src="{{"assets"}}/public/extra-images/learn-listing-2.png" alt=""></a>
+                                    <figure><a href="#"><img src="{{"assets"}}/public/extra-images/learn-listing-2.png"
+                                                             alt=""></a>
                                         <figcaption>
                                             <h2>Academics</h2>
                                             <a href="#" class="wm-banner-btn">Read More</a>
@@ -534,7 +477,8 @@
                                     </figure>
                                 </li>
                                 <li class="col-md-6">
-                                    <figure><a href="#"><img src="{{"assets"}}/public/extra-images/learn-listing-3.png" alt=""></a>
+                                    <figure><a href="#"><img src="{{"assets"}}/public/extra-images/learn-listing-3.png"
+                                                             alt=""></a>
                                         <figcaption>
                                             <h2>Admissions</h2>
                                             <a href="#" class="wm-banner-btn">Read More</a>
@@ -542,7 +486,8 @@
                                     </figure>
                                 </li>
                                 <li class="col-md-6">
-                                    <figure><a href="#"><img src="{{"assets"}}/public/extra-images/learn-listing-4.png" alt=""></a>
+                                    <figure><a href="#"><img src="{{"assets"}}/public/extra-images/learn-listing-4.png"
+                                                             alt=""></a>
                                         <figcaption>
                                             <h2>Student Life</h2>
                                             <a href="#" class="wm-banner-btn">Read More</a>
