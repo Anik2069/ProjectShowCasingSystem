@@ -243,7 +243,8 @@
                         <div class="wm-banner-one-nav-layer">
                             <h1>{{$value->program_name}}</h1>
                             <p>{{$value->purpose}}</p>
-                            <a href="#" class="wm-banner-btn">Registrer Now !!!!!</a>
+                            <a href="#" class="wm-banner-btn" data-toggle="modal" data-target="#ModalLogin{{$value->id}}">Registrer
+                                Now !!!!!</a>
                         </div>
                     @endforeach
                 @endif
@@ -1067,68 +1068,69 @@
 <!--// Main Wrapper \\-->
 
 <!-- ModalLogin Box -->
-<div class="modal fade" id="ModalLogin" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-body">
 
-                <div class="wm-modallogin-form wm-login-popup">
-                    <span class="wm-color">Login to Your Account</span>
-                    <form>
-                        <ul>
-                            <li><input type="text" value="Your Username"
-                                       onblur="if(this.value == '') { this.value ='Your Username'; }"
-                                       onfocus="if(this.value =='Your Username') { this.value = ''; }"></li>
-                            <li><input type="password" value="password"
-                                       onblur="if(this.value == '') { this.value ='password'; }"
-                                       onfocus="if(this.value =='password') { this.value = ''; }"></li>
-                            <li><a href="#" class="wm-forgot-btn">Forgot Password?</a></li>
-                            <li><input type="submit" value="Sign In"></li>
-                        </ul>
-                    </form>
-                    <span class="wm-color">or try our socials</span>
-                    <ul class="wm-login-social-media">
-                        <li><a href="#"><i class="wmicon-social5"></i> Facebook</a></li>
-                        <li class="wm-twitter-color"><a href="#"><i class="wmicon-social4"></i> twitter</a></li>
-                        <li class="wm-googleplus-color"><a href="#"><i class="fa fa-google-plus-square"></i> Google+</a>
-                        </li>
-                    </ul>
-                    <p>Not a member yet? <a href="#">Sign-up Now!</a></p>
-                </div>
-                <div class="wm-modallogin-form wm-register-popup">
-                    <span class="wm-color">create Your Account today</span>
-                    <form>
-                        <ul>
-                            <li><input type="text" value="Your Username"
-                                       onblur="if(this.value == '') { this.value ='Your Username'; }"
-                                       onfocus="if(this.value =='Your Username') { this.value = ''; }"></li>
-                            <li><input type="text" value="Your E-mail"
-                                       onblur="if(this.value == '') { this.value ='Your E-mail'; }"
-                                       onfocus="if(this.value =='Your E-mail') { this.value = ''; }"></li>
-                            <li><input type="password" value="password"
-                                       onblur="if(this.value == '') { this.value ='password'; }"
-                                       onfocus="if(this.value =='password') { this.value = ''; }"></li>
-                            <li><input type="text" value="Confirm Password"
-                                       onblur="if(this.value == '') { this.value ='Confirm Password'; }"
-                                       onfocus="if(this.value =='Confirm Password') { this.value = ''; }"></li>
-                            <li><input type="submit" value="Create Account"></li>
-                        </ul>
-                    </form>
-                    <span class="wm-color">or signup with your socials:</span>
-                    <ul class="wm-login-social-media">
-                        <li><a href="#"><i class="wmicon-social5"></i> Facebook</a></li>
-                        <li class="wm-twitter-color"><a href="#"><i class="wmicon-social4"></i> twitter</a></li>
-                        <li class="wm-googleplus-color"><a href="#"><i class="fa fa-google-plus-square"></i> Google+</a>
-                        </li>
-                    </ul>
-                    <p>Already a member? <a href="#">Sign-in Here!</a></p>
-                </div>
+@if(!empty($program))
+    @foreach($program as $value)
+        <div class="modal fade" id="ModalLogin{{$value->id}}" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
 
+                        {{-- <div class="wm-modallogin-form wm-login-popup">
+                             <span class="wm-color">Login to Your Account</span>
+                             <form>
+                                 <ul>
+                                     <li><input type="text" value="Your Username"
+                                                onblur="if(this.value == '') { this.value ='Your Username'; }"
+                                                onfocus="if(this.value =='Your Username') { this.value = ''; }"></li>
+                                     <li><input type="password" value="password"
+                                                onblur="if(this.value == '') { this.value ='password'; }"
+                                                onfocus="if(this.value =='password') { this.value = ''; }"></li>
+                                     <li><a href="#" class="wm-forgot-btn">Forgot Password?</a></li>
+                                     <li><input type="submit" value="Sign In"></li>
+                                 </ul>
+                             </form>
+                             <span class="wm-color">or try our socials</span>
+                             <ul class="wm-login-social-media">
+                                 <li><a href="#"><i class="wmicon-social5"></i> Facebook</a></li>
+                                 <li class="wm-twitter-color"><a href="#"><i class="wmicon-social4"></i> twitter</a></li>
+                                 <li class="wm-googleplus-color"><a href="#"><i class="fa fa-google-plus-square"></i> Google+</a>
+                                 </li>
+                             </ul>
+                             <p>Not a member yet? <a href="#">Sign-up Now!</a></p>
+                         </div>--}}
+                        <div class="wm-modallogin-form wm-login-popup">
+                            <span class="wm-color">Make A Registration For this Course</span>
+                            <form method="post" action="{{route("student.store")}}" id="student_form{{ $value->id }}}">
+                                @csrf
+                                <ul>
+                                    <input type="hidden" name="program_id" value="{{ $value->id  }}">
+                                    <li><input type="text" name="" placeholder="Your Full Name"></li>
+                                    <li><input type="text"  name="" placeholder="Your Student ID"></li>
+                                    <li><input type="text"  name="" placeholder="Your phone Number"></li>
+                                    <li><input type="text"  name="" placeholder="Your Institution Name"></li>
+                                    <li><input type="text"  name="" placeholder="Your Deparment"></li>
+                                    <li><input type="text"  name="" placeholder="Your E-mail"></li>
+                                    <li><input type="password"  name="" placeholder="Password"></li>
+                                    <li><input type="text"  name="" placeholder="Confirm Password"></li>
+                                    <li>Project Information</li>
+                                    <li><input type="text" name=""  placeholder="Project Name"></li>
+                                    <li><input type="text" name=""  placeholder="Description"></li>
+                                    <li><button type="button" id="register"  onclick="storeStudent(this.id)" data-element = {{ $value->id  }}>Register</button></li>
+
+                                </ul>
+                            </form>
+
+                            <p>Already a member? <a href="#">Sign-in Here!</a></p>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="clearfix"></div>
             </div>
         </div>
-        <div class="clearfix"></div>
-    </div>
-</div>
+    @endforeach
+@endif
 <!-- ModalLogin Box -->
 
 <!-- ModalSearch Box -->
@@ -1155,7 +1157,15 @@
     </div>
 </div>
 <!-- ModalSearch Box -->
+<script>
+    function storeStudent(element){
+        var data = $("#"+element).attr("data-element");
+     //   var formData = new form
 
+
+
+    }
+</script>
 <!-- jQuery (necessary for JavaScript plugins) -->
 <script type="text/javascript" src="{{"assets"}}/public/script/jquery.js"></script>
 <script type="text/javascript" src="{{"assets"}}/public/script/modernizr.js"></script>
