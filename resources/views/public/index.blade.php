@@ -1116,12 +1116,12 @@
                                     <li>Project Information</li>
                                     <li><input type="text" name=""  placeholder="Project Name"></li>
                                     <li><input type="text" name=""  placeholder="Description"></li>
-                                    <li><button type="button" id="register"  onclick="storeStudent(this.id)" data-element = {{ $value->id  }}>Register</button></li>
+                                    <li><button type="button" id="register" class="btn btn-success" onclick="storeStudent(this.id)" data-element = {{ $value->id  }}>Register</button></li>
 
                                 </ul>
                             </form>
 
-                            <p>Already a member? <a href="#">Sign-in Here!</a></p>
+                           {{-- <p>Already a member? <a href="#">Sign-in Here!</a></p>--}}
                         </div>
 
                     </div>
@@ -1160,7 +1160,25 @@
 <script>
     function storeStudent(element){
         var data = $("#"+element).attr("data-element");
+        var data = $('#wizard_with_validation').serialize();
      //   var formData = new form
+        var respondUrl = $('#wizard_with_validation').attr('action');
+
+        $.ajax({
+            url: respondUrl,
+            data: data,
+            type: 'POST',
+            contentType: false,
+            processData: false,
+
+            enctype: 'multipart/form-data',
+
+            success: function (data) {
+                // do something with the result
+                alert("Good job!", "Submitted!", "success");
+                window.location.reload();
+            }
+        });
 
 
 

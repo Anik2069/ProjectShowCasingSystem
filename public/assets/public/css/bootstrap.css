@@ -5867,8 +5867,8 @@ button.close {
 .modal-content {
   position: relative;
   background-color: #fff;
-  width: 462px;
-  float: right;
+  width: 1050px;
+ /* float: right;*/
   outline: 0;
 }
 .modal-backdrop {
