@@ -1101,21 +1101,21 @@
                          </div>--}}
                         <div class="wm-modallogin-form wm-login-popup">
                             <span class="wm-color">Make A Registration For this Course</span>
-                            <form method="post" action="{{route("student.store")}}" id="student_form{{ $value->id }}}">
+                            <form method="post" action="{{route("student.store")}}" id="student_form{{ $value->id }}">
                                 @csrf
                                 <ul>
                                     <input type="hidden" name="program_id" value="{{ $value->id  }}">
-                                    <li><input type="text" name="" placeholder="Your Full Name"></li>
-                                    <li><input type="text"  name="" placeholder="Your Student ID"></li>
-                                    <li><input type="text"  name="" placeholder="Your phone Number"></li>
-                                    <li><input type="text"  name="" placeholder="Your Institution Name"></li>
-                                    <li><input type="text"  name="" placeholder="Your Deparment"></li>
-                                    <li><input type="text"  name="" placeholder="Your E-mail"></li>
-                                    <li><input type="password"  name="" placeholder="Password"></li>
+                                    <li><input type="text" name="full_name" placeholder="Your Full Name"></li>
+                                    <li><input type="text"  name="s_id" placeholder="Your Student ID"></li>
+                                    <li><input type="text"  name="p_number" placeholder="Your phone Number"></li>
+                                    <li><input type="text"  name="instituion" placeholder="Your Institution Name"></li>
+                                    <li><input type="text"  name="department" placeholder="Your Deparment"></li>
+                                    <li><input type="text"  name="email" placeholder="Your E-mail"></li>
+                                    <li><input type="password"  name="password" placeholder="Password"></li>
                                     <li><input type="text"  name="" placeholder="Confirm Password"></li>
                                     <li>Project Information</li>
-                                    <li><input type="text" name=""  placeholder="Project Name"></li>
-                                    <li><input type="text" name=""  placeholder="Description"></li>
+                                    <li><input type="text" name="p_name"  placeholder="Project Name"></li>
+                                    <li><input type="text" name="p_description"  placeholder="Description"></li>
                                     <li><button type="button" id="register" class="btn btn-success" onclick="storeStudent(this.id)" data-element = {{ $value->id  }}>Register</button></li>
 
                                 </ul>
@@ -1159,24 +1159,21 @@
 <!-- ModalSearch Box -->
 <script>
     function storeStudent(element){
-        var data = $("#"+element).attr("data-element");
-        var data = $('#wizard_with_validation').serialize();
+        var post_id = $("#"+element).attr("data-element");
+        var data = $("#student_form"+post_id).serialize();
      //   var formData = new form
-        var respondUrl = $('#wizard_with_validation').attr('action');
+        var respondUrl = $("#student_form"+post_id).attr('action');
+
 
         $.ajax({
             url: respondUrl,
             data: data,
             type: 'POST',
-            contentType: false,
-            processData: false,
-
-            enctype: 'multipart/form-data',
-
             success: function (data) {
                 // do something with the result
-                alert("Good job!", "Submitted!", "success");
-                window.location.reload();
+                alert("Good job! Registration Done", "Submitted!", "success");
+                $('#ModalLogin'+post_id).modal('hide');
+               /* window.location.reload();*/
             }
         });
 
