@@ -7,6 +7,7 @@ use App\panel;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class ConvenerController extends Controller
@@ -43,5 +44,13 @@ class ConvenerController extends Controller
     public function view_panel(){
         $panel_info = panel::where("assign_subadmin",Auth::id())->get();
         return view("convener.panel_info",compact("panel_info"));
+    }
+    public function studentList()
+    {
+        $studentlist = DB::table("students")
+            ->join("programs", "students.program_id", "programs.id")
+            ->join("projects", "projects.student_id","students.id")
+            ->where("programs.insertedBy",Auth::id())->get();
+        return view("convener.participant",compact("studentlist"));
     }
 }
