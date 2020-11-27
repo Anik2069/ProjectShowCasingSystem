@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class administration extends Controller
 {
@@ -12,19 +14,24 @@ class administration extends Controller
     {
         $this->middleware('auth');
     }
-    public  function  index(){
+
+    public function index()
+    {
         return view("administration.login");
     }
-    public function dashboard(){
+
+    public function dashboard()
+    {
         $user = Auth::user();
-        if($user->userType==1){
+        if ($user->userType == 1) {
             return view("administration.index");
-        }
-        else{
+        } else {
             return view("convener.index");
         }
 
     }
+
+
 
 
 }

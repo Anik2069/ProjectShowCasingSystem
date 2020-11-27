@@ -37,6 +37,15 @@
                     <li><a class="nav-link" href="/convener/view_supervisor">VIew Supervisor</a></li>
                 </ul>
             </li>
+            <li class="dropdown">
+                <a href="#" class="menu-toggle nav-link has-dropdown"><i
+                        data-feather="briefcase"></i><span>Participant</span></a>
+                <ul class="dropdown-menu">
+                    <li><a class="nav-link" href="/convener/supervisor_judges">Add New Judges/Supervisor </a></li>
+                    <li><a class="nav-link" href="/convener/view_judges">VIew Judges</a></li>
+                    <li><a class="nav-link" href="/convener/view_supervisor">VIew Supervisor</a></li>
+                </ul>
+            </li>
             <li class="menu-header">Setting</li>
             <li class="dropdown">
                 <a href="#" class="menu-toggle nav-link has-dropdown"><i

@@ -36,6 +36,7 @@ Route::get("/convener/supervisor_judges","MemberController@index");
 Route::post("/convener/supervisor_judges","MemberController@store");
 Route::get("/convener/view_supervisor","MemberController@index");
 Route::get("/convener/view_judges","MemberController@judges");
+Route::get("/convener/studentList","ConvenerController@studentList");
 
 Route::resource("student","StudentController");
 
