@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\convener;
+use App\member;
 use App\panel;
+use App\project;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -51,6 +53,22 @@ class ConvenerController extends Controller
             ->join("programs", "students.program_id", "programs.id")
             ->join("projects", "projects.student_id","students.id")
             ->where("programs.insertedBy",Auth::id())->get();
-        return view("convener.participant",compact("studentlist"));
+        $supervisor = member::whereIn("role_type",[2,3])->where("insertBy",Auth::id())->get();
+        return view("convener.participant", compact("studentlist", "supervisor"));
+    }
+    public function assignSupervisor(Request $request){
+        $studentlist = DB::table("students")
+            ->join("programs", "students.program_id", "programs.id")
+            ->join("projects", "projects.student_id","students.id")
+            ->where("programs.insertedBy",Auth::id())
+            ->select("projects.id as project_id")
+            ->where("students.id",$request->id)->get();
+       // dd($studentlist[0]->project_id);
+        $projectInfo = project::find($studentlist[0]->project_id);
+        $projectInfo->supervisor_id =$request->supervisorID;
+        $projectInfo->save();
+    }
+    public function resultCriteria(){
+        return view("convener.result_criteria");
     }
 }
