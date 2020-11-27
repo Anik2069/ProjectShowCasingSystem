@@ -70,10 +70,21 @@
                                                     <td>
                                                         <button class="btn btn-primary" data-toggle="modal"
                                                                 data-target=".bd-example-modal-lg{{$value->id}}">
-                                                           Project Details
+                                                            Project Details
                                                         </button> &nbsp; /
                                                         &nbsp;
-                                                        <button class="btn btn-primary"> Assign Supervisor</button>
+                                                        @if(!empty($value->supervisor_id))
+                                                            <button class="btn btn-info" data-toggle="modal"
+                                                                    data-target="#exampleModal{{ $value->id  }}"
+                                                                    disabled> Assign
+                                                                Supervisor
+                                                            </button>
+                                                        @else
+                                                            <button class="btn btn-info" data-toggle="modal"
+                                                                    data-target="#exampleModal{{ $value->id  }}"> Assign
+                                                                Supervisor
+                                                            </button>
+                                                        @endif
                                                     </td>
                                                     {{--   <td><a href="#" class="btn btn-primary">Detail</a></td>--}}
                                                 </tr>
@@ -125,6 +136,51 @@
                                 </table>
 
 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        @endif
+        @if(!empty($studentlist))
+            @foreach($studentlist as $value)
+                <div class="modal fade" id="exampleModal{{$value->id}}" tabindex="-1" role="dialog"
+                     aria-labelledby="formModal"
+                     aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="formModal">Assign SuperVisor</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form class="" action="{{ route("supervisor.store") }}" method="post"
+                                      id="assignSupervisor">@csrf
+                                    <div class="form-group">
+                                        <label>Username</label>
+                                        <div class="input-group">
+                                            {{--<div class="input-group-prepend">
+                                                <div class="input-group-text">
+                                                    <i class="fas fa-envelope"></i>
+                                                </div>
+                                            </div>--}}
+                                            <select name="supervisorID" id="supervisorID" class="form-control" required>
+                                                <option value="">Select</option>
+                                                @if(!empty($supervisor))
+                                                    @foreach($supervisor as $data_info)
+                                                        <option value="{{$data_info->id}}">{{$data_info->name}}</option>
+                                                    @endforeach
+                                                @endif
+                                            </select>
+                                            <input type="hidden" name="id" value="{{$value->id}}">
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn-primary m-t-15 waves-effect"
+                                            onclick="assignSuperVisor()">Assign
+                                    </button>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -235,6 +291,29 @@
 @endsection
 
 @push("convener_js")
+
+    <script>
+        function assignSuperVisor() {
+            var formData = $("#assignSupervisor").serialize();
+            var actionRoute  =  $("#assignSupervisor").attr("action");
+            var actionMethod  =  $("#assignSupervisor").attr("method");
+            $.ajax({
+                url: actionRoute,
+                data: formData,
+                type: 'POST',
+                success: function (data) {
+                    // do something with the result
+                    alert("Supervise Assign Successfully");
+/*
+                    $('#exampleModal'+post_id).modal('hide');
+*/
+                    window.location.reload();
+                    /* window.location.reload();*/
+                }
+            });
+
+        }
+    </script>
     <script src="../../assets/js/app.min.js"></script>
     <!-- JS Libraies -->
     <script src="../../assets/bundles/datatables/datatables.min.js"></script>
