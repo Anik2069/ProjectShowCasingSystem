@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\convener;
 use App\member;
 use App\panel;
+use App\program;
 use App\project;
 use App\User;
 use Illuminate\Http\Request;
@@ -69,6 +70,13 @@ class ConvenerController extends Controller
         $projectInfo->save();
     }
     public function resultCriteria(){
-        return view("convener.result_criteria");
+        $prgram =  program::where([
+            ['insertedBy','=',Auth::id()],
+            ['status','=',1],
+        ])->get();
+        $result_criteria = DB::table("result_criterias")
+            ->join("programs","result_criterias.program","programs.id")
+            ->where('insertedBy',Auth::id())->get();
+        return view("convener.result_criteria",compact('prgram','result_criteria'));
     }
 }
