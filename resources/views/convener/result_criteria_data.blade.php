@@ -4,6 +4,7 @@
     <th>Criteria Name</th>
     <th>Criteria Marks</th>
     <th>Criteria Prority</th>
+    <th>Action</th>
     </thead>
     <tbody>
     @if(!empty($result_criteria))
@@ -13,11 +14,9 @@
                 <td>{{$result->name}}</td>
                 <td>{{$result->marks}}</td>
                 <td>{{$result->prority}}</td>
+                <td><a href="/convener/resultCriteria/{{$result->id}}" class="btn btn-danger "> Delete </a></td>
             </tr>
         @endforeach
     @endif
-
-
     </tbody>
-
 </table>

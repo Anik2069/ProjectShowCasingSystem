@@ -22,10 +22,12 @@
 
             <li class="dropdown">
                 <a href="#" class="menu-toggle nav-link has-dropdown"><i
-                        data-feather="briefcase"></i><span>Program</span></a>
+                        data-feather="briefcase"></i><span>Program maintainence</span></a>
                 <ul class="dropdown-menu">
                     <li><a class="nav-link" href="/convener/program">Add New Program</a></li>
                     <li><a class="nav-link" href="/convener/view_program">VIew Program</a></li>
+                    <li><a class="nav-link" href="/convener/resultCriteria">Result Criteria</a></li>
+                    <li><a class="nav-link" href="/convener/assign_judges">Assign Judges</a></li>
                 </ul>
             </li>
             <li class="dropdown">
@@ -44,6 +46,7 @@
                     <li><a class="nav-link" href="/convener/supervisor_judges">Add New Judges/Supervisor </a></li>
                     <li><a class="nav-link" href="/convener/view_judges">VIew Judges</a></li>
                     <li><a class="nav-link" href="/convener/view_supervisor">VIew Supervisor</a></li>
+
                 </ul>
             </li>
             <li class="menu-header">Setting</li>
