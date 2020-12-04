@@ -39,6 +39,8 @@ Route::get("/convener/view_judges","MemberController@judges");
 Route::get("/convener/studentList","ConvenerController@studentList");
 Route::get("/convener/resultCriteria","ConvenerController@resultCriteria");
 Route::post("/convener/resultCriteria","ResultCriteriaController@store");
+Route::get("/convener/assign_judges","ConvenerController@assign_judges");
+Route::post("/convener/assign_judges","MemberController@assign_judges");
 
 Route::post("/convener/assign/supervisor","ConvenerController@assignSupervisor")->name("supervisor.store");
 
