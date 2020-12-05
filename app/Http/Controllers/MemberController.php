@@ -57,4 +57,9 @@ class MemberController extends Controller
             ->get();
         return view("convener.assign_judges_data_result",compact("information"));
     }
+    public function view_supervisor()
+    {
+        $member = member::whereIn("role_type", [2, 3])->get();
+        return view("convener.member", compact("member"));
+    }
 }

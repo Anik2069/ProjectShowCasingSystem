@@ -1,4 +1,4 @@
-@extends("convener.master")
+@extends("judges.master")
 
 @push("convener_css")
     <link rel="stylesheet" href="../../assets/css/app.min.css">
