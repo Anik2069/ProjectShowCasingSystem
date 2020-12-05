@@ -25,7 +25,10 @@ class administration extends Controller
         $user = Auth::user();
         if ($user->userType == 1) {
             return view("administration.index");
-        } else {
+        }elseif($user->userType == 3){
+            return view("judges.index");
+        }
+        else {
             return view("convener.index");
         }
 

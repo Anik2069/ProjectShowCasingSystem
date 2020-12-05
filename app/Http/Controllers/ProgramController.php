@@ -7,6 +7,7 @@ use App\panel;
 use App\program;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ProgramController extends Controller
 {
@@ -39,7 +40,7 @@ class ProgramController extends Controller
         $banner = new banner();
         $banner->banner_text = $request->banner_txt;
 
-        if ($request->hasFile('b_image' )) {
+        if ($request->hasFile('b_image')) {
             $file = $request->file('b_image');
             $extension = $file->getClientOriginalExtension();
             $filename = time() . '1.' . $extension;
@@ -49,13 +50,22 @@ class ProgramController extends Controller
         $banner->program_id = $LastInsertId;
         $banner->inserted_by = Auth::id();
         $banner->save();
-
-
         // return redirect("/convener/program")->with("success", "Programe Inserted Succeefully !!!!");
     }
 
     public function view_program()
     {
         return view("convener.program_info");
+    }
+
+    public function view_program_judges()
+    {
+        $program = DB::select("select programs.id,programs.program_name,programs.purpose,programs.program_date,
+                    count(students.id) as studentCount from programs 
+                    join assign_judges on assign_judges.program_id =  programs.id 
+                    join students on students.program_id =  programs.id 
+                    group by programs.program_name,programs.purpose,programs.program_date,programs.id");
+      /*  dd($program);*/
+        return view("judges.program_info",compact("program"));
     }
 }
