@@ -22,7 +22,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4>Program Info</h4>
+                                <h4>Student List</h4>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -33,9 +33,9 @@
                                                 #
                                             </th>
                                             <th>Programe Name</th>
-                                            <th>Purpose</th>
-                                            <th>Program Date</th>
-                                            <th>Registered Student</th>
+                                            <th>Student Name</th>
+                                            <th>Project Name</th>
+                                            <th>Supervisor Name</th>
                                             <th>Status</th>
                                             <th>Action</th>
                                         </tr>
@@ -49,12 +49,12 @@
                                                     </td>
                                                     <td>{{ $value->program_name  }}</td>
                                                     <td class="align-middle">
-                                                        {{ $value->purpose  }}
+                                                        {{ $value->st_name  }}
                                                     </td>
                                                     <td>
-                                                        {{ date("d M,Y",strtotime( $value->program_date))  }}
+                                                        {{  $value->p_name  }}
                                                     </td>
-                                                    <td class="text-left">     {{ $value->studentCount  }} </td>
+                                                    <td class="text-left">     {{ $value->sp_name  }} </td>
 
                                                     <td>
                                                         @if(date("d M,Y",strtotime( $value->program_date))== date("d-M,Y"))
@@ -66,7 +66,7 @@
                                                         @endif
                                                     </td>
                                                     <td><a href="{{ route("judges.studentList") }}"
-                                                           class="btn btn-primary">Student List</a></td>
+                                                           class="btn btn-primary">Assign Marks</a></td>
                                                 </tr>
                                             @endforeach
                                         @endif

@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\member;
 use App\project;
 use App\student;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class StudentController extends Controller
@@ -44,28 +47,28 @@ class StudentController extends Controller
         $user->name = $request->full_name;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
-        $user->userType = 3 ;
+        $user->userType = 3;
         $user->save();
         //Student Table
         $student = new student();
-        $student->name =$request->full_name;
+        $student->name = $request->full_name;
         $student->s_id = $request->s_id;
-        $student->phone= $request->p_number;
+        $student->phone = $request->p_number;
         $student->institution = $request->instituion;
-        $student->department= $request->department;
+        $student->department = $request->department;
         $student->password = $request->password;
-        $student->email =$request->email;;
-        $student->program_id= $request->program_id;
-        $student->user_no_fk= $user->id;
-        $student->status= 1;
-        $student->status= 1;
-        $student->save() ;
+        $student->email = $request->email;;
+        $student->program_id = $request->program_id;
+        $student->user_no_fk = $user->id;
+        $student->status = 1;
+        $student->status = 1;
+        $student->save();
         //Project
         $project = new project();
         $project->project_name = $request->p_name;
         $project->description = $request->p_description;
         $project->student_id = $student->id;
-        $project->program_id =  $request->program_id;
+        $project->program_id = $request->program_id;
         $project->save();
     }
 
@@ -116,7 +119,21 @@ class StudentController extends Controller
     {
         //
     }
-    public  function student_list_judges(){
 
+    public function student_list_judges()
+    {
+        $id = Auth::id();
+        $judges_id = member::where("user_no_fk", $id)->first();
+        $judges_id = $judges_id->id;
+        $program = DB::select("select programs.id,programs.program_name,students.name as st_name, members.name as sp_name,projects.project_name as p_name,programs.program_date from programs 
+                    join assign_judges on assign_judges.program_id =  programs.id 
+                    join students on students.program_id =  programs.id 
+                    join projects on projects.student_id =students.id
+                    join members on projects.supervisor_id =members.id
+                    where assign_judges.judges_id = $judges_id");
+
+
+        /*  dd($program);*/
+        return view("judges.student_list", compact("program"));
     }
 }

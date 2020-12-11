@@ -25,6 +25,15 @@ class MemberController extends Controller
 
     public function store(Request $request)
     {
+        //User Information
+
+        $user  = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make("12345678");
+        $user->userType = "3";
+        $user->save();
+
         $member = new member();
         $member->role_type = $request->role_type;
         $member->name = $request->name;
@@ -34,15 +43,11 @@ class MemberController extends Controller
         $member->job = $request->job;
         $member->description = $request->description;
         $member->status = $request->status;
+        $member->user_no_fk = $user->id;
         $member->insertBy = Auth::id();
         $member->save();
-        //User Information
-        $user  = new User();
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = Hash::make("12345678");
-        $user->userType = "3";
-        $user->save();
+
+
         return redirect("/convener/supervisor_judges")->with("success", "User Added");
     }
 

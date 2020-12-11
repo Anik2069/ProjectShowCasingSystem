@@ -23,6 +23,7 @@ class CreateMembersTable extends Migration
             $table->string("job")->nullable();
             $table->text("description")->nullable();
             $table->string("status")->nullable();
+            $table->string("user_no_fk")->nullable();
             $table->string("insertBy")->nullable();
             $table->timestamps();
         });
