@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\assign_judges;
 use App\member;
 use App\program;
+use App\ResultCriteria;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -84,6 +85,14 @@ class MemberController extends Controller
     public function view_program_judges(){
         $program = program::all();
         return view("judges.program_info",compact("program"));
+
+    }
+
+    public function open_modal(Request $request){
+        $programId = $_GET["programId"];
+        $resultCriteria = ResultCriteria::where("program",$programId)->get();
+        $s_id = $_GET["s_id"];
+        return view("judges.open_modal",compact("resultCriteria","s_id","programId"));
 
     }
 }

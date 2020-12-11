@@ -64,7 +64,9 @@ Route::post("/convener/assign/supervisor","ConvenerController@assignSupervisor")
 
 Route::prefix('judges')->group(function () {
     Route::get("/view_program","ProgramController@view_program_judges");
-    Route::get("/student_list","StudentController@student_list_judges")->name("judges.studentList") ;
+    Route::get("/open_modal", "MemberController@open_modal");
+    Route::get("/student_list/{id}","StudentController@student_list_judges")->name("judges.studentList") ;
+    Route::resource("assignResult","ResultController");
 
 });
 

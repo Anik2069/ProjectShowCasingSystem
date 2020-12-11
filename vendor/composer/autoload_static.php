@@ -485,6 +485,7 @@ class ComposerStaticInitd0fd286ea02612404b66bae499593182
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Http\\Controllers\\AssignJudgesController' => __DIR__ . '/../..' . '/app/Http/Controllers/AssignJudgesController.php',
         'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
@@ -527,6 +528,7 @@ class ComposerStaticInitd0fd286ea02612404b66bae499593182
         'App\\panel' => __DIR__ . '/../..' . '/app/panel.php',
         'App\\program' => __DIR__ . '/../..' . '/app/program.php',
         'App\\project' => __DIR__ . '/../..' . '/app/project.php',
+        'App\\result' => __DIR__ . '/../..' . '/app/result.php',
         'App\\student' => __DIR__ . '/../..' . '/app/student.php',
         'Asm89\\Stack\\Cors' => __DIR__ . '/..' . '/asm89/stack-cors/src/Asm89/Stack/Cors.php',
         'Asm89\\Stack\\CorsService' => __DIR__ . '/..' . '/asm89/stack-cors/src/Asm89/Stack/CorsService.php',
