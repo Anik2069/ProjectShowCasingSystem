@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\assign_judges;
 use App\member;
 use App\program;
+use App\result;
 use App\ResultCriteria;
 use App\User;
 use Illuminate\Http\Request;
@@ -19,6 +20,7 @@ class MemberController extends Controller
     {
         $this->middleware('auth');
     }
+
     public function index()
     {
         return view("convener.jud_supervisor");
@@ -28,7 +30,7 @@ class MemberController extends Controller
     {
         //User Information
 
-        $user  = new User();
+        $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = Hash::make("12345678");
@@ -72,27 +74,37 @@ class MemberController extends Controller
 
         $information = DB::table("assign_judges")
             ->join("programs", "programs.id", "assign_judges.program_id")
-            ->join("members","members.id","assign_judges.judges_id")
-            ->where("assign_judges.insertedBy",Auth::id())
+            ->join("members", "members.id", "assign_judges.judges_id")
+            ->where("assign_judges.insertedBy", Auth::id())
             ->get();
-        return view("convener.assign_judges_data_result",compact("information"));
+        return view("convener.assign_judges_data_result", compact("information"));
     }
+
     public function view_supervisor()
     {
         $member = member::whereIn("role_type", [2, 3])->get();
         return view("convener.member", compact("member"));
     }
-    public function view_program_judges(){
+
+    public function view_program_judges()
+    {
         $program = program::all();
-        return view("judges.program_info",compact("program"));
+        return view("judges.program_info", compact("program"));
 
     }
 
-    public function open_modal(Request $request){
+    public function open_modal(Request $request)
+    {
         $programId = $_GET["programId"];
-        $resultCriteria = ResultCriteria::where("program",$programId)->get();
+        $resultCriteria = ResultCriteria::where("program", $programId)->get();
         $s_id = $_GET["s_id"];
-        return view("judges.open_modal",compact("resultCriteria","s_id","programId"));
+
+        $marks = result::where([
+            ["program_id", "=", $programId], ["s_id", "=", $s_id], ["judges_id", "=", Auth::id()],
+        ])->get();
+
+
+        return view("judges.open_modal", compact("resultCriteria", "s_id", "programId", "marks"));
 
     }
 }
