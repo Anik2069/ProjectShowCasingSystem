@@ -67,6 +67,7 @@ Route::prefix('judges')->group(function () {
     Route::get("/open_modal", "MemberController@open_modal");
     Route::get("/student_list/{id}","StudentController@student_list_judges")->name("judges.studentList") ;
     Route::resource("assignResult","ResultController");
+    Route::post("assignResult/updateData","ResultController@updateData")->name("assignResult.updateData");
 
 });
 

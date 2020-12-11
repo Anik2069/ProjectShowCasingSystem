@@ -71,7 +71,7 @@
                                                     </td>
                                                     <td>{{--<a href="{{ route("judges.studentList") }}"
                                                            class="btn btn-primary">Assign Marks</a>--}}
-                                                        <button type="button" class="btn btn-primary"
+                                                        <button type="button" class="btn btn-info"
                                                                 data-toggle="modal" data-target="#exampleModal"
                                                                 onclick="openAssignMarkModal(this)"
                                                                 data-id="{{ $value->s_id }}">Assgin Marks

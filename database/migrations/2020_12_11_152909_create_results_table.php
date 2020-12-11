@@ -19,6 +19,7 @@ class CreateResultsTable extends Migration
             $table->string("judges_id")->nullable();
             $table->string("s_id")->nullable();
             $table->string("marks")->nullable();
+            $table->string("h_marks")->nullable();
             $table->string("c_name")->nullable();
             $table->string("priority")->nullable();
             $table->string("insertedBy")->nullable();
