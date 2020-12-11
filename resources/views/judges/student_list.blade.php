@@ -3,6 +3,8 @@
 @push("convener_css")
     <link rel="stylesheet" href="{{ asset("assets/css/app.min.css")}}">
     <link rel="stylesheet" href="{{ asset("assets/bundles/datatables/datatables.min.css") }}">
+    <link rel="stylesheet" href="{{ asset("assets/bundles/prism/prism.css") }}">
+
     <link rel="stylesheet"
           href="{{ asset("assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css") }}">
     <!-- Template CSS -->
@@ -58,15 +60,25 @@
 
                                                     <td>
                                                         @if(date("d M,Y",strtotime( $value->program_date))== date("d-M,Y"))
-                                                            <div class="badge badge-success badge-shadow">Today Is Program Date</div>
+                                                            <div class="badge badge-success badge-shadow">Today Is
+                                                                Program Date
+                                                            </div>
                                                         @elseif(date("d M,Y",strtotime( $value->program_date))< date("d-M,Y"))
                                                             <div class="badge badge-warning badge-shadow">Pending</div>
                                                         @else
                                                             <div class="badge badge-danger badge-shadow">Over</div>
                                                         @endif
                                                     </td>
-                                                    <td><a href="{{ route("judges.studentList") }}"
-                                                           class="btn btn-primary">Assign Marks</a></td>
+                                                    <td>{{--<a href="{{ route("judges.studentList") }}"
+                                                           class="btn btn-primary">Assign Marks</a>--}}
+                                                        <button type="button" class="btn btn-primary"
+                                                                data-toggle="modal" data-target="#exampleModal"
+                                                                onclick="openAssignMarkModal(this)"
+                                                                data-id="{{ $value->s_id }}">Assgin Marks
+                                                        </button>
+
+
+                                                    </td>
                                                 </tr>
                                             @endforeach
                                         @endif
@@ -175,12 +187,36 @@
             </div>
         </div>
     </div>
-
-
+    <input type="hidden" value="{{ $programId }}" id="program_id">
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="formModal"
+         aria-hidden="true">
+        @include("judges.open_modal")
+    </div>
 @endsection
 
 @push("convener_js")
+    <script>
+
+        function openAssignMarkModal(element) {
+            var programId = $("#program_id").val();
+            var s_id = $(element).attr("data-id");
+            $.ajax({
+                url: '/judges/open_modal',
+                data: {programId: programId, s_id:s_id  },
+                type: 'get',
+                success: function (data) {
+
+                    $("#exampleModal").html(data);
+
+                }
+            });
+        }
+        function buttonclick() {
+           location.reload();
+        }
+    </script>
     <script src="{{ asset("assets/js/app.min.js") }}"></script>
+    <script src="{{asset("assets/bundles/prism/prism.js")}}"></script>
     <!-- JS Libraies -->
     <script src="{{ asset("assets/bundles/datatables/datatables.min.js") }}"></script>
     <script src="{{ asset("assets/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js") }}"></script>
