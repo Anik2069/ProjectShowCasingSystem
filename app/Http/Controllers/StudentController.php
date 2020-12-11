@@ -116,4 +116,7 @@ class StudentController extends Controller
     {
         //
     }
+    public  function student_list_judges(){
+
+    }
 }

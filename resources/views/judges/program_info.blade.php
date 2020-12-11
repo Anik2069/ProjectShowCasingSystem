@@ -1,15 +1,16 @@
 @extends("judges.master")
 
 @push("convener_css")
-    <link rel="stylesheet" href="../../assets/css/app.min.css">
-    <link rel="stylesheet" href="../../assets/bundles/datatables/datatables.min.css">
-    <link rel="stylesheet" href="../../assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="{{ asset("assets/css/app.min.css")}}">
+    <link rel="stylesheet" href="{{ asset("assets/bundles/datatables/datatables.min.css") }}">
+    <link rel="stylesheet"
+          href="{{ asset("assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css") }}">
     <!-- Template CSS -->
-    <link rel="stylesheet" href="../../assets/css/style.css">
-    <link rel="stylesheet" href="../../assets/css/components.css">
+    <link rel="stylesheet" href="{{ asset("assets/css/style.css") }}">
+    <link rel="stylesheet" href="{{ asset("assets/css/components.css") }}">
     <!-- Custom style CSS -->
-    <link rel="stylesheet" href="../../assets/css/custom.css">
-    <link rel='shortcut icon' type='image/x-icon' href='../../assets/img/favicon.ico'/>
+    <link rel="stylesheet" href="{{ asset("assets/css/custom.css") }}">
+    <link rel='shortcut icon' type='image/x-icon' href='{{ asset("assets/img/favicon.ico") }}'/>
 @endpush
 
 
@@ -57,7 +58,7 @@
                                                     <td>
                                                         <div class="badge badge-warning badge-shadow">Pending</div>
                                                     </td>
-                                                    <td><a href="#" class="btn btn-primary">Assign Marks</a></td>
+                                                    <td><a href="{{ route("judges.studentList") }}" class="btn btn-primary">Student List</a></td>
                                                 </tr>
                                             @endforeach
                                         @endif
@@ -171,15 +172,15 @@
 @endsection
 
 @push("convener_js")
-    <script src="../../assets/js/app.min.js"></script>
+    <script src="{{ asset("assets/js/app.min.js") }}"></script>
     <!-- JS Libraies -->
-    <script src="../../assets/bundles/datatables/datatables.min.js"></script>
-    <script src="../../assets/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js"></script>
-    <script src="../../assets/bundles/jquery-ui/jquery-ui.min.js"></script>
+    <script src="{{ asset("assets/bundles/datatables/datatables.min.js") }}"></script>
+    <script src="{{ asset("assets/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js") }}"></script>
+    <script src="{{ asset("assets/bundles/jquery-ui/jquery-ui.min.js") }}"></script>
     <!-- Page Specific JS File -->
-    <script src="../../assets/js/page/datatables.js"></script>
+    <script src="{{ asset("assets/js/page/datatables.js") }}"></script>
     <!-- Template JS File -->
-    <script src="../../assets/js/scripts.js"></script>
+    <script src="{{ asset("assets/js/scripts.js") }}"></script>
     <!-- Custom JS File -->
-    <script src="../../assets/js/custom.js"></script>
+    <script src="{{ asset("assets/js/custom.js") }}"></script>
 @endpush
