@@ -4,13 +4,20 @@ namespace App\Http\Controllers;
 
 use App\assign_judges;
 use App\member;
+use App\program;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class MemberController extends Controller
 {
     //
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         return view("convener.jud_supervisor");
@@ -29,6 +36,13 @@ class MemberController extends Controller
         $member->status = $request->status;
         $member->insertBy = Auth::id();
         $member->save();
+        //User Information
+        $user  = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make("12345678");
+        $user->userType = "3";
+        $user->save();
         return redirect("/convener/supervisor_judges")->with("success", "User Added");
     }
 
@@ -61,5 +75,10 @@ class MemberController extends Controller
     {
         $member = member::whereIn("role_type", [2, 3])->get();
         return view("convener.member", compact("member"));
+    }
+    public function view_program_judges(){
+        $program = program::all();
+        return view("judges.program_info",compact("program"));
+
     }
 }

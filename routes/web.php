@@ -50,7 +50,7 @@ Auth::routes();
 /*Route::get("/convener/view_panel","ConvenerController@view_panel");*/
 /*Route::post("/convener/store","ProgramController@store")->name("programe.store");
 Route::get("/convener/program","ProgramController@index");*/
-Route::get("/judges/view_program","ProgramController@view_program_judges");
+/*Route::get("supervisor_judges","ProgramController@view_program_judges");*/
 Route::get("/convener/supervisor_judges","MemberController@index");
 Route::post("/convener/supervisor_judges","MemberController@store");
 Route::get("/convener/view_supervisor","MemberController@view_supervisor");
@@ -61,5 +61,12 @@ Route::post("/convener/resultCriteria","ResultCriteriaController@store");
 Route::get("/convener/assign_judges","ConvenerController@assign_judges");
 Route::post("/convener/assign_judges","MemberController@assign_judges");
 Route::post("/convener/assign/supervisor","ConvenerController@assignSupervisor")->name("supervisor.store");
+
+Route::prefix('judges')->group(function () {
+    Route::get("/view_program","ProgramController@view_program_judges");
+    Route::get("/student_list","StudentController@student_list_judges")->name("judges.studentList") ;
+
+});
+
 
 
