@@ -18,6 +18,11 @@ use Illuminate\Support\Facades\Route;
 });*/
 // Public View
 Route::get("/", "publicview@index");
+Route::get("/program", "ProgramController@programList")->name("public.programList");
+Route::get("/result","publicview@result");
+
+
+
 Route::get('/home', 'administration@dashboard')->name('home');
 //Adminstration
 Route::get("/administration/login", "administration@index");

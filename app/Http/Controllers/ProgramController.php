@@ -68,4 +68,8 @@ class ProgramController extends Controller
       /*  dd($program);*/
         return view("judges.program_info",compact("program"));
     }
+
+    public function programList(){
+        return view("public.event");
+    }
 }
