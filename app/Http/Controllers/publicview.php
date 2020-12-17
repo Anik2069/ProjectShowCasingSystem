@@ -8,9 +8,15 @@ use Illuminate\Support\Facades\DB;
 class publicview extends Controller
 {
     //
-    public function index(){
-        $program = DB::table("programs")->join("banners","programs.id","banners.program_id")->get();
+    public function index()
+    {
+        $program = DB::table("programs")->join("banners", "programs.id", "banners.program_id")->get();
 
-        return view("public.index",compact("program"));
+        return view("public.index", compact("program"));
+    }
+
+    public function result()
+    {
+
     }
 }
