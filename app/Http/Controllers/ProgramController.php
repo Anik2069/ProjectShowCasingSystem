@@ -65,11 +65,26 @@ class ProgramController extends Controller
                     join assign_judges on assign_judges.program_id =  programs.id 
                     join students on students.program_id =  programs.id 
                     group by programs.program_name,programs.purpose,programs.program_date,programs.id");
-      /*  dd($program);*/
-        return view("judges.program_info",compact("program"));
+        /*  dd($program);*/
+        return view("judges.program_info", compact("program"));
     }
 
-    public function programList(){
-        return view("public.event");
+    public function programList()
+    {
+        $program = DB::table("programs")->join("banners", "programs.id", "banners.program_id")->where("programs.program_date",date("Y-m-d"))->get();
+
+        return view("public.event", compact("program"));
+    }
+    public function getProgramInfo(){
+        $data_type = $_GET['data_type'];
+        if($data_type==1){
+            $program = DB::table("programs")->join("banners", "programs.id", "banners.program_id")->where("programs.program_date",date("Y-m-d"))->get();
+        }else if($data_type==2){
+            $program = DB::table("programs")->join("banners", "programs.id", "banners.program_id")->where([["programs.program_date",">",date("Y-m-d")]])->get();
+        }else if($data_type==3){
+            $program = DB::table("programs")->join("banners", "programs.id", "banners.program_id")->where([["programs.program_date","<",date("Y-m-d")]])->get();
+        }
+        return view("public.event_list", compact("program"));
+
     }
 }
