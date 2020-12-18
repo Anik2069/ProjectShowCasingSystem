@@ -22,6 +22,7 @@ Route::get("/program", "ProgramController@programList")->name("public.programLis
 Route::get("/getProgramInfo", "ProgramController@getProgramInfo");
 
 Route::get("/result","publicview@result");
+Route::get("/gotolive/{id?}/{name?}","publicview@live_result");
 
 
 
