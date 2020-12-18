@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3"><a href="index-2.html" class="wm-logo"><img
-                        src="{{"assets"}}/public/images/diu.png"
+                        src="{{asset("assets/public/images/diu.png")}}"
                         alt=""></a></div>
             <div class="col-md-9">
                 <!--// Navigation \\-->
