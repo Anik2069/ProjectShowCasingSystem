@@ -63,12 +63,7 @@ class StudentController extends Controller
         $student->save();
         return  redirect("/login");
         //Project
-//        $project = new project();
-//        $project->project_name = $request->p_name;
-//        $project->description = $request->p_description;
-//        $project->student_id = $student->id;
-//        $project->program_id = $request->program_id;
-//        $project->save();
+
     }
 
     /**
