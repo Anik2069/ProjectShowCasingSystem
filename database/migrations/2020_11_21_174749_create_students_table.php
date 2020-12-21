@@ -22,7 +22,6 @@ class CreateStudentsTable extends Migration
             $table->string("department")->nullable();
             $table->string("email")->nullable();
             $table->string("password")->nullable();
-            $table->string("program_id")->nullable();
             $table->string("user_no_fk")->nullable();
             $table->string("status")->nullable();
             $table->timestamps();

@@ -1,5 +1,5 @@
 <div class="wm-main-header">
-    <div class="container">
+    <div class="" style="margin-left: 131px;">
         <div class="row">
             <div class="col-md-3"><a href="index-2.html" class="wm-logo"><img
                         src="{{asset("assets/public/images/diu.png")}}"
@@ -26,7 +26,9 @@
                             </li>
                             <li class="active"><a href="/">Previous Program</a>
                             </li>
-                            <li class="active"><a href="/">Login</a>
+                            <li class="active"><a href="{{ route("login") }}">Login</a>
+                            </li>
+                            <li class="active"><a href="{{ route("registration") }}">Registration</a>
                             </li>
 
                             <li class="wm-megamenu-li"><a href="#">Contact</a>

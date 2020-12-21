@@ -10,7 +10,10 @@ use Illuminate\Support\Facades\Auth;
 class PanelController extends Controller
 {
     //
-
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index(){
         $conveners = convener::where([
             ["status","=",1],
