@@ -37,4 +37,13 @@ class publicview extends Controller
     public function studentRegistration(){
         return view("student.registration");
     }
+    public  function  project_idea(Request $request){
+        $request->session()->push('project_idea', [
+            'idea' =>  $request->input("p_name") ,
+            'program_id' =>  $request->input("program_id") ,
+            'description' => $request->input("p_description")
+        ]);
+
+        return redirect("/students/assign_program");
+    }
 }

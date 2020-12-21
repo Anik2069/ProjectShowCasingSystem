@@ -51,6 +51,7 @@ Route::get("/convener/assign_judges", "ConvenerController@assign_judges");
 Route::post("/convener/assign_judges", "MemberController@assign_judges");
 Route::post("/convener/assign/supervisor", "ConvenerController@assignSupervisor")->name("supervisor.store");
 //Student
+Route::post("/project_idea","publicview@project_idea")->name("project_idea");
 Route::resource("student", "StudentController");
 //Authentication
 Auth::routes();
@@ -72,6 +73,14 @@ Route::post("/convener/assign/supervisor","ConvenerController@assignSupervisor")
 
 Route::prefix('judges')->group(function () {
     Route::get("/view_program","ProgramController@view_program_judges");
+    Route::get("/open_modal", "MemberController@open_modal");
+    Route::get("/student_list/{id}","StudentController@student_list_judges")->name("judges.studentList") ;
+    Route::resource("assignResult","ResultController");
+    Route::post("assignResult/updateData","ResultController@updateData")->name("assignResult.updateData");
+});
+
+Route::prefix('students')->group(function () {
+    Route::get("/assign_program","ProjectController@assign_program");
     Route::get("/open_modal", "MemberController@open_modal");
     Route::get("/student_list/{id}","StudentController@student_list_judges")->name("judges.studentList") ;
     Route::resource("assignResult","ResultController");
