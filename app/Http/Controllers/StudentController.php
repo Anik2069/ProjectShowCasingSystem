@@ -47,7 +47,7 @@ class StudentController extends Controller
         $user->name = $request->full_name;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
-        $user->userType = 3;
+        $user->userType = 5;
         $user->save();
         //Student Table
         $student = new student();
@@ -58,18 +58,17 @@ class StudentController extends Controller
         $student->department = $request->department;
         $student->password = $request->password;
         $student->email = $request->email;;
-        $student->program_id = $request->program_id;
         $student->user_no_fk = $user->id;
         $student->status = 1;
-        $student->status = 1;
         $student->save();
+        return  redirect("/login");
         //Project
-        $project = new project();
-        $project->project_name = $request->p_name;
-        $project->description = $request->p_description;
-        $project->student_id = $student->id;
-        $project->program_id = $request->program_id;
-        $project->save();
+//        $project = new project();
+//        $project->project_name = $request->p_name;
+//        $project->description = $request->p_description;
+//        $project->student_id = $student->id;
+//        $project->program_id = $request->program_id;
+//        $project->save();
     }
 
     /**
@@ -134,6 +133,6 @@ class StudentController extends Controller
 
 
         /*  dd($program);*/
-        return view("judges.student_list", compact("program","programId"));
+        return view("judges.student_list", compact("program", "programId"));
     }
 }

@@ -62,8 +62,8 @@
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{$stu->name}}</td>
                                                 <td>{{$stu->project_name}}</td>
-                                                <td>{{$stu->name}}</td>
-                                                <td>0</td>
+                                                <td>{{$stu->members_name}}</td>
+                                                <td>{{$stu->marks}}</td>
                                                 <td><button type="button" class="btn btn-info"> Details </button></td>
                                             </tr>
 

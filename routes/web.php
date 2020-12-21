@@ -23,7 +23,7 @@ Route::get("/getProgramInfo", "ProgramController@getProgramInfo");
 
 Route::get("/result","publicview@result");
 Route::get("/gotolive/{id?}/{name?}","publicview@live_result");
-
+Route::get("/registation","publicview@studentRegistration")->name("registration");
 
 
 Route::get('/home', 'administration@dashboard')->name('home');
@@ -78,6 +78,9 @@ Route::prefix('judges')->group(function () {
     Route::post("assignResult/updateData","ResultController@updateData")->name("assignResult.updateData");
 
 });
+
+
+
 
 
 
