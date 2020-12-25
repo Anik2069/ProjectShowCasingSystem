@@ -15,6 +15,7 @@ class ProjectsubmissionController extends Controller
     public function index()
     {
         //
+        return view("convener.project_criteria");
     }
 
     /**

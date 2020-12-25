@@ -53,6 +53,7 @@ Route::post("/convener/assign/supervisor", "ConvenerController@assignSupervisor"
 //Student
 Route::post("/project_idea","publicview@project_idea")->name("project_idea");
 Route::resource("student", "StudentController");
+Route::resource("projectSubmissionCriteria", "ProjectsubmissionController");
 //Authentication
 Auth::routes();
 //Judges
