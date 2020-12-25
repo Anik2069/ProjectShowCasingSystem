@@ -15,6 +15,11 @@ class CreateProjectsubmissionsTable extends Migration
     {
         Schema::create('projectsubmissions', function (Blueprint $table) {
             $table->id();
+            $table->string("program")->nullable();
+            $table->string("name")->nullable();
+            $table->string("marks")->nullable();
+            $table->string("prority")->nullable();
+            $table->string("inserted_by")->nullable();
             $table->timestamps();
         });
     }

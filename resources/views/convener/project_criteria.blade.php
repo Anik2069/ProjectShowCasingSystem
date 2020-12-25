@@ -22,36 +22,39 @@
                             <form action="convener/resultCriteria" id="result_criteria" method="post">
                                 @csrf
                                 <div class="card-header">
-                                    <h4>Criteria Info</h4>
+                                    <h4>Submission Info</h4>
                                 </div>
-                                <div class="card-body">
-                                    <table>
+                                <div class="card-body ">
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <label for="">Programe Name</label>
+
+                                            <select name="p_name[]" id="p_name_0" class="form-control">
+                                                <option value="">Select</option>
+                                                @if(!empty($prgram))
+                                                    @foreach($prgram as $value)
+                                                        <option value="{{$value->id}}">
+                                                            {{$value->program_name}}
+                                                        </option>
+                                                    @endforeach
+                                                @endif
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <table class="col-12">
                                         <tbody id="data-append-to">
                                         <tr id="0">
                                             <td>
+
                                                 <div class="row">
-                                                    <div class="col-md-2">
-                                                        <label for="">Programe Name</label>
-
-                                                        <select name="p_name[]" id="p_name_0" class="form-control">
-                                                            <option value="">Select</option>
-                                                            @if(!empty($prgram))
-                                                                @foreach($prgram as $value)
-                                                                    <option value="{{$value->id}}">
-                                                                        {{$value->program_name}}
-                                                                    </option>
-                                                                @endforeach
-                                                            @endif
-
-                                                        </select>
-                                                    </div>
                                                     <div class="col-md-2">
                                                         <label for="">Criteria Name</label>
                                                         <input type="text" id="name_0" name="name[]"
                                                                class="form-control">
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <label for="">Criteria Marks</label>
+                                                        <label for="">Criteria Description</label>
                                                         <input type="text" id="marks_0" name="marks[]"
                                                                class="form-control">
                                                     </div>
@@ -60,9 +63,8 @@
                                                         <select class="form-control" id="priority_0"
                                                                 name="priority[]">
                                                             <option value="">Select One</option>
-                                                            <option value="High">High</option>
-                                                            <option value="Low">Low</option>
-                                                            <option value="Medium"> Medium</option>
+                                                            <option value="1">Required</option>
+                                                            <option value="2">Non Required</option>
                                                         </select>
                                                     </div>
                                                     <div class="col-md-2">
