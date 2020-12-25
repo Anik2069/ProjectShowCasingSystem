@@ -81,11 +81,12 @@ Route::prefix('judges')->group(function () {
 
 Route::prefix('students')->group(function () {
     Route::get("/assign_program","ProjectController@assign_program");
+    Route::get("/view_program","ProgramController@view_program_student");
+
     Route::get("/open_modal", "MemberController@open_modal");
     Route::get("/student_list/{id}","StudentController@student_list_judges")->name("judges.studentList") ;
     Route::resource("assignResult","ResultController");
     Route::post("assignResult/updateData","ResultController@updateData")->name("assignResult.updateData");
-
 });
 
 
