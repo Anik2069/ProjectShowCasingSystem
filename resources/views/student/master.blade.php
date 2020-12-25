@@ -176,7 +176,7 @@
                 </li>
             </ul>
         </nav>
-    @include("judges.nav")
+    @include("student.nav")
     <!-- Main Content -->
         @yield("content")
 

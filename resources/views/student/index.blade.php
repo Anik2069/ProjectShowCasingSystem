@@ -1,4 +1,4 @@
-@extends("judges.master")
+@extends("student.master")
 @push("convener_css")
     <link rel="stylesheet" href="../../assets/css/app.min.css">
     <link rel="stylesheet" href="../../assets/bundles/jqvmap/dist/jqvmap.min.css">
