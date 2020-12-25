@@ -22,10 +22,11 @@
 
             <li class="dropdown">
                 <a href="#" class="menu-toggle nav-link has-dropdown"><i
-                        data-feather="briefcase"></i><span>Program Details</span></a>
+                        data-feather="briefcase"></i><span>Program & Project Panel</span></a>
                 <ul class="dropdown-menu">
                 {{--    <li><a class="nav-link" href="/convener/program">Add New Program</a></li>--}}
                     <li><a class="nav-link" href="/students/view_program">Registered Program</a></li>
+                    <li><a class="nav-link" href="/students/view_program">Submit Project</a></li>
                   {{--  <li><a class="nav-link" href="/convener/resultCriteria">Result Criteria</a></li>
                     <li><a class="nav-link" href="/convener/assign_judges">Assign Judges</a></li>--}}
                 </ul>
@@ -64,7 +65,7 @@
             <li class="dropdown">
                 <a href="index.html" class="nav-link"><i data-feather="monitor"></i><span>Change Password</span></a>
             </li>
-            <li class="dropdown active">
+            <li class="dropdown">
                 <a class="nav-link" href="{{ route('logout') }}"
                    onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i
                         data-feather="monitor"></i><span>Log out</span></a>

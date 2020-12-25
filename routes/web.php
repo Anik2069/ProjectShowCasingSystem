@@ -66,6 +66,8 @@ Route::get("/convener/view_supervisor","MemberController@view_supervisor");
 Route::get("/convener/view_judges","MemberController@judges");
 Route::get("/convener/studentList","ConvenerController@studentList");
 Route::get("/convener/resultCriteria","ConvenerController@resultCriteria");
+Route::get("/convener/projectSubmissionCriteria","ConvenerController@projectSubmissionCriteria");
+
 Route::post("/convener/resultCriteria","ResultCriteriaController@store");
 Route::get("/convener/assign_judges","ConvenerController@assign_judges");
 Route::post("/convener/assign_judges","MemberController@assign_judges");
@@ -82,6 +84,7 @@ Route::prefix('judges')->group(function () {
 Route::prefix('students')->group(function () {
     Route::get("/assign_program","ProjectController@assign_program");
     Route::get("/view_program","ProgramController@view_program_student");
+    Route::get("/view_program_details/{id}","ProgramController@view_program_details")->name("student.program_details");
 
     Route::get("/open_modal", "MemberController@open_modal");
     Route::get("/student_list/{id}","StudentController@student_list_judges")->name("judges.studentList") ;

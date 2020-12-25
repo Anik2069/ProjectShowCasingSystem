@@ -64,7 +64,7 @@
                                                             <div class="badge badge-danger badge-shadow">Over</div>
                                                         @endif
                                                     </td>
-                                                    <td><a href="{{ route("judges.studentList",$value->id) }}"
+                                                    <td><a href="{{ route("student.program_details",$value->id) }}"
                                                            class="btn btn-warning">Details</a></td>
                                                 </tr>
                                             @endforeach

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\banner;
 use App\panel;
 use App\program;
+use App\student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -81,6 +82,20 @@ class ProgramController extends Controller
                     group by programs.program_name,programs.purpose,programs.program_date,programs.id");
         /*  dd($program);*/
         return view("student.program_info", compact("program"));
+    }
+
+    public function view_program_details($id)
+    {
+        $program = DB::table("programs")
+            ->join("assign_judges","assign_judges.program_id","programs.id")
+            ->join("projects","projects.program_id","programs.id")
+            ->leftJoin("members","projects.supervisor_id","members.id")
+            ->where("programs.id",$id)
+            ->where("student_id",Auth::id())
+            ->first();
+        //dd($program);
+        $student = student::where("user_no_fk",Auth::id())->first();
+        return view("student.program_details", compact("program","student"));
     }
 
     public function programList()

@@ -28,6 +28,7 @@
                     <li><a class="nav-link" href="/convener/view_program">VIew Program</a></li>
                     <li><a class="nav-link" href="/convener/resultCriteria">Result Criteria</a></li>
                     <li><a class="nav-link" href="/convener/assign_judges">Assign Judges</a></li>
+                    <li><a class="nav-link" href="/convener/assign_judges">Project Submission Criteria</a></li>
                 </ul>
             </li>
             <li class="dropdown">
