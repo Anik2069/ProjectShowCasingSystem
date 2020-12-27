@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\program;
 use App\projectsubmission;
+use App\ResultCriteria;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ProjectsubmissionController extends Controller
 {
@@ -15,7 +19,14 @@ class ProjectsubmissionController extends Controller
     public function index()
     {
         //
-        return view("convener.project_criteria");
+        $prgram = program::where([
+            ['insertedBy', '=', Auth::id()],
+            ['status', '=', 1],
+        ])->get();
+        $result_criteria = DB::table("projectsubmissions")
+            ->join("programs", "projectsubmissions.program", "programs.id")
+            ->where('insertedBy', Auth::id())->get();
+        return view("convener.project_criteria",compact("prgram","result_criteria"));
     }
 
     /**
@@ -36,7 +47,26 @@ class ProjectsubmissionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $program = $request->p_name;
+        $name = $request->name;
+        $marks= $request->marks;
+        $prority= $request->priority;
+        for($i=0;$i<count($name);$i++){
+            if($name[$i] !=null ){
+                $criteria = new projectsubmission();
+                $criteria->program=$program;
+                $criteria->name= $name[$i];
+                $criteria->marks= $marks[$i];
+                $criteria->prority= $prority[$i];
+                $criteria->inserted_by=Auth::id();
+                $criteria->save();
+            }
+
+        }
+        $result_criteria = DB::table("projectsubmissions")
+            ->join("programs","projectsubmissions.program","programs.id")
+            ->where('insertedBy',Auth::id())->get();
+        return  view("convener.project_criteria_data",compact("result_criteria"));
     }
 
     /**
