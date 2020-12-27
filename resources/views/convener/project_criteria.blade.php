@@ -19,7 +19,7 @@
                     <div class="col-12 col-md-12 col-lg-12">
                         @include("alert_message")
                         <div class="card">
-                            <form action="convener/resultCriteria" id="result_criteria" method="post">
+                            <form action="{{ route("projectSubmissionCriteria.store") }}" id="result_criteria" method="post">
                                 @csrf
                                 <div class="card-header">
                                     <h4>Submission Info</h4>
@@ -29,7 +29,7 @@
                                         <div class="col-md-2">
                                             <label for="">Programe Name</label>
 
-                                            <select name="p_name[]" id="p_name_0" class="form-control">
+                                            <select name="p_name" id="p_name_0" class="form-control">
                                                 <option value="">Select</option>
                                                 @if(!empty($prgram))
                                                     @foreach($prgram as $value)
@@ -99,7 +99,7 @@
                                 <h4>Criteria Information</h4>
                             </div>
                             <div class="card-body" id="insertedData">
-                                @include("convener.result_criteria_data")
+                                @include("convener.project_criteria_data")
                             </div>
                         </div>
                     </div>
@@ -153,8 +153,9 @@
 
         function btnSave() {
             var formData = $("#result_criteria").serialize();
+            var formaction = $("#result_criteria").attr("action");
             $.ajax({
-                url: '/convener/resultCriteria',
+                url: formaction,
                 data: formData,
                 type: 'POST',
                 success: function (data) {
