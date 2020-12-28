@@ -109,8 +109,14 @@ class ProjectsubmissionController extends Controller
      * @param  \App\projectsubmission  $projectsubmission
      * @return \Illuminate\Http\Response
      */
-    public function destroy(projectsubmission $projectsubmission)
+    public function destroy($id)
     {
         //
+        $projectsubmission = projectsubmission::find($id);
+        $projectsubmission->delete();
+        return redirect("/projectSubmissionCriteria");
+    }
+    public function submit_project(){
+        return view("student.submit_project");
     }
 }
