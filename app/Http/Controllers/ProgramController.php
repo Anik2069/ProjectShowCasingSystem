@@ -81,7 +81,19 @@ class ProgramController extends Controller
                     join projects on  projects.program_id =  programs.id 
                     group by programs.program_name,programs.purpose,programs.program_date,programs.id");
         /*  dd($program);*/
-        return view("student.program_info", compact("program"));
+        $type = 2;
+        return view("student.program_info", compact("program","type"));
+    }
+    public function view_program_student_list()
+    {
+        $program = DB::select("select programs.id,programs.program_name,programs.purpose,programs.program_date,
+                    count(projects.student_id) as studentCount from programs 
+                    join assign_judges on assign_judges.program_id =  programs.id 
+                    join projects on  projects.program_id =  programs.id 
+                    group by programs.program_name,programs.purpose,programs.program_date,programs.id");
+        /*  dd($program);*/
+        $type = 1;
+        return view("student.program_info", compact("program","type"));
     }
 
     public function view_program_details($id)

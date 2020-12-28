@@ -1,85 +1,73 @@
 @extends("student.master")
-
 @push("convener_css")
-    <link rel="stylesheet" href="{{ asset("assets/css/app.min.css")}}">
-    <link rel="stylesheet" href="{{ asset("assets/bundles/datatables/datatables.min.css") }}">
-    <link rel="stylesheet"
-          href="{{ asset("assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css") }}">
+    <link rel="stylesheet" href="{{ asset("assets/css/app.min.css") }}">
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset("assets/css/style.css") }}">
     <link rel="stylesheet" href="{{ asset("assets/css/components.css") }}">
     <!-- Custom style CSS -->
     <link rel="stylesheet" href="{{ asset("assets/css/custom.css") }}">
-    <link rel='shortcut icon' type='image/x-icon' href='{{ asset("assets/img/favicon.ico") }}'/>
 @endpush
-
 
 @section("content")
     <div class="main-content">
         <section class="section">
             <div class="section-body">
-                <div class="row">
-                    <div class="col-12">
+                <div class="row clearfix">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4>Program Info</h4>
+                                <h4>Project Submission</h4>
                             </div>
                             <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-striped" id="table-1">
-                                        <thead>
-                                        <tr>
-                                            <th class="text-center">
-                                                #
-                                            </th>
-                                            <th>Programe Name</th>
-                                            <th>Purpose</th>
-                                            <th>Program Date</th>
-                                            <th>Status</th>
-                                            <th>Action</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        @if(!empty($program))
-                                            @foreach($program as $value)
-                                                <tr>
-                                                    <td>
-                                                        {{$loop->iteration}}
-                                                    </td>
-                                                    <td>{{ $value->program_name  }}</td>
-                                                    <td class="align-middle">
-                                                        {{ $value->purpose  }}
-                                                    </td>
-                                                    <td>
-                                                        {{ date("d M,Y",strtotime( $value->program_date))  }}
-                                                    </td>
-
-
-                                                    <td>
-                                                        @if(date("d M,Y",strtotime( $value->program_date))== date("d-M,Y"))
-                                                            <div class="badge badge-success badge-shadow">Today Is
-                                                                Program Date
-                                                            </div>
-                                                        @elseif(date("d M,Y",strtotime( $value->program_date))> date("d-M,Y"))
-                                                            <div class="badge badge-warning badge-shadow">Pending</div>
-                                                        @else
-                                                            <div class="badge badge-danger badge-shadow">Over</div>
-                                                        @endif
-                                                    </td>
-
-                                                    <td><a href="{{ route("student.program_details",$value->id) }}"
-                                                           class="btn btn-warning">Details</a>
-
-                                                    @if($type ==1)
-                                                            <a href="{{ route("student.submit_project",$value->id) }}"
-                                                               class="btn btn-success">Submit Project</a>
-                                                    @endif
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                        @endif
-                                        </tbody>
-                                    </table>
+                                <div id="wizard_horizontal">
+                                    <h2>First Step</h2>
+                                    <section>
+                                        <p>In to am attended desirous raptures declared diverted confined at. Collected
+                                            instantly
+                                            remaining up certainly to necessary as. Over walk dull into son boy door went
+                                            new.
+                                            At or happiness commanded daughters as. Is handsome an declared at received in
+                                            extended
+                                            vicinity subjects. Into miss on he over been late pain an. Only week bore boy
+                                            what
+                                            fat case left use. Match round scale now sex style far times. Your me past an
+                                            much.
+                                        </p>
+                                    </section>
+                                    <h2>Second Step</h2>
+                                    <section>
+                                        <p>New the her nor case that lady paid read. Invitation friendship travelling eat
+                                            everything
+                                            the out two. Shy you who scarcely expenses debating hastened resolved. Always
+                                            polite
+                                            moment on is warmth spirit it to hearts. Downs those still witty an balls so
+                                            chief
+                                            so. Moment an little remain no up lively no. Way brought may off our regular
+                                            country
+                                            towards adapted cheered.</p>
+                                    </section>
+                                    <h2>Third Step</h2>
+                                    <section>
+                                        <p>Husbands ask repeated resolved but laughter debating. She end cordial visitor
+                                            noisier
+                                            fat subject general picture. Or if offering confined entrance no. Nay rapturous
+                                            him
+                                            see something residence. Highly talked do so vulgar. Her use behaved spirits
+                                            and
+                                            natural attempt say feeling. Exquisite mr incommode immediate he something
+                                            ourselves
+                                            it of. Law conduct yet chiefly beloved examine village proceed.</p>
+                                    </section>
+                                    <h2>Forth Step</h2>
+                                    <section>
+                                        <p>An country demesne message it. Bachelor domestic extended doubtful as concerns
+                                            at. Morning
+                                            prudent removal an letters by. On could my in order never it. Or excited
+                                            certain
+                                            sixteen it to parties colonel. Depending conveying direction has led immediate.
+                                            Law
+                                            gate her well bed life feet seen rent. On nature or no except it sussex.</p>
+                                    </section>
                                 </div>
                             </div>
                         </div>
@@ -98,13 +86,11 @@
                         <h6 class="font-medium m-b-10">Select Layout</h6>
                         <div class="selectgroup layout-color w-50">
                             <label class="selectgroup-item">
-                                <input type="radio" name="value" value="1" class="selectgroup-input-radio select-layout"
-                                       checked>
+                                <input type="radio" name="value" value="1" class="selectgroup-input-radio select-layout" checked>
                                 <span class="selectgroup-button">Light</span>
                             </label>
                             <label class="selectgroup-item">
-                                <input type="radio" name="value" value="2"
-                                       class="selectgroup-input-radio select-layout">
+                                <input type="radio" name="value" value="2" class="selectgroup-input-radio select-layout">
                                 <span class="selectgroup-button">Dark</span>
                             </label>
                         </div>
@@ -113,14 +99,12 @@
                         <h6 class="font-medium m-b-10">Sidebar Color</h6>
                         <div class="selectgroup selectgroup-pills sidebar-color">
                             <label class="selectgroup-item">
-                                <input type="radio" name="icon-input" value="1"
-                                       class="selectgroup-input select-sidebar">
+                                <input type="radio" name="icon-input" value="1" class="selectgroup-input select-sidebar">
                                 <span class="selectgroup-button selectgroup-button-icon" data-toggle="tooltip"
                                       data-original-title="Light Sidebar"><i class="fas fa-sun"></i></span>
                             </label>
                             <label class="selectgroup-item">
-                                <input type="radio" name="icon-input" value="2" class="selectgroup-input select-sidebar"
-                                       checked>
+                                <input type="radio" name="icon-input" value="2" class="selectgroup-input select-sidebar" checked>
                                 <span class="selectgroup-button selectgroup-button-icon" data-toggle="tooltip"
                                       data-original-title="Dark Sidebar"><i class="fas fa-moon"></i></span>
                             </label>
@@ -184,19 +168,18 @@
         </div>
     </div>
 
-
 @endsection
-
 @push("convener_js")
     <script src="{{ asset("assets/js/app.min.js") }}"></script>
+    <script src="{{ asset("assets/bundles/jquery-validation/dist/jquery.validate.min.js")  }}"></script>
     <!-- JS Libraies -->
-    <script src="{{ asset("assets/bundles/datatables/datatables.min.js") }}"></script>
-    <script src="{{ asset("assets/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js") }}"></script>
-    <script src="{{ asset("assets/bundles/jquery-ui/jquery-ui.min.js") }}"></script>
+    <script src="{{ asset("assets/bundles/jquery-steps/jquery.steps.min.js") }}"></script>
     <!-- Page Specific JS File -->
-    <script src="{{ asset("assets/js/page/datatables.js") }}"></script>
+    <script src="{{ asset("assets/js/page/form-wizard.js") }}"></script>
     <!-- Template JS File -->
     <script src="{{ asset("assets/js/scripts.js") }}"></script>
     <!-- Custom JS File -->
     <script src="{{ asset("assets/js/custom.js") }}"></script>
+
+
 @endpush
