@@ -6,6 +6,13 @@
     <link rel="stylesheet" href="{{ asset("assets/css/components.css") }}">
     <!-- Custom style CSS -->
     <link rel="stylesheet" href="{{ asset("assets/css/custom.css") }}">
+    <style>
+        #my_camera {
+            width: 320px;
+            height: 240px;
+            border: 1px solid black;
+        }
+    </style>
 @endpush
 
 @section("content")
@@ -18,58 +25,57 @@
                             <div class="card-header">
                                 <h4>Project Submission</h4>
                             </div>
-                            <div class="card-body">
-                                <div id="wizard_horizontal">
-                                    <h2>First Step</h2>
-                                    <section>
-                                        <p>In to am attended desirous raptures declared diverted confined at. Collected
-                                            instantly
-                                            remaining up certainly to necessary as. Over walk dull into son boy door went
-                                            new.
-                                            At or happiness commanded daughters as. Is handsome an declared at received in
-                                            extended
-                                            vicinity subjects. Into miss on he over been late pain an. Only week bore boy
-                                            what
-                                            fat case left use. Match round scale now sex style far times. Your me past an
-                                            much.
-                                        </p>
-                                    </section>
-                                    <h2>Second Step</h2>
-                                    <section>
-                                        <p>New the her nor case that lady paid read. Invitation friendship travelling eat
-                                            everything
-                                            the out two. Shy you who scarcely expenses debating hastened resolved. Always
-                                            polite
-                                            moment on is warmth spirit it to hearts. Downs those still witty an balls so
-                                            chief
-                                            so. Moment an little remain no up lively no. Way brought may off our regular
-                                            country
-                                            towards adapted cheered.</p>
-                                    </section>
-                                    <h2>Third Step</h2>
-                                    <section>
-                                        <p>Husbands ask repeated resolved but laughter debating. She end cordial visitor
-                                            noisier
-                                            fat subject general picture. Or if offering confined entrance no. Nay rapturous
-                                            him
-                                            see something residence. Highly talked do so vulgar. Her use behaved spirits
-                                            and
-                                            natural attempt say feeling. Exquisite mr incommode immediate he something
-                                            ourselves
-                                            it of. Law conduct yet chiefly beloved examine village proceed.</p>
-                                    </section>
-                                    <h2>Forth Step</h2>
-                                    <section>
-                                        <p>An country demesne message it. Bachelor domestic extended doubtful as concerns
-                                            at. Morning
-                                            prudent removal an letters by. On could my in order never it. Or excited
-                                            certain
-                                            sixteen it to parties colonel. Depending conveying direction has led immediate.
-                                            Law
-                                            gate her well bed life feet seen rent. On nature or no except it sussex.</p>
-                                    </section>
+                            <form action="" method="">
+                                @csrf
+                                <div class="card-body">
+                                    <div id="">
+                                        <h4>Instruction</h4>
+                                        <section>
+                                            <ol>
+                                                <li>According to Converner, Criteria are ready</li>
+                                                <li>You have to Fill those Criteria, otherwise you will fail</li>
+                                                <li>System Will take a screenshot as a evidence</li>
+                                            </ol>
+                                        </section>
+                                        <h4>Submission Criteria</h4>
+                                        <section>
+                                            <p>New the her nor case that lady paid read. Invitation friendship
+                                                travelling
+                                                eat
+                                                everything
+                                                the out two. Shy you who scarcely expenses debating hastened resolved.
+                                                Always
+                                                polite
+                                                moment on is warmth spirit it to hearts. Downs those still witty an
+                                                balls so
+                                                chief
+                                                so. Moment an little remain no up lively no. Way brought may off our
+                                                regular
+                                                country
+                                                towards adapted cheered.</p>
+                                        </section>
+
+                                        <h4>Capture Image</h4>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div id="my_camera"></div>
+                                              {{--  <input type=button value="Take Snapshot" onClick="take_snapshot()">--}}
+
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div id="results"></div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="form-group pt-3">
+                                        <button type="button" class="btn btn-success" onClick="take_snapshot()" >Save</button>
+                                        <button type="button" class="btn btn-primary">Cancel</button>
+                                    </div>
                                 </div>
-                            </div>
+                            </form>
+
                         </div>
                     </div>
                 </div>
@@ -86,11 +92,13 @@
                         <h6 class="font-medium m-b-10">Select Layout</h6>
                         <div class="selectgroup layout-color w-50">
                             <label class="selectgroup-item">
-                                <input type="radio" name="value" value="1" class="selectgroup-input-radio select-layout" checked>
+                                <input type="radio" name="value" value="1" class="selectgroup-input-radio select-layout"
+                                       checked>
                                 <span class="selectgroup-button">Light</span>
                             </label>
                             <label class="selectgroup-item">
-                                <input type="radio" name="value" value="2" class="selectgroup-input-radio select-layout">
+                                <input type="radio" name="value" value="2"
+                                       class="selectgroup-input-radio select-layout">
                                 <span class="selectgroup-button">Dark</span>
                             </label>
                         </div>
@@ -99,12 +107,14 @@
                         <h6 class="font-medium m-b-10">Sidebar Color</h6>
                         <div class="selectgroup selectgroup-pills sidebar-color">
                             <label class="selectgroup-item">
-                                <input type="radio" name="icon-input" value="1" class="selectgroup-input select-sidebar">
+                                <input type="radio" name="icon-input" value="1"
+                                       class="selectgroup-input select-sidebar">
                                 <span class="selectgroup-button selectgroup-button-icon" data-toggle="tooltip"
                                       data-original-title="Light Sidebar"><i class="fas fa-sun"></i></span>
                             </label>
                             <label class="selectgroup-item">
-                                <input type="radio" name="icon-input" value="2" class="selectgroup-input select-sidebar" checked>
+                                <input type="radio" name="icon-input" value="2" class="selectgroup-input select-sidebar"
+                                       checked>
                                 <span class="selectgroup-button selectgroup-button-icon" data-toggle="tooltip"
                                       data-original-title="Dark Sidebar"><i class="fas fa-moon"></i></span>
                             </label>
@@ -170,6 +180,33 @@
 
 @endsection
 @push("convener_js")
+    <script type="text/javascript" src="{{ asset("webcamjs/webcam.min.js") }}"></script>
+
+    <!-- Configure a few settings and attach camera -->
+    <script language="JavaScript">
+        Webcam.set({
+            width: 320,
+            height: 240,
+            image_format: 'jpeg',
+            jpeg_quality: 90
+        });
+        Webcam.attach('#my_camera');
+    </script>
+    <!-- A button for taking snaps -->
+
+    <!-- Code to handle taking the snapshot and displaying it locally -->
+    <script language="JavaScript">
+
+        function take_snapshot() {
+
+            // take snapshot and get image data
+            Webcam.snap(function (data_uri) {
+                // display results in page
+                document.getElementById('results').innerHTML =
+                    '<img src="' + data_uri + '"/>';
+            });
+        }
+    </script>
     <script src="{{ asset("assets/js/app.min.js") }}"></script>
     <script src="{{ asset("assets/bundles/jquery-validation/dist/jquery.validate.min.js")  }}"></script>
     <!-- JS Libraies -->
