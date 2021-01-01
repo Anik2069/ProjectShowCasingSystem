@@ -16,7 +16,7 @@ class ResultController extends Controller
      */
     public function index()
     {
-        //
+        return  view("student.result");
     }
 
     /**

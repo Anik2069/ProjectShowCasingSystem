@@ -26,11 +26,15 @@
                 <ul class="dropdown-menu">
                 {{--    <li><a class="nav-link" href="/convener/program">Add New Program</a></li>--}}
                     <li><a class="nav-link" href="/students/view_program">Registered Program</a></li>
-                    <li><a class="nav-link" href="/students/view_program">Submit Project</a></li>
+                    <li><a class="nav-link" href="/students/view_program_list">Submit Project</a></li>
                   {{--  <li><a class="nav-link" href="/convener/resultCriteria">Result Criteria</a></li>
                     <li><a class="nav-link" href="/convener/assign_judges">Assign Judges</a></li>--}}
                 </ul>
             </li>
+            <li class="dropdown">
+                <a href="{{ route("view_result") }}" class="nav-link"><i data-feather="monitor"></i><span>Result</span></a>
+            </li>
+
        {{--     <li class="dropdown">
                 <a href="#" class="menu-toggle nav-link has-dropdown"><i
                         data-feather="briefcase"></i><span>Judges & Supervisor</span></a>

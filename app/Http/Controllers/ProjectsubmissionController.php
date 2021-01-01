@@ -116,7 +116,8 @@ class ProjectsubmissionController extends Controller
         $projectsubmission->delete();
         return redirect("/projectSubmissionCriteria");
     }
-    public function submit_project(){
-        return view("student.submit_project");
+    public function submit_project($id){
+        $submission_criteria = projectsubmission::where("program",$id)->get();
+        return view("student.submit_project",compact("submission_criteria"));
     }
 }

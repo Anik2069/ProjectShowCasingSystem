@@ -89,7 +89,8 @@ Route::prefix('students')->group(function () {
     Route::get("/assign_program","ProjectController@assign_program");
     Route::get("/view_program","ProgramController@view_program_student");
     Route::get("/view_program_list","ProgramController@view_program_student_list");
-    Route::get("/submit_project","ProjectsubmissionController@submit_project")->name("student.submit_project");
+    Route::get("/submit_project/{id}","ProjectsubmissionController@submit_project")->name("student.submit_project");
+    Route::get("/view_result","ResultController@index")->name("view_result");
 
     Route::get("/view_program_details/{id}","ProgramController@view_program_details")->name("student.program_details");
 
