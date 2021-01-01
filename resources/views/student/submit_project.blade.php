@@ -39,27 +39,21 @@
                                         </section>
                                         <h4>Submission Criteria</h4>
                                         <section>
-                                            <p>New the her nor case that lady paid read. Invitation friendship
-                                                travelling
-                                                eat
-                                                everything
-                                                the out two. Shy you who scarcely expenses debating hastened resolved.
-                                                Always
-                                                polite
-                                                moment on is warmth spirit it to hearts. Downs those still witty an
-                                                balls so
-                                                chief
-                                                so. Moment an little remain no up lively no. Way brought may off our
-                                                regular
-                                                country
-                                                towards adapted cheered.</p>
+                                            @if(!empty($submission_criteria))
+                                                @foreach($submission_criteria as $submission)
+                                                    <div class="form-group">
+                                                        <label for=""> {{ $submission["name"] }}</label>
+                                                        <input type="text" class="form-control" placeholder="{{ $submission["name"] }}">
+                                                    </div>
+                                                @endforeach
+                                            @endif
                                         </section>
 
                                         <h4>Capture Image</h4>
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <div id="my_camera"></div>
-                                              {{--  <input type=button value="Take Snapshot" onClick="take_snapshot()">--}}
+                                                {{--  <input type=button value="Take Snapshot" onClick="take_snapshot()">--}}
 
                                             </div>
                                             <div class="col-md-4">
@@ -70,7 +64,8 @@
 
                                     </div>
                                     <div class="form-group pt-3">
-                                        <button type="button" class="btn btn-success" onClick="take_snapshot()" >Save</button>
+                                        <button type="button" class="btn btn-success" onClick="take_snapshot()">Save
+                                        </button>
                                         <button type="button" class="btn btn-primary">Cancel</button>
                                     </div>
                                 </div>
