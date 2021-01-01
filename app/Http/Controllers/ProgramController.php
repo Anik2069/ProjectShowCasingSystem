@@ -60,7 +60,7 @@ class ProgramController extends Controller
                     count(projects.student_id) as studentCount from programs 
                     join projects on projects.program_id =  programs.id 
                     group by programs.program_name,programs.purpose,programs.program_date,programs.id");
-        return view("convener.program_info",compact("program"));
+        return view("convener.program_info", compact("program"));
     }
 
     public function view_program_judges()
@@ -73,6 +73,7 @@ class ProgramController extends Controller
         /*  dd($program);*/
         return view("judges.program_info", compact("program"));
     }
+
     public function view_program_student()
     {
         $program = DB::select("select programs.id,programs.program_name,programs.purpose,programs.program_date,
@@ -82,8 +83,9 @@ class ProgramController extends Controller
                     group by programs.program_name,programs.purpose,programs.program_date,programs.id");
         /*  dd($program);*/
         $type = 2;
-        return view("student.program_info", compact("program","type"));
+        return view("student.program_info", compact("program", "type"));
     }
+
     public function view_program_student_list()
     {
         $program = DB::select("select programs.id,programs.program_name,programs.purpose,programs.program_date,
@@ -93,39 +95,52 @@ class ProgramController extends Controller
                     group by programs.program_name,programs.purpose,programs.program_date,programs.id");
         /*  dd($program);*/
         $type = 1;
-        return view("student.program_info", compact("program","type"));
+        return view("student.program_info", compact("program", "type"));
     }
 
     public function view_program_details($id)
     {
         $program = DB::table("programs")
-            ->join("assign_judges","assign_judges.program_id","programs.id")
-            ->join("projects","projects.program_id","programs.id")
-            ->leftJoin("members","projects.supervisor_id","members.id")
-            ->where("programs.id",$id)
-            ->where("student_id",Auth::id())
+            ->join("assign_judges", "assign_judges.program_id", "programs.id")
+            ->join("projects", "projects.program_id", "programs.id")
+            ->leftJoin("members", "projects.supervisor_id", "members.id")
+            ->where("programs.id", $id)
+            ->where("student_id", Auth::id())
             ->first();
         //dd($program);
-        $student = student::where("user_no_fk",Auth::id())->first();
-        return view("student.program_details", compact("program","student"));
+        $student = student::where("user_no_fk", Auth::id())->first();
+        return view("student.program_details", compact("program", "student"));
     }
 
     public function programList()
     {
-        $program = DB::table("programs")->join("banners", "programs.id", "banners.program_id")->where("programs.program_date",date("Y-m-d"))->get();
+        $program = DB::table("programs")->join("banners", "programs.id", "banners.program_id")->where("programs.program_date", date("Y-m-d"))->get();
 
         return view("public.event", compact("program"));
     }
-    public function getProgramInfo(){
+
+    public function getProgramInfo()
+    {
         $data_type = $_GET['data_type'];
-        if($data_type==1){
-            $program = DB::table("programs")->join("banners", "programs.id", "banners.program_id")->where("programs.program_date",date("Y-m-d"))->get();
-        }else if($data_type==2){
-            $program = DB::table("programs")->join("banners", "programs.id", "banners.program_id")->where([["programs.program_date",">",date("Y-m-d")]])->get();
-        }else if($data_type==3){
-            $program = DB::table("programs")->join("banners", "programs.id", "banners.program_id")->where([["programs.program_date","<",date("Y-m-d")]])->get();
+        if ($data_type == 1) {
+            $program = DB::table("programs")->join("banners", "programs.id", "banners.program_id")->where("programs.program_date", date("Y-m-d"))->get();
+        } else if ($data_type == 2) {
+            $program = DB::table("programs")->join("banners", "programs.id", "banners.program_id")->where([["programs.program_date", ">", date("Y-m-d")]])->get();
+        } else if ($data_type == 3) {
+            $program = DB::table("programs")->join("banners", "programs.id", "banners.program_id")->where([["programs.program_date", "<", date("Y-m-d")]])->get();
         }
         return view("public.event_list", compact("program"));
 
+    }
+
+    public function view_all_participant()
+    {
+        $student = DB::table("projects")
+            ->join("students", "students.id", "projects.student_id")
+            ->join("programs", "programs.id", "projects.program_id")
+            ->where("programs.insertedBy",Auth::id())
+            ->get();
+       // dd($student);
+        return view("convener.participant_list",compact("student"));
     }
 }
