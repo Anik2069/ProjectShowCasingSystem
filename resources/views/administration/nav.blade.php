@@ -7,7 +7,7 @@
         </div>
         <ul class="sidebar-menu">
             <li class="menu-header">Main</li>
-            <li class="dropdown active">
+            <li class="dropdown">
                 <a href="/administratration/dashboard" class="nav-link"><i data-feather="monitor"></i><span>Dashboard</span></a>
             </li>
             <li class="dropdown">
@@ -18,9 +18,6 @@
                     <li><a class="nav-link" href="/administration/view_panel">View Panel</a></li>
                 </ul>
             </li>
-            <li class="dropdown active">
-                <a href="index.html" class="nav-link"><i data-feather="monitor"></i><span>Program</span></a>
-            </li>
             <li class="dropdown">
                 <a href="#" class="menu-toggle nav-link has-dropdown"><i
                         data-feather="briefcase"></i><span>Convener</span></a>
@@ -29,6 +26,16 @@
                     <li><a class="nav-link" href="widget-data.html">VIew Admin</a></li>
                 </ul>
             </li>
+            <li class="dropdown">
+                <a href="#" class="menu-toggle nav-link has-dropdown"><i
+                        data-feather="briefcase"></i><span>Report</span></a>
+                <ul class="dropdown-menu">
+                    <li><a class="nav-link" href="{{ route("admin.report") }}">Monthly Report</a></li>
+                    <li><a class="nav-link" href="widget-data.html">Yearly Report</a></li>
+                </ul>
+            </li>
+
+
             <li class="menu-header">Setting</li>
             <li class="dropdown">
                 <a href="#" class="menu-toggle nav-link has-dropdown"><i
@@ -41,10 +48,10 @@
                 </ul>
             </li>
 
-            <li class="dropdown active">
+            <li class="dropdown">
                 <a href="index.html" class="nav-link"><i data-feather="monitor"></i><span>Change Password</span></a>
             </li>
-            <li class="dropdown active">
+            <li class="dropdown">
                 <a class="nav-link" href="{{ route('logout') }}"
                    onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i data-feather="monitor"></i><span>Log out</span></a>
             </li>

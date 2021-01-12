@@ -29,7 +29,10 @@ class publicview extends Controller
 
         $programDetails = program::find($id);
         //$student = DB::table("students")->join("projects","students.id","projects.student_id")->leftJoin("members","members.id","projects.supervisor_id")->get();
-        $student = DB::select("select students.id,students.name,projects.project_name, members.name as members_name, sum(marks) as marks from students inner join projects on students.id = projects.student_id left join members on members.id = projects.supervisor_id left join results on results.s_id = students.id where students.program_id ='$id' group by students.id,students.name,projects.project_name, members.name");
+        $student = DB::select("select students.id,students.name,projects.project_name, members.name as members_name, sum(marks) as marks from 
+students ,projects,
+ members
+, results  group by students.id,students.name,projects.project_name, members.name");
 
         return view("public.live_result",compact('programDetails','student'));
     }

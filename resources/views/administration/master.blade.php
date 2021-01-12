@@ -15,6 +15,11 @@
     <!-- Custom style CSS -->
     <link rel="stylesheet" href="../../assets/css/custom.css">
     <link rel='shortcut icon' type='image/x-icon' href='../../assets/img/favicon.ico'/>
+    <style>
+        .cursor-pointer{
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body>
@@ -198,7 +203,7 @@
     </div>
 </div>
 <!-- General JS Scripts -->
-<script src="../..//js/app.js"></script>
+<script src="../../js/app.js"></script>
 <script src="../../assets/js/app.min.js"></script>
 <!-- JS Libraies -->
 <script src="../../assets/bundles/chartjs/chart.min.js"></script>

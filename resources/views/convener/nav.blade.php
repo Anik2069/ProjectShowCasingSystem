@@ -3,7 +3,7 @@
         <div class="sidebar-brand">
             <a href="/administratration/dashboard"> <img alt="image" src="../../assets/img/logo.png"
                                                          class="header-logo"/> <span
-                    class="logo-name">Admin</span>
+                    class="logo-name">Convener</span>
             </a>
         </div>
         <ul class="sidebar-menu">

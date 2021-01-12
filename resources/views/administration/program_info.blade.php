@@ -1,39 +1,72 @@
 @extends("administration.master")
 
+@push("convener_css")
+    <link rel="stylesheet" href="../../assets/css/app.min.css">
+    <link rel="stylesheet" href="../../assets/bundles/datatables/datatables.min.css">
+    <link rel="stylesheet" href="../../assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css">
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/components.css">
+    <!-- Custom style CSS -->
+    <link rel="stylesheet" href="../../assets/css/custom.css">
+    <link rel='shortcut icon' type='image/x-icon' href='../../assets/img/favicon.ico'/>
+@endpush
+
+
 @section("content")
     <div class="main-content">
         <section class="section">
             <div class="section-body">
                 <div class="row">
-                    @if(!empty($value))
-                        @foreach($value as $data)
-                            <div class="col-12 col-sm-6 col-md-6 col-lg-3">
-                                <article class="article">
-                                    <div class="article-header">
-                                        <div class="article-image" data-background="../../assets/img/blog/img08.png">
-                                        </div>
-                                        <div class="article-title">
-                                            <h2><a href="#">{{$data->org_name}}</a></h2>
-                                        </div>
-                                    </div>
-                                    <div class="article-details">
-                                        <p>{{$data->purpose}} </p>
-                                        Info Details:
-                                        <a href="#">
-                                            <span title="Number of Poster"
-                                                  class="badge badge-primary  cursor-pointer">{{$data->poster}}</span></a>
-                                        <a href="{{ route("admin.program") }}"><span title="Number of Program"
-                                                         class="badge badge-secondary cursor-pointer ">{{$data->sub_program}}</span></a>
-                                        <a href="{{ route("admin.index") }}"><span title="Number of Participant"
-                                                         class="badge badge-success cursor-pointer ">{{$data->participant}}</span></a>
-                                        <a href="{{ route("admin.index") }}"><span title="Number of SuperVisor"
-                                                         class="badge badge-danger  cursor-pointer">{{$data->noofsupervisor}}</span></a>
-
-                                    </div>
-                                </article>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>Program Info</h4>
                             </div>
-                        @endforeach
-                    @endif
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped" id="table-1">
+                                        <thead>
+                                        <tr>
+                                            <th class="text-center">
+                                                #
+                                            </th>
+                                            <th>Programe Name</th>
+                                            <th>Purpose</th>
+                                            <th>Program Date</th>
+                                            <th>Registered Student</th>
+                                            <th>Status</th>
+
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @if(!empty($program))
+                                            @foreach($program as $value)
+                                                <tr>
+                                                    <td>
+                                                        {{$loop->iteration}}
+                                                    </td>
+                                                    <td>{{ $value->program_name  }}</td>
+                                                    <td class="align-middle">
+                                                        {{ $value->purpose  }}
+                                                    </td>
+                                                    <td>
+                                                        {{ date("d M,Y",strtotime( $value->program_date))  }}
+                                                    </td>
+                                                    <td class="text-left">     {{ $value->studentCount  }} </td>
+                                                    <td>
+                                                        <div class="badge badge-warning badge-shadow">Pending</div>
+                                                    </td>
+
+                                                </tr>
+                                            @endforeach
+                                        @endif
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -48,8 +81,8 @@
                         <h6 class="font-medium m-b-10">Select Layout</h6>
                         <div class="selectgroup layout-color w-50">
                             <label class="selectgroup-item">
-                                <input type="radio" name="value" value="1"
-                                       class="selectgroup-input-radio select-layout" checked>
+                                <input type="radio" name="value" value="1" class="selectgroup-input-radio select-layout"
+                                       checked>
                                 <span class="selectgroup-button">Light</span>
                             </label>
                             <label class="selectgroup-item">
@@ -69,8 +102,8 @@
                                       data-original-title="Light Sidebar"><i class="fas fa-sun"></i></span>
                             </label>
                             <label class="selectgroup-item">
-                                <input type="radio" name="icon-input" value="2"
-                                       class="selectgroup-input select-sidebar" checked>
+                                <input type="radio" name="icon-input" value="2" class="selectgroup-input select-sidebar"
+                                       checked>
                                 <span class="selectgroup-button selectgroup-button-icon" data-toggle="tooltip"
                                       data-original-title="Dark Sidebar"><i class="fas fa-moon"></i></span>
                             </label>
@@ -133,4 +166,20 @@
             </div>
         </div>
     </div>
+
+
 @endsection
+
+@push("convener_js")
+    <script src="../../assets/js/app.min.js"></script>
+    <!-- JS Libraies -->
+    <script src="../../assets/bundles/datatables/datatables.min.js"></script>
+    <script src="../../assets/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js"></script>
+    <script src="../../assets/bundles/jquery-ui/jquery-ui.min.js"></script>
+    <!-- Page Specific JS File -->
+    <script src="../../assets/js/page/datatables.js"></script>
+    <!-- Template JS File -->
+    <script src="../../assets/js/scripts.js"></script>
+    <!-- Custom JS File -->
+    <script src="../../assets/js/custom.js"></script>
+@endpush

@@ -30,6 +30,16 @@ Route::get('/home', 'administration@dashboard')->name('home');
 //Adminstration
 Route::get("/administration/login", "administration@index");
 Route::get("/administration/dashboard", "administration@dashboard");
+
+Route::get("/administration/program", "administration@program")->name("admin.program");
+Route::get("/administration/dashboard", "administration@dashboard")->name("admin.index");
+Route::get("/administration/dashboard", "administration@dashboard")->name("admin.index");
+Route::get("/administration/dashboard", "administration@dashboard")->name("admin.index");
+
+Route::get("/administration/report", "administration@report")->name("admin.report");
+Route::post("/administration/report", "administration@searchReport")->name("searchReport");
+
+
 Route::get("/administration/convener", "ConvenerController@index");
 Route::post("/administration/convener", "ConvenerController@store")->name("convener.store");
 Route::get("/administration/create_panel", "PanelController@index");
