@@ -119,12 +119,9 @@ class StudentController extends Controller
         $id = Auth::id();
         $judges_id = member::where("user_no_fk", $id)->first();
         $judges_id = $judges_id->id;
-        $program = DB::select("select programs.id,programs.program_name,students.name as st_name, members.name as sp_name,projects.project_name as p_name,programs.program_date, students.id as s_id from programs 
-                    join assign_judges on assign_judges.program_id =  programs.id 
-                    join students on students.program_id =  programs.id 
-                    join projects on projects.student_id =students.id
-                    join members on projects.supervisor_id =members.id
-                    where assign_judges.judges_id = $judges_id and programs.id = $programId");
+        $program = DB::select("select programs.id,programs.program_name,students.name as st_name, members.name as sp_name,projects.project_name as p_name,programs.program_date, students.id as s_id from programs,projects, 
+                     assign_judges  ,members  ,students"
+                   );
 
 
         /*  dd($program);*/
