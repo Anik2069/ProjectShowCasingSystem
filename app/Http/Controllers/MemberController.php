@@ -34,7 +34,10 @@ class MemberController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = Hash::make("12345678");
-        $user->userType = "3";
+        if ($request->role_type==1)
+            $user->userType = "3";
+        else
+            $user->userType = "4";
         $user->save();
 
         $member = new member();

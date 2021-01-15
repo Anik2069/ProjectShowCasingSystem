@@ -30,7 +30,10 @@ class administration extends Controller
             return view("judges.index");
         } elseif ($user->userType == 5) {
             return view("student.index");
-        } else {
+        } elseif ($user->userType == 4) {
+            return view("supervisor.index");
+        }
+        else {
             return view("convener.index");
         }
 
