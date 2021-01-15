@@ -34,7 +34,7 @@ class MemberController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = Hash::make("12345678");
-        if ($request->role_type==1)
+        if ($request->role_type == 1)
             $user->userType = "3";
         else
             $user->userType = "4";
@@ -98,16 +98,23 @@ class MemberController extends Controller
 
     public function open_modal(Request $request)
     {
-        $programId = $_GET["programId"];
-        $resultCriteria = ResultCriteria::where("program", $programId)->get();
-        $s_id = $_GET["s_id"];
-
-        $marks = result::where([
-            ["program_id", "=", $programId], ["s_id", "=", $s_id], ["judges_id", "=", Auth::id()],
-        ])->get();
+        if (Auth::user()->userType == 4) {
+            $programId = $_GET["programId"];
 
 
-        return view("judges.open_modal", compact("resultCriteria", "s_id", "programId", "marks"));
+
+            return view("supervisor.open_modal", compact( "programId"));
+        } else {
+            $programId = $_GET["programId"];
+            $resultCriteria = ResultCriteria::where("program", $programId)->get();
+            $s_id = $_GET["s_id"];
+
+            $marks = result::where([
+                ["program_id", "=", $programId], ["s_id", "=", $s_id], ["judges_id", "=", Auth::id()],
+            ])->get();
+            return view("judges.open_modal", compact("resultCriteria", "s_id", "programId", "marks"));
+        }
+
 
     }
 }
