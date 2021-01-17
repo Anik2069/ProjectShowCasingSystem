@@ -111,6 +111,10 @@ Route::prefix('students')->group(function () {
     Route::post("assignResult/updateData","ResultController@updateData")->name("assignResult.updateData");
 });
 
+Route::resource("followup","FollowupController");
+
+
+
 
 
 

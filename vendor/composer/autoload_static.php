@@ -529,6 +529,7 @@ class ComposerStaticInitd0fd286ea02612404b66bae499593182
         'App\\assign_judges' => __DIR__ . '/../..' . '/app/assign_judges.php',
         'App\\banner' => __DIR__ . '/../..' . '/app/banner.php',
         'App\\convener' => __DIR__ . '/../..' . '/app/convener.php',
+        'App\\followup' => __DIR__ . '/../..' . '/app/followup.php',
         'App\\member' => __DIR__ . '/../..' . '/app/member.php',
         'App\\notification' => __DIR__ . '/../..' . '/app/notification.php',
         'App\\panel' => __DIR__ . '/../..' . '/app/panel.php',

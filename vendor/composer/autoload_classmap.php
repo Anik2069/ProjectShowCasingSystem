@@ -48,6 +48,7 @@ return array(
     'App\\assign_judges' => $baseDir . '/app/assign_judges.php',
     'App\\banner' => $baseDir . '/app/banner.php',
     'App\\convener' => $baseDir . '/app/convener.php',
+    'App\\followup' => $baseDir . '/app/followup.php',
     'App\\member' => $baseDir . '/app/member.php',
     'App\\notification' => $baseDir . '/app/notification.php',
     'App\\panel' => $baseDir . '/app/panel.php',
