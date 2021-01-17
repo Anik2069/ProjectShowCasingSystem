@@ -200,14 +200,13 @@
         function openFollowModal(element) {
             var programId = $("#program_id").val();
             var s_id = $(element).attr("data-id");
+
             $.ajax({
                 url: '/judges/open_modal',
                 data: {programId: programId, s_id:s_id  },
                 type: 'get',
                 success: function (data) {
-
                     $("#exampleModal").html(data);
-
                 }
             });
         }

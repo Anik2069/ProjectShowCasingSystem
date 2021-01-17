@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\assign_judges;
+use App\followup;
 use App\member;
 use App\program;
 use App\result;
@@ -100,10 +101,13 @@ class MemberController extends Controller
     {
         if (Auth::user()->userType == 4) {
             $programId = $_GET["programId"];
-
-
-
-            return view("supervisor.open_modal", compact( "programId"));
+            $student_id = $_GET["s_id"];
+            $followup = followup::where([
+                ["program_id","=",$programId],
+                ["student_id","=",$student_id],
+                ["supervisor_id","=",Auth::id()],
+            ])->orderBy("id","desc")->get();
+            return view("supervisor.open_modal", compact( "programId","student_id","followup"));
         } else {
             $programId = $_GET["programId"];
             $resultCriteria = ResultCriteria::where("program", $programId)->get();
