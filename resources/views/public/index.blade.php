@@ -38,7 +38,7 @@
                 <div class="row">
 
                     <div class="col-md-12">
-                        <div class="wm-fancy-title"><h2>Recent <span>Programe</span></h2></div>
+                        <div class="wm-fancy-title"><h2>Latest <span>program</span></h2></div>
                         <div class="wm-courses wm-courses-popular">
                             <ul class="row">
                                 @if(!empty($program))
@@ -55,17 +55,17 @@
                                                         <img
                                                             src="{{"assets"}}/public/extra-images/papular-courses-thumb-1.jpg"
                                                             alt="">
-                                                        <h6><a href="#">Team Testing</a></h6>
+                                                        <h6><a href="#">{{ $value->org_name }}</a></h6>
                                                     </figcaption>
                                                 </figure>
                                                 <div class="wm-popular-courses-text">
                                                     <h6><a href="#">{{$value->program_name}}</a></h6>
                                                     <div class="wm-courses-price"><span></span></div>
                                                     <ul>
-                                                        <li><a href="#" class="wm-color"><i class="wmicon-social7"></i>
+                                                        <li><a href="#" class="wm-color" title="Number of Total Registration"><i class="wmicon-social7" ></i>
                                                                 {{$value->no_of_student}}</a>
                                                         </li>
-                                                        <li><a href="#" class="wm-color"><i class="wmicon-social6"></i>
+                                                        <li><a href="#" class="wm-color" title="Judges Number"><i class="wmicon-social6" ></i>
                                                                 {{$value->no_of_judges}}</a>
                                                         </li>
                                                     </ul>
@@ -89,37 +89,26 @@
 
                     <div class="col-md-4">
                         <div class="wm-search-course">
-                            <h3 class="wm-short-title wm-color">Find Your Course</h3>
-                            <p>Fill in the form below to find your course:</p>
+                            <h3 class="wm-short-title wm-color">Be a Participant</h3>
+                            <p>Find a appropriate that match with you</p>
                             <form>
                                 <ul>
-                                    <li>
-                                        <div class="wm-radio">
-                                            <div class="wm-radio-partition">
-                                                <input id="male" type="radio" name="gender" value="male">
-                                                <label for="male">by ID</label>
-                                            </div>
-                                            <div class="wm-radio-partition">
-                                                <input id="female" type="radio" name="gender" value="female">
-                                                <label for="female">by name</label>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li><input type="text" value="Course Name"
+
+                                    <li><input type="text" value="Idea Name"
                                                onblur="if(this.value == '') { this.value ='Course Name'; }"
                                                onfocus="if(this.value =='Course Name') { this.value = ''; }"> <i
                                             class="wmicon-search"></i></li>
                                     <li>
                                         <div class="wm-apply-select">
                                             <select>
-                                                <option>Category</option>
-                                                <option>Category</option>
-                                                <option>Category</option>
-                                                <option>Category</option>
+                                                <option>Idea 1</option>
+                                                <option>Idea 2</option>
+                                                <option>Idea 3</option>
+                                                <option>Idea 4</option>
                                             </select>
                                         </div>
                                     </li>
-                                    <li><input type="submit" value="Search course"></li>
+                                    <li><input type="submit" value="Search IDea"></li>
                                 </ul>
                             </form>
                         </div>
@@ -130,49 +119,49 @@
                                 <li>
                                     <div class="wm-box-service-wrap wm-bgcolor">
                                         <i class="wmicon-suitcase"></i>
-                                        <h6><a href="#">Business</a></h6>
+                                        <h6><a href="#"></a></h6>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="wm-box-service-wrap wm-bgcolor">
                                         <i class="wmicon-money"></i>
-                                        <h6><a href="#">Economics</a></h6>
+                                        <h6><a href="#"></a></h6>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="wm-box-service-wrap wm-bgcolor">
                                         <i class="wmicon-school"></i>
-                                        <h6><a href="#">Math</a></h6>
+                                        <h6><a href="#"></a></h6>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="wm-box-service-wrap wm-bgcolor">
                                         <i class="wmicon-science"></i>
-                                        <h6><a href="#">Science</a></h6>
+                                        <h6><a href="#"></a></h6>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="wm-box-service-wrap wm-bgcolor">
                                         <i class="wmicon-computer"></i>
-                                        <h6><a href="#">Computing</a></h6>
+                                        <h6><a href="#"></a></h6>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="wm-box-service-wrap wm-bgcolor">
                                         <i class="wmicon-technology3"></i>
-                                        <h6><a href="#">Web Design</a></h6>
+                                        <h6><a href="#"></a></h6>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="wm-box-service-wrap wm-bgcolor">
                                         <i class="wmicon-web3"></i>
-                                        <h6><a href="#">Development</a></h6>
+                                        <h6><a href="#"></a></h6>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="wm-box-service-wrap wm-bgcolor">
                                         <i class="wmicon-shape"></i>
-                                        <h6><a href="#">Biology</a></h6>
+                                        <h6><a href="#"></a></h6>
                                     </div>
                                 </li>
                             </ul>
@@ -227,141 +216,11 @@
         <!--// Main Section \\-->
 
         <!--// Main Section \\-->
-        <div class="wm-main-section wm-learn-listing-full">
-            <div class="container">
-                <div class="row">
 
-                    <div class="col-md-12">
-                        <div class="wm-fancy-title"><h2>You Can <span>Learn</span></h2></div>
-                        <div class="wm-learn-listing">
-                            <ul class="row">
-                                <li class="col-md-6">
-                                    <figure><a href="#"><img src="{{"assets"}}/public/extra-images/learn-listing-1.png"
-                                                             alt=""></a>
-                                        <figcaption>
-                                            <h2>Research</h2>
-                                            <a href="#" class="wm-banner-btn">Read More</a>
-                                        </figcaption>
-                                    </figure>
-                                </li>
-                                <li class="col-md-6">
-                                    <figure><a href="#"><img src="{{"assets"}}/public/extra-images/learn-listing-2.png"
-                                                             alt=""></a>
-                                        <figcaption>
-                                            <h2>Academics</h2>
-                                            <a href="#" class="wm-banner-btn">Read More</a>
-                                        </figcaption>
-                                    </figure>
-                                </li>
-                                <li class="col-md-6">
-                                    <figure><a href="#"><img src="{{"assets"}}/public/extra-images/learn-listing-3.png"
-                                                             alt=""></a>
-                                        <figcaption>
-                                            <h2>Admissions</h2>
-                                            <a href="#" class="wm-banner-btn">Read More</a>
-                                        </figcaption>
-                                    </figure>
-                                </li>
-                                <li class="col-md-6">
-                                    <figure><a href="#"><img src="{{"assets"}}/public/extra-images/learn-listing-4.png"
-                                                             alt=""></a>
-                                        <figcaption>
-                                            <h2>Student Life</h2>
-                                            <a href="#" class="wm-banner-btn">Read More</a>
-                                        </figcaption>
-                                    </figure>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
         <!--// Main Section \\-->
 
         <!--// Main Section \\-->
-        <div class="wm-main-section wm-latestevents-full">
-            <div class="container">
-                <div class="row">
 
-                    <div class="col-md-9 wm-top-spacer">
-                        <h2 class="wm-simple-title">Our Latest Events</h2>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="wm-event-latest-slider">
-                                    <div class="wm-event-latest-layer">
-                                        <h6 class="wm-color">Enjoy the best experience for you with the choice of our
-                                            campus - a truly international university campus in Barcelona.</h6>
-                                        <a href="#" class="wm-banner-btn">about us</a>
-                                    </div>
-                                    <div class="wm-event-latest-layer">
-                                        <h6 class="wm-color">Enjoy the best experience for you with the choice of our
-                                            campus - a truly international university campus in Barcelona.</h6>
-                                        <a href="#" class="wm-banner-btn">about us</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="wm-event wm-latest-event">
-                                    <ul class="row">
-                                        <li class="col-md-12">
-                                            <figure><a href="#"><img src="extra-images/latest-event-1.png" alt=""></a>
-                                            </figure>
-                                            <div class="wm-latest-event-text">
-                                                <h6><a href="#" class="wm-color">Out of This World: The Family Fun
-                                                        Day</a></h6>
-                                                <time datetime="2008-02-14 20:00">21/04/2016</time>
-                                                <p>Join us for outer-space themed games, prizes, science & talks about
-                                                    careers in the UK.</p>
-                                                <a href="#" class="wm-banner-btn">check event</a>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="wm-event wm-latest-event">
-                                    <ul class="row">
-                                        <li class="col-md-12">
-                                            <figure><a href="#"><img src="extra-images/latest-event-2.png" alt=""></a>
-                                            </figure>
-                                            <div class="wm-latest-event-text">
-                                                <h6><a href="#" class="wm-color">Shakespeare at Balliol in those five
-                                                        acts</a></h6>
-                                                <time datetime="2008-02-14 20:00">19/04/2016</time>
-                                                <p>A.C. Bradley and J.C. Maxwell get down to serious criticism; another
-                                                    Balliol writer launches the.</p>
-                                                <a href="#" class="wm-banner-btn">check event</a>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="wm-counter wm-counter-simple">
-                            <ul class="row">
-                                <li class="col-md-12">
-                                    <span class="word-count">5</span>
-                                    <h6>th best University in Europe (Youth Inc. 2015 ranking)</h6>
-                                </li>
-                                <li class="col-md-12">
-                                    <span class="word-count">68</span>
-                                    <h6>% International students especially from Asia, Africa & Europe</h6>
-                                </li>
-                                <li class="col-md-12">
-                                    <span class="word-count">91</span>
-                                    <h6>Student Nationalities</h6>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
         <!--// Main Section \\-->
 
         <!--// Main Section \\-->
@@ -433,46 +292,8 @@
             <div class="container">
                 <div class="row">
 
-                    <div class="col-md-5">
-                        <div class="wm-history-list">
-                            <h2>Our History</h2>
-                            <ul>
-                                <li>
-                                    <time datetime="2008-02-14 20:00">2016</time>
-                                    <span>Released the Arctic Collection the Perennial Collection of handknotted luxury area rugs.</span>
-                                </li>
-                                <li>
-                                    <time datetime="2008-02-14 20:00">2015</time>
-                                    <span>Installed our first custom floorcovering for a museum at the Aga Khan Museum in Toronto</span>
-                                </li>
-                                <li>
-                                    <time datetime="2008-02-14 20:00">2014</time>
-                                    <span>Designed our first wallcovering for all these healthcare sector at the Toronto Centre.</span>
-                                </li>
-                                <li>
-                                    <time datetime="2008-02-14 20:00">2013</time>
-                                    <span>Celebrated 25 years in business with “The Art Day Project” – a partnership.</span>
-                                </li>
-                                <li>
-                                    <time datetime="2008-02-14 20:00">2016</time>
-                                    <span>Released the Arctic Collection the Perennial Collection of handknotted luxury area rugs.</span>
-                                </li>
-                                <li>
-                                    <time datetime="2008-02-14 20:00">2015</time>
-                                    <span>Installed our first custom floorcovering for a museum at the Aga Khan Museum in Toronto</span>
-                                </li>
-                                <li>
-                                    <time datetime="2008-02-14 20:00">2014</time>
-                                    <span>Designed our first wallcovering for all these healthcare sector at the Toronto Centre.</span>
-                                </li>
-                                <li>
-                                    <time datetime="2008-02-14 20:00">2013</time>
-                                    <span>Celebrated 25 years in business with “The Art Day Project” – a partnership.</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-7">
+
+                    <div class="col-md-12">
                         <div class="wm-subscribe-form">
                             <h2>Still not convinced? We can help you!</h2>
                             <p>Fill out the form below and we will contact you.</p>
@@ -493,123 +314,11 @@
         <!--// Main Section \\-->
 
         <!--// Main Section \\-->
-        <div class="wm-main-section wm-news-grid-full">
-            <div class="container">
-                <div class="row">
 
-                    <div class="col-md-12">
-                        <div class="wm-fancy-title"><h2>Blog <span>News</span></h2>
-                            <p>We bring you all the useful information of the University's Community</p></div>
-                        <div class="wm-news wm-news-grid">
-                            <ul class="row">
-                                <li class="col-md-4">
-                                    <figure>
-                                        <a href="#"><img src="extra-images/news-grid-1.png" alt=""></a>
-                                        <figcaption class="wm-bgcolor">
-                                            <img src="extra-images/news-grid-thumb-1.png" alt="">
-                                            <h6>Posted by: <a href="#">Sam K. Harrington</a></h6>
-                                        </figcaption>
-                                    </figure>
-                                    <div class="wm-newsgrid-text">
-                                        <ul class="wm-post-options">
-                                            <li>7/4/2016</li>
-                                            <li><a href="#"><i class="fa fa-comments-o"></i> 12 comments</a></li>
-                                            <li><a href="#"><i class="wmicon-folder2"></i> admission</a></li>
-                                        </ul>
-                                        <h5><a href="#" class="wm-color">Seven UK business schools make the Top 10</a>
-                                        </h5>
-                                        <p>The largest-ever QS Distance Online MBA Rankings have been released by higher
-                                            and business education analysts QS.</p>
-                                        <a class="wm-banner-btn" href="#">read article</a>
-                                    </div>
-                                </li>
-                                <li class="col-md-4">
-                                    <figure>
-                                        <a href="#"><img src="extra-images/news-grid-2.png" alt=""></a>
-                                        <figcaption class="wm-bgcolor">
-                                            <img src="extra-images/news-grid-thumb-2.png" alt="">
-                                            <h6>Posted by: <a href="#">Wanda R. Teixeira</a></h6>
-                                        </figcaption>
-                                    </figure>
-                                    <div class="wm-newsgrid-text">
-                                        <ul class="wm-post-options">
-                                            <li>6/4/2016</li>
-                                            <li><a href="#"><i class="fa fa-comments-o"></i> 21 comments</a></li>
-                                            <li><a href="#"><i class="wmicon-folder2"></i> business</a></li>
-                                        </ul>
-                                        <h5><a href="#" class="wm-color">The University Business School centre of
-                                                excellence</a></h5>
-                                        <p>The University has announced the launch of its first free online course as
-                                            part. These individuals or groups can more effectively.</p>
-                                        <a class="wm-banner-btn" href="#">read article</a>
-                                    </div>
-                                </li>
-                                <li class="col-md-4">
-                                    <figure>
-                                        <a href="#"><img src="extra-images/news-grid-3.png" alt=""></a>
-                                        <figcaption class="wm-bgcolor">
-                                            <img src="extra-images/news-grid-thumb-3.png" alt="">
-                                            <h6>Posted by: <a href="#">Marvin P. Sanchez</a></h6>
-                                        </figcaption>
-                                    </figure>
-                                    <div class="wm-newsgrid-text">
-                                        <ul class="wm-post-options">
-                                            <li>5/4/2016</li>
-                                            <li><a href="#"><i class="fa fa-comments-o"></i> 18 comments</a></li>
-                                            <li><a href="#"><i class="wmicon-folder2"></i> students</a></li>
-                                        </ul>
-                                        <h5><a href="#" class="wm-color">Our research could slash energy bills in
-                                                Milton</a></h5>
-                                        <p>The University is developing the UK’s first community based website that will
-                                            allow people in Milton Keynes.</p>
-                                        <a class="wm-banner-btn" href="#">read article</a>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
         <!--// Main Section \\-->
 
         <!--// Main Section \\-->
-        <div class="wm-main-section">
-            <div class="container">
-                <div class="row">
 
-                    <div class="col-md-12">
-                        <div class="wm-simple-section-title wm-partners-title"><h2>University <span>Partners</span></h2>
-                        </div>
-                        <div class="wm-partners-slider gallery">
-                            <div class="wm-partners-layer"><a title="" data-rel="prettyPhoto[gallery1]"
-                                                              href="extra-images/university-partners-1.png"> <img
-                                        src="extra-images/university-partners-1.png" alt=""> </a></div>
-                            <div class="wm-partners-layer"><a title="" data-rel="prettyPhoto[gallery1]"
-                                                              href="extra-images/university-partners-2.png"> <img
-                                        src="extra-images/university-partners-2.png" alt=""> </a></div>
-                            <div class="wm-partners-layer"><a title="" data-rel="prettyPhoto[gallery1]"
-                                                              href="extra-images/university-partners-3.png"> <img
-                                        src="extra-images/university-partners-3.png" alt=""> </a></div>
-                            <div class="wm-partners-layer"><a title="" data-rel="prettyPhoto[gallery1]"
-                                                              href="extra-images/university-partners-4.png"> <img
-                                        src="extra-images/university-partners-4.png" alt=""> </a></div>
-                            <div class="wm-partners-layer"><a title="" data-rel="prettyPhoto[gallery1]"
-                                                              href="extra-images/university-partners-5.png"> <img
-                                        src="extra-images/university-partners-5.png" alt=""> </a></div>
-                            <div class="wm-partners-layer"><a title="" data-rel="prettyPhoto[gallery1]"
-                                                              href="extra-images/university-partners-6.png"> <img
-                                        src="extra-images/university-partners-6.png" alt=""> </a></div>
-                            <div class="wm-partners-layer"><a title="" data-rel="prettyPhoto[gallery1]"
-                                                              href="extra-images/university-partners-1.png"> <img
-                                        src="extra-images/university-partners-1.png" alt=""> </a></div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
         <!--// Main Section \\-->
 
         <!--// Main Section \\-->
