@@ -104,6 +104,7 @@ Route::prefix('students')->group(function () {
     Route::get("/view_result","ResultController@index")->name("view_result");
 
     Route::get("/view_program_details/{id}","ProgramController@view_program_details")->name("student.program_details");
+    Route::get("/open_followup", "MemberController@open_followup");
 
     Route::get("/open_modal", "MemberController@open_modal");
     Route::get("/student_list/{id}","StudentController@student_list_judges")->name("judges.studentList") ;

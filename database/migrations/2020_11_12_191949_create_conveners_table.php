@@ -23,6 +23,7 @@ class CreateConvenersTable extends Migration
             $table->string("organization")->nullable();
             $table->string("org_address")->nullable();
             $table->string("status")->nullable();
+            $table->string("user_no_fk")->nullable();
             $table->string("insertBy")->nullable();
             $table->timestamps();
         });

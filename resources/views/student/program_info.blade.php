@@ -66,9 +66,13 @@
                                                             <div class="badge badge-danger badge-shadow">Over</div>
                                                         @endif
                                                     </td>
-
+                                                    <input type="hidden" id="program_id" value="{{$value->id}}">
                                                     <td><a href="{{ route("student.program_details",$value->id) }}"
                                                            class="btn btn-warning">Details</a>
+                                                        /
+                                                        <button data-toggle="modal" data-target="#exampleModal"
+                                                                 onclick="openFollowModal(this)"
+                                                           class="btn btn-primary">check Followup</button>
 
                                                     @if($type ==1)
                                                             <a href="{{ route("student.submit_project",[$value->id]) }}"
@@ -184,10 +188,34 @@
         </div>
     </div>
 
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="formModal"
+         aria-hidden="true">
+        @include("student.open_modal")
+    </div>
+
 
 @endsection
 
 @push("convener_js")
+
+    <script>
+
+        function openFollowModal(element) {
+            var programId = $("#program_id").val();
+
+            $.ajax({
+                url: '/students/open_followup',
+                data: {programId: programId  },
+                type: 'get',
+                success: function (data) {
+                    $("#exampleModal").html(data);
+                }
+            });
+        }
+        function buttonclick() {
+            location.reload();
+        }
+    </script>
     <script src="{{ asset("assets/js/app.min.js") }}"></script>
     <!-- JS Libraies -->
     <script src="{{ asset("assets/bundles/datatables/datatables.min.js") }}"></script>
