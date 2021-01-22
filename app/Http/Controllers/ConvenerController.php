@@ -109,4 +109,10 @@ class ConvenerController extends Controller
             ->get();
         return view("convener.assign_judges", compact("prgram", "member","information"));
     }
+    public function convenerList(){
+        $convenerList =  convener::where([
+            ['insertBy', '=', Auth::id()]
+        ])->get();
+        return view("administration.convenerList",compact("convenerList"));
+    }
 }
