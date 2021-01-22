@@ -28,6 +28,13 @@ class ConvenerController extends Controller
 
     public function store(Request $request)
     {
+        $user = new User();
+        $user->name = $request->username;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->userType = "2";
+        $user->save();
+        //Convener
         $convener = new convener();
         $convener->name = $request->name;
         $convener->email = $request->email;
@@ -38,13 +45,9 @@ class ConvenerController extends Controller
         $convener->org_address = $request->org_address;
         $convener->status = $request->status;
         $convener->insertBy = Auth::id();
+        $convener->user_no_fk = $user->id;
         $convener->save();
-        $user = new User();
-        $user->name = $request->username;
-        $user->email = $request->email;
-        $user->password = Hash::make($request->password);
-        $user->userType = "2";
-        $user->save();
+
         return redirect("/administration/convener")->with("success", "Covener Added !!");
     }
 

@@ -8,6 +8,7 @@ use App\member;
 use App\program;
 use App\result;
 use App\ResultCriteria;
+use App\student;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -103,11 +104,11 @@ class MemberController extends Controller
             $programId = $_GET["programId"];
             $student_id = $_GET["s_id"];
             $followup = followup::where([
-                ["program_id","=",$programId],
-                ["student_id","=",$student_id],
-                ["supervisor_id","=",Auth::id()],
-            ])->orderBy("id","desc")->get();
-            return view("supervisor.open_modal", compact( "programId","student_id","followup"));
+                ["program_id", "=", $programId],
+                ["student_id", "=", $student_id],
+                ["supervisor_id", "=", Auth::id()],
+            ])->orderBy("id", "desc")->get();
+            return view("supervisor.open_modal", compact("programId", "student_id", "followup"));
         } else {
             $programId = $_GET["programId"];
             $resultCriteria = ResultCriteria::where("program", $programId)->get();
@@ -118,7 +119,17 @@ class MemberController extends Controller
             ])->get();
             return view("judges.open_modal", compact("resultCriteria", "s_id", "programId", "marks"));
         }
+    }
 
+    public function open_followup(Request $request)
+    {
+        $student_id = student::where("user_no_fk",Auth::id())->first();
+        $followup = followup::where([
+            ["program_id", "=", $_GET["programId"]],
+            ["student_id", "=",$student_id->id],
+        ])->orderby("id", "desc")->get();
+
+        return view("student.open_modal", compact("followup"));
 
     }
 }
