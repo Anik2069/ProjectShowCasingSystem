@@ -39,6 +39,7 @@ Route::get("/administration/dashboard", "administration@dashboard")->name("admin
 Route::get("/administration/report", "administration@report")->name("admin.report");
 Route::post("/administration/report", "administration@searchReport")->name("searchReport");
 
+Route::get("/administration/convenerList", "ConvenerController@convenerList");
 
 Route::get("/administration/convener", "ConvenerController@index");
 Route::post("/administration/convener", "ConvenerController@store")->name("convener.store");

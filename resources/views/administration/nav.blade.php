@@ -23,7 +23,7 @@
                         data-feather="briefcase"></i><span>Convener</span></a>
                 <ul class="dropdown-menu">
                     <li><a class="nav-link" href="/administration/convener">Add New Convener</a></li>
-                    <li><a class="nav-link" href="widget-data.html">VIew Admin</a></li>
+                    <li><a class="nav-link" href="/administration/convenerList">Convener List</a></li>
                 </ul>
             </li>
             <li class="dropdown">
