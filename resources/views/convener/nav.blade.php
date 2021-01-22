@@ -8,7 +8,7 @@
         </div>
         <ul class="sidebar-menu">
             <li class="menu-header">Main</li>
-            <li class="dropdown active">
+            <li class="dropdown ">
                 <a href="/administration/dashboard" class="nav-link"><i
                         data-feather="monitor"></i><span>Dashboard</span></a>
             </li>
@@ -60,10 +60,10 @@
                 </ul>
             </li>
 
-            <li class="dropdown active">
+            <li class="dropdown ">
                 <a href="index.html" class="nav-link"><i data-feather="monitor"></i><span>Change Password</span></a>
             </li>
-            <li class="dropdown active">
+            <li class="dropdown ">
                 <a class="nav-link" href="{{ route('logout') }}"
                    onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i
                         data-feather="monitor"></i><span>Log out</span></a>

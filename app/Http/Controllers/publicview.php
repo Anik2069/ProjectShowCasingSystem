@@ -12,7 +12,10 @@ class publicview extends Controller
     //
     public function index()
     {
-        $program = DB::table("programs")->join("banners", "programs.id", "banners.program_id")->get();
+        $program = DB::table("programs")->join("banners", "programs.id", "banners.program_id")
+                            ->leftjoin("conveners","programs.insertedBy","conveners.user_no_fk")
+                            ->leftJoin("panels","conveners.id","panels.assign_subadmin")->where("programs.status",1)->get();
+
 
         return view("public.index", compact("program"));
     }

@@ -53,7 +53,13 @@ class ConvenerController extends Controller
 
     public function view_panel()
     {
-        $panel_info = panel::where("assign_subadmin", Auth::id())->get();
+        //panel::where("assign_subadmin", Auth::id())->get();
+        $panel_info = DB::table("panels")
+                            ->join("conveners","conveners.id","panels.assign_subadmin")
+                            ->join("users","users.id","conveners.user_no_fk")
+                            ->select("panels.org_name","panels.purpose","panels.id","panels.sub_program","panels.participant","panels.noofsupervisor",
+                                "panels.judges","panels.p_status","panels.p_method","panels.poster")
+                            ->where("users.id",Auth::id())->get();
         return view("convener.panel_info", compact("panel_info"));
     }
 

@@ -15,7 +15,12 @@ class ProgramController extends Controller
     //
     public function index()
     {
-        $panel_info = panel::where("assign_subadmin", Auth::id())->get();
+        $panel_info = DB::table("panels")
+            ->join("conveners","conveners.id","panels.assign_subadmin")
+            ->join("users","users.id","conveners.user_no_fk")
+            ->select("panels.org_name","panels.purpose","panels.id","panels.sub_program","panels.participant","panels.noofsupervisor",
+                "panels.judges","panels.p_status","panels.p_method","panels.poster")
+            ->where("users.id",Auth::id())->get();
         return view("convener.create_program", compact("panel_info"));
     }
 
@@ -56,9 +61,11 @@ class ProgramController extends Controller
 
     public function view_program()
     {
+        $id = Auth::id();
         $program = DB::select("select programs.id,programs.program_name,programs.purpose,programs.program_date,
                     count(projects.student_id) as studentCount from programs 
-                    join projects on projects.program_id =  programs.id 
+                    left join projects on projects.program_id =  programs.id 
+                    where programs.insertedBy = $id
                     group by programs.program_name,programs.purpose,programs.program_date,programs.id");
         return view("convener.program_info", compact("program"));
     }

@@ -57,7 +57,7 @@
                                                     <td>
                                                         <div class="badge badge-warning badge-shadow">Pending</div>
                                                     </td>
-                                                    <td><a href="#" class="btn btn-primary">Assign Marks</a></td>
+                                                    <td><a href="/convener/stop_program/{{$value->id}}" class="btn btn-danger">Stop</a></td>
                                                 </tr>
                                             @endforeach
                                         @endif
