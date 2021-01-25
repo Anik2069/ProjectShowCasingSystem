@@ -16,7 +16,8 @@
             </button>
         </div>
         <div class="modal-body">
-            <form class="" action="{{ empty($marks)?route("assignResult.store"): route("assignResult.updateData") }}" method="post">
+            <form class="" action="{{ empty($marks)?route("assignResult.store"): route("assignResult.updateData") }}"
+                  method="post">
                 @csrf
                 @if(!empty($resultCriteria))
                     @foreach($resultCriteria as $value)
@@ -26,7 +27,8 @@
                             <div class="input-group">
                                 <input type="text" class="form-control" name="{{ $value->name }}"
                                        value="{{ isset($custom[$value->name])?$custom[$value->name]:" " }}" required>
-                                <input type="hidden" name="old_mark_id[]" value="{{  isset($custom1[$value->name])?$custom1[$value->name]:" " }}">
+                                <input type="hidden" name="old_mark_id[]"
+                                       value="{{  isset($custom1[$value->name])?$custom1[$value->name]:" " }}">
                             </div>
                         </div>
                     @endforeach
@@ -34,10 +36,14 @@
                     <input type="hidden" name="p_id" value="{{$programId}}">
 
                 @endif
-
-                <button type="submit" class="btn btn-primary m-t-15 waves-effect">Submit Marks</button>
-                <button type="button" class="btn btn-danger m-t-15" onclick="buttonclick()" data-dismiss="modal">Close
-                </button>
+                @if(!empty($resultCriteria))
+                    <button type="submit" class="btn btn-primary m-t-15 waves-effect">Submit Marks</button>
+                    <button type="button" class="btn btn-danger m-t-15" onclick="buttonclick()" data-dismiss="modal">
+                        Close
+                    </button>
+                @else
+                    No Criteria Is defined by Convener. Please Wait Some times.
+                @endif
             </form>
         </div>
     </div>

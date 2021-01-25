@@ -121,10 +121,14 @@ class StudentController extends Controller
             $id = Auth::id();
             $supervisor_info = member::where("user_no_fk", $id)->first();
             $supervisor_id = $supervisor_info->id;
+
             $program = DB::select("select programs.id,programs.program_name,students.name as st_name, 
                                 members.name as sp_name,projects.project_name as p_name,programs.program_date,
-                                students.id as s_id from programs join projects on projects.program_id =programs.id
-                                join students on students.id = projects.student_id join members on members.id =projects.supervisor_id  and projects.supervisor_id= $supervisor_id ");
+                                students.id as s_id from programs 
+                                join projects on projects.program_id =programs.id
+                                join students on students.user_no_fk = projects.student_id 
+                                join members on members.id =projects.supervisor_id 
+                                and projects.supervisor_id= $supervisor_id ");
 
             return view("supervisor.student_list", compact("program", "programId"));
         } else {
@@ -133,7 +137,12 @@ class StudentController extends Controller
             $judges_id = $judges_id->id;
             $program = DB::select("select programs.id,programs.program_name,students.name as st_name, 
                                 members.name as sp_name,projects.project_name as p_name,programs.program_date,
-                                students.id as s_id from programs,projects, assign_judges  ,members  ,students");
+                                students.id as s_id from programs 
+                                join assign_judges on assign_judges.program_id =programs.id
+                                join projects on projects.program_id =programs.id
+                                join members on members.id =projects.supervisor_id 
+                                join students on students.user_no_fk = projects.student_id 
+                                and assign_judges.judges_id= $judges_id ");
 
 
             /*  dd($program);*/
