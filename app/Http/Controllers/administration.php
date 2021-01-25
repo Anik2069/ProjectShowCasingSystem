@@ -24,6 +24,7 @@ class administration extends Controller
     {
         //1 for admin ........... 2 for Convener ..... 3,4 Judges or SuperVisor  .....5 for student
         $user = Auth::user();
+        //dd($user);
         if ($user->userType == 1) {
             return view("administration.index");
         } elseif ($user->userType == 3) {

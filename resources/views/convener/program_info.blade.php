@@ -57,7 +57,16 @@
                                                     <td>
                                                         <div class="badge badge-warning badge-shadow">Pending</div>
                                                     </td>
-                                                    <td><a href="/convener/stop_program/{{$value->id}}" class="btn btn-danger">Stop</a></td>
+                                                    <td>
+                                                        @if($value->status ==1)
+                                                            <a href="/convener/stop_program/{{$value->status}}/{{$value->id}}"
+                                                               class="btn btn-danger">Stop</a>
+                                                        @else
+                                                            This Program is stopped. Contact to adminnistration.
+                                                        @endif
+                                                        <a href="/convener/studentList" class="btn btn-warning">Student
+                                                            List</a></td>
+
                                                 </tr>
                                             @endforeach
                                         @endif

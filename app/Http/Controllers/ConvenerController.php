@@ -65,10 +65,13 @@ class ConvenerController extends Controller
 
     public function studentList()
     {
-        $studentlist = DB::table("students")
-            ->join("programs", "students.program_id", "programs.id")
-            ->join("projects", "projects.student_id", "students.id")
-            ->where("programs.insertedBy", Auth::id())->get();
+        $studentlist = DB::table("projects")
+            ->join("students", "students.user_no_fk", "projects.student_id")
+            ->join("programs", "programs.id", "projects.program_id")
+            ->select("students.id","programs.program_name","projects.project_name","students.name","students.phone",
+                "students.institution","students.email","projects.description","projects.supervisor_id")
+            ->where("programs.insertedBy", Auth::id())
+            ->get();
         $supervisor = member::whereIn("role_type", [2, 3])->where("insertBy", Auth::id())->get();
         return view("convener.participant", compact("studentlist", "supervisor"));
     }
@@ -76,11 +79,12 @@ class ConvenerController extends Controller
     public function assignSupervisor(Request $request)
     {
         $studentlist = DB::table("students")
-            ->join("programs", "students.program_id", "programs.id")
-            ->join("projects", "projects.student_id", "students.id")
+            ->join("projects", "projects.student_id", "students.user_no_fk")
+            ->join("programs", "projects.program_id", "programs.id")
             ->where("programs.insertedBy", Auth::id())
             ->select("projects.id as project_id")
             ->where("students.id", $request->id)->get();
+
         // dd($studentlist[0]->project_id);
         $projectInfo = project::find($studentlist[0]->project_id);
         $projectInfo->supervisor_id = $request->supervisorID;

@@ -33,9 +33,10 @@
                                             </th>
                                             <th>Programe Name</th>
                                             <th>Student Name</th>
+                                            <th>Project Name</th>
                                             <th>Student Institution</th>
                                             <th>Student Email</th>
-                                            <th>Project Name</th>
+
                                             <th>Action</th>
                                         </tr>
                                         </thead>
@@ -52,7 +53,7 @@
                                                     <td>{{ $panel->institution }}</td>
                                                     <td>{{ $panel->email }}</td>
 
-                                                    <td><a href="#" class="btn btn-primary">Detail</a></td>
+                                                    <td><a href="#" class="btn btn-primary">Check Follow up</a></td>
                                                 </tr>
                                             @endforeach
                                         @endif

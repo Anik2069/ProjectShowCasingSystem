@@ -23,7 +23,7 @@ class ProjectController extends Controller
         $project->student_id = Auth::id();
         $project->program_id =$data[0]["program_id"];
         $project->save();
-        return redirect("/dash");
+        return redirect("/administration/dashboard");
     }
 
 }

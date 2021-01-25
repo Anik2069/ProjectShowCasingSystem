@@ -16,11 +16,11 @@ class ProgramController extends Controller
     public function index()
     {
         $panel_info = DB::table("panels")
-            ->join("conveners","conveners.id","panels.assign_subadmin")
-            ->join("users","users.id","conveners.user_no_fk")
-            ->select("panels.org_name","panels.purpose","panels.id","panels.sub_program","panels.participant","panels.noofsupervisor",
-                "panels.judges","panels.p_status","panels.p_method","panels.poster")
-            ->where("users.id",Auth::id())->get();
+            ->join("conveners", "conveners.id", "panels.assign_subadmin")
+            ->join("users", "users.id", "conveners.user_no_fk")
+            ->select("panels.org_name", "panels.purpose", "panels.id", "panels.sub_program", "panels.participant", "panels.noofsupervisor",
+                "panels.judges", "panels.p_status", "panels.p_method", "panels.poster")
+            ->where("users.id", Auth::id())->get();
         return view("convener.create_program", compact("panel_info"));
     }
 
@@ -62,11 +62,11 @@ class ProgramController extends Controller
     public function view_program()
     {
         $id = Auth::id();
-        $program = DB::select("select programs.id,programs.program_name,programs.purpose,programs.program_date,
+        $program = DB::select("select programs.id,programs.program_name,programs.purpose,programs.program_date, programs.status,
                     count(projects.student_id) as studentCount from programs 
                     left join projects on projects.program_id =  programs.id 
                     where programs.insertedBy = $id
-                    group by programs.program_name,programs.purpose,programs.program_date,programs.id");
+                    group by programs.program_name,programs.purpose,programs.program_date,programs.id,programs.status");
         return view("convener.program_info", compact("program"));
     }
 
@@ -83,11 +83,13 @@ class ProgramController extends Controller
 
     public function view_program_student()
     {
-        $program = DB::select("select programs.id,programs.program_name,programs.purpose,programs.program_date,
+        $user_id = Auth::id();
+        $program = DB::select("select programs.id,programs.program_name,programs.purpose,programs.program_date, projects.project_name,
                     count(projects.student_id) as studentCount from programs 
-                    join assign_judges on assign_judges.program_id =  programs.id 
+                    left join assign_judges on assign_judges.program_id =  programs.id 
                     join projects on  projects.program_id =  programs.id 
-                    group by programs.program_name,programs.purpose,programs.program_date,programs.id");
+                    join students on students.user_no_fk = projects.student_id where  students.user_no_fk = $user_id 
+                    group by programs.program_name,programs.purpose,programs.program_date,programs.id,projects.project_name");
         /*  dd($program);*/
         $type = 2;
         return view("student.program_info", compact("program", "type"));
@@ -95,11 +97,13 @@ class ProgramController extends Controller
 
     public function view_program_student_list()
     {
-        $program = DB::select("select programs.id,programs.program_name,programs.purpose,programs.program_date,
+        $user_id = Auth::id();
+        $program = DB::select("select programs.id,programs.program_name,programs.purpose,programs.program_date, projects.project_name,
                     count(projects.student_id) as studentCount from programs 
-                    join assign_judges on assign_judges.program_id =  programs.id 
+                    left join assign_judges on assign_judges.program_id =  programs.id 
                     join projects on  projects.program_id =  programs.id 
-                    group by programs.program_name,programs.purpose,programs.program_date,programs.id");
+                    join students on students.user_no_fk = projects.student_id where  students.user_no_fk = $user_id 
+                    group by programs.program_name,programs.purpose,programs.program_date,programs.id,projects.project_name");
         /*  dd($program);*/
         $type = 1;
         return view("student.program_info", compact("program", "type"));
@@ -143,11 +147,22 @@ class ProgramController extends Controller
     public function view_all_participant()
     {
         $student = DB::table("projects")
-            ->join("students", "students.id", "projects.student_id")
+            ->join("students", "students.user_no_fk", "projects.student_id")
             ->join("programs", "programs.id", "projects.program_id")
-            ->where("programs.insertedBy",Auth::id())
+            ->where("programs.insertedBy", Auth::id())
             ->get();
-       // dd($student);
-        return view("convener.participant_list",compact("student"));
+        // dd($student);
+        return view("convener.participant_list", compact("student"));
+    }
+
+    public function stop_program($status, $id)
+    {
+        $program_info = program::find($id);
+        if ($status == 0)
+            $program_info->status = 1;
+        else
+            $program_info->status = 0;
+        $program_info->save();
+        return redirect("/convener/view_program");
     }
 }
