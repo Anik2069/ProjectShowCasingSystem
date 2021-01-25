@@ -50,7 +50,7 @@ Route::get("/administration/view_panel", "PanelController@view");
 Route::get("/convener/view_panel", "ConvenerController@view_panel");
 Route::post("/convener/store", "ProgramController@store")->name("programe.store");
 Route::get("/convener/program", "ProgramController@index");
-Route::get("/convener/stop_program/{id}", "ProgramController@stop_program");
+Route::get("/convener/stop_program/{status}/{id}", "ProgramController@stop_program");
 Route::get("/convener/view_program", "ProgramController@view_program");
 Route::get("/convener/view_all_participant", "ProgramController@view_all_participant");
 Route::get("/convener/supervisor_judges", "MemberController@index");

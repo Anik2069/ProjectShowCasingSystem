@@ -34,6 +34,7 @@
                                             </th>
                                             <th>Programe Name</th>
                                             <th>Purpose</th>
+                                            <th>Project Name</th>
                                             <th>Program Date</th>
                                             <th>Status</th>
                                             <th>Action</th>
@@ -51,8 +52,12 @@
                                                         {{ $value->purpose  }}
                                                     </td>
                                                     <td>
+                                                        {{ $value->project_name }}
+                                                    </td>
+                                                    <td>
                                                         {{ date("d M,Y",strtotime( $value->program_date))  }}
                                                     </td>
+
 
 
                                                     <td>

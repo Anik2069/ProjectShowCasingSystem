@@ -41,6 +41,10 @@
                                             <td>{{ $value->note }}</td>
                                         </tr>
                                     @endforeach
+                                @else
+                                    <tr>
+                                       <td rowspan="3">No Data Found</td>
+                                    </tr>
                                 @endif
                                 </thead>
 
