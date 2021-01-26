@@ -14,7 +14,7 @@
                 <td>{{$result->name}}</td>
                 <td>{{$result->marks}}</td>
                 <td>{{$result->prority}}</td>
-                <td><a href="/convener/resultCriteria/{{$result->id}}" class="btn btn-danger "> Delete </a></td>
+                <td><a href="/convener/delete_resultCriteria/{{$result->id}}" class="btn btn-danger "> Delete </a></td>
             </tr>
         @endforeach
     @endif

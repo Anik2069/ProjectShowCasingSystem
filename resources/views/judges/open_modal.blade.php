@@ -26,7 +26,7 @@
                                 Marks: {{$value->marks }}</label>
                             <div class="input-group">
                                 <input type="text" class="form-control" name="{{ $value->name }}"
-                                       value="{{ isset($custom[$value->name])?$custom[$value->name]:" " }}" required>
+                                       data-id=value="{{ isset($custom[$value->name])?$custom[$value->name]:" " }}" required>
                                 <input type="hidden" name="old_mark_id[]"
                                        value="{{  isset($custom1[$value->name])?$custom1[$value->name]:" " }}">
                             </div>
