@@ -99,6 +99,7 @@ class ConvenerController extends Controller
         ])->get();
         $result_criteria = DB::table("result_criterias")
             ->join("programs", "result_criterias.program", "programs.id")
+            ->select("programs.program_name","result_criterias.name","result_criterias.marks","result_criterias.prority","result_criterias.id")
             ->where('insertedBy', Auth::id())->get();
         return view("convener.result_criteria", compact('prgram', 'result_criteria'));
     }

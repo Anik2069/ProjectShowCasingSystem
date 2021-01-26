@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\result;
 use App\ResultCriteria;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -105,5 +106,10 @@ class ResultCriteriaController extends Controller
     public function destroy(ResultCriteria $resultCriteria)
     {
         //
+    }
+    public function delete_criteria($id){
+        $result =  ResultCriteria::find($id);
+        $result->delete();
+        return redirect("/convener/resultCriteria");
     }
 }

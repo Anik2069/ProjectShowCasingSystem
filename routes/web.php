@@ -84,6 +84,7 @@ Route::get("/convener/projectSubmissionCriteria", "ConvenerController@projectSub
 
 
 Route::get("/convener/projectSubmission/{id}", "ProjectsubmissionController@destroy");
+Route::get("/convener/delete_resultCriteria/{id}", "ResultCriteriaController@delete_criteria");
 
 Route::post("/convener/resultCriteria", "ResultCriteriaController@store");
 Route::get("/convener/assign_judges", "ConvenerController@assign_judges");
