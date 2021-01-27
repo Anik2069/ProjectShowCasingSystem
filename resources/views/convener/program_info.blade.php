@@ -57,15 +57,17 @@
                                                     <td>
                                                         <div class="badge badge-warning badge-shadow">Pending</div>
                                                     </td>
-                                                    <td>
+                                                    <td width="24%">
                                                         @if($value->status ==1)
                                                             <a href="/convener/stop_program/{{$value->status}}/{{$value->id}}"
-                                                               class="btn btn-danger">Stop</a>
+                                                               class="btn btn-danger btn-sm">Stop</a> /
                                                         @else
-                                                            This Program is stopped. Contact to adminnistration.
+                                                            This Program is stopped. Contact to adminnistration./
                                                         @endif
-                                                        <a href="/convener/studentList" class="btn btn-warning">Student
-                                                            List</a></td>
+                                                        <a href="/convener/studentList/{{$value->id}}" class="btn btn-sm btn-warning">Student
+                                                            List</a>/
+                                                    <a href="/convener/result_finalize/{{$value->id}}" title="Result Finalize" class="btn btn-sm btn-primary">Result Finalize</a></td>
+
 
                                                 </tr>
                                             @endforeach

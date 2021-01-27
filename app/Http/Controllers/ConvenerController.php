@@ -55,22 +55,22 @@ class ConvenerController extends Controller
     {
         //panel::where("assign_subadmin", Auth::id())->get();
         $panel_info = DB::table("panels")
-                            ->join("conveners","conveners.id","panels.assign_subadmin")
-                            ->join("users","users.id","conveners.user_no_fk")
-                            ->select("panels.org_name","panels.purpose","panels.id","panels.sub_program","panels.participant","panels.noofsupervisor",
-                                "panels.judges","panels.p_status","panels.p_method","panels.poster")
-                            ->where("users.id",Auth::id())->get();
+            ->join("conveners", "conveners.id", "panels.assign_subadmin")
+            ->join("users", "users.id", "conveners.user_no_fk")
+            ->select("panels.org_name", "panels.purpose", "panels.id", "panels.sub_program", "panels.participant", "panels.noofsupervisor",
+                "panels.judges", "panels.p_status", "panels.p_method", "panels.poster")
+            ->where("users.id", Auth::id())->get();
         return view("convener.panel_info", compact("panel_info"));
     }
 
-    public function studentList()
+    public function studentList($id)
     {
         $studentlist = DB::table("projects")
             ->join("students", "students.user_no_fk", "projects.student_id")
             ->join("programs", "programs.id", "projects.program_id")
-            ->select("students.id","programs.program_name","projects.project_name","students.name","students.phone",
-                "students.institution","students.email","projects.description","projects.supervisor_id")
-            ->where("programs.insertedBy", Auth::id())
+            ->select("students.id", "programs.program_name", "projects.project_name", "students.name", "students.phone",
+                "students.institution", "students.email", "projects.description", "projects.supervisor_id")
+            ->where("programs.insertedBy", Auth::id())->where("programs.id", $id)
             ->get();
         $supervisor = member::whereIn("role_type", [2, 3])->where("insertBy", Auth::id())->get();
         return view("convener.participant", compact("studentlist", "supervisor"));
@@ -99,7 +99,7 @@ class ConvenerController extends Controller
         ])->get();
         $result_criteria = DB::table("result_criterias")
             ->join("programs", "result_criterias.program", "programs.id")
-            ->select("programs.program_name","result_criterias.name","result_criterias.marks","result_criterias.prority","result_criterias.id")
+            ->select("programs.program_name", "result_criterias.name", "result_criterias.marks", "result_criterias.prority", "result_criterias.id")
             ->where('insertedBy', Auth::id())->get();
         return view("convener.result_criteria", compact('prgram', 'result_criteria'));
     }
@@ -118,12 +118,26 @@ class ConvenerController extends Controller
             ->join("members", "members.id", "assign_judges.judges_id")
             ->where("assign_judges.insertedBy", Auth::id())
             ->get();
-        return view("convener.assign_judges", compact("prgram", "member","information"));
+        return view("convener.assign_judges", compact("prgram", "member", "information"));
     }
-    public function convenerList(){
-        $convenerList =  convener::where([
+
+    public function convenerList()
+    {
+        $convenerList = convener::where([
             ['insertBy', '=', Auth::id()]
         ])->get();
-        return view("administration.convenerList",compact("convenerList"));
+        return view("administration.convenerList", compact("convenerList"));
+    }
+
+    public function result_finalize_list($id)
+    {
+        $studentlist = DB::table("projects")
+            ->join("students", "students.user_no_fk", "projects.student_id")
+            ->join("programs", "programs.id", "projects.program_id")
+            ->select("students.id", "programs.program_name", "projects.project_name", "students.name", "students.phone",
+                "students.institution", "students.email", "projects.description", "projects.supervisor_id")
+            ->where("programs.insertedBy", Auth::id())->where("programs.id", $id)
+            ->get();
+
     }
 }

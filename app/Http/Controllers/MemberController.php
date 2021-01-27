@@ -106,7 +106,7 @@ class MemberController extends Controller
             $followup = followup::where([
                 ["program_id", "=", $programId],
                 ["student_id", "=", $student_id],
-                ["supervisor_id", "=", Auth::id()],
+                ["supervisor_id", "=", Auth::id()]
             ])->orderBy("id", "desc")->get();
             return view("supervisor.open_modal", compact("programId", "student_id", "followup"));
         } else {
@@ -114,10 +114,20 @@ class MemberController extends Controller
             $resultCriteria = ResultCriteria::where("program", $programId)->get();
             $s_id = $_GET["s_id"];
 
-            $marks = result::where([
-                ["program_id", "=", $programId], ["s_id", "=", $s_id], ["judges_id", "=", Auth::id()],
+            $marks = DB::table("results")->where([
+                ["program_id", "=", $programId],
+                ["s_id", "=", $s_id],
+                ["judges_id", "=", Auth::id()]
             ])->get();
-            return view("judges.open_modal", compact("resultCriteria", "s_id", "programId", "marks"));
+            $route = '';
+            if($marks->isEmpty()){
+                $route =  route("assignResult.store");
+            }else{
+                $route =  route("assignResult.updateData");
+            }
+
+
+            return view("judges.open_modal", compact("resultCriteria", "s_id", "programId", "marks","route"));
         }
     }
 

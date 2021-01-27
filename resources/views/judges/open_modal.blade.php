@@ -15,9 +15,13 @@
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
+
         <div class="modal-body">
-            <form class="" action="{{ empty($marks)?route("assignResult.store"): route("assignResult.updateData") }}"
+            <form class="" action="{{ (!empty($route))?$route: " "  }}"
                   method="post">
+{{--
+                empty($marks)?route("assignResult.store"): route("assignResult.updateData")
+--}}
                 @csrf
                 @if(!empty($resultCriteria))
                     @foreach($resultCriteria as $value)
@@ -25,8 +29,10 @@
                             <label>Name: {{ ucfirst($value->name) }}, Priority : {{$value->prority }},
                                 Marks: {{$value->marks }}</label>
                             <div class="input-group">
-                                <input type="text" class="form-control" name="{{ $value->name }}"
-                                       data-id=value="{{ isset($custom[$value->name])?$custom[$value->name]:" " }}" required>
+                                <input type="text" class="form-control" name="{{ $value->id }}"
+                                       data-id="{{$value->marks }}" onkeyup="checkAssignMark(this)"
+                                       value="{{ isset($custom[$value->name])?$custom[$value->name]:"" }}"
+                                       required>
                                 <input type="hidden" name="old_mark_id[]"
                                        value="{{  isset($custom1[$value->name])?$custom1[$value->name]:" " }}">
                             </div>
@@ -48,3 +54,14 @@
         </div>
     </div>
 </div>
+<script>
+    function  checkAssignMark(element) {
+        var marks = parseFloat($(element).attr("data-id"));
+        var givenMark = parseFloat($(element).val());
+
+        if(givenMark>marks){
+            alert("You are given More marks");
+            $(element).val("");
+        }
+    }
+</script>

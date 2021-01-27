@@ -22,6 +22,7 @@ class CreateResultsTable extends Migration
             $table->string("h_marks")->nullable();
             $table->string("c_name")->nullable();
             $table->string("priority")->nullable();
+            $table->string("result_ind")->nullable();
             $table->string("insertedBy")->nullable();
             $table->timestamps();
         });
