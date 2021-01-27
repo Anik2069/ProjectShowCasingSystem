@@ -43,7 +43,7 @@ class ResultController extends Controller
             foreach ($prgoram as $value) {
 
                 $result = new result();
-                $result->marks = $request->input($value->name);
+                $result->marks = $request->input($value->id);
                 $result->h_marks = $value->marks;
                 $result->priority = $value->prority;
                 $result->c_name = $value->name;
@@ -51,6 +51,7 @@ class ResultController extends Controller
                 $result->judges_id = Auth::id(); //////Join with user no fk from user table
                 $result->insertedBy = Auth::id();
                 $result->s_id = $request->s_id;
+                $request->result_ind= 0;
                 $result->save();
             }
         }
@@ -110,7 +111,7 @@ class ResultController extends Controller
         if (!empty($prgoram)) {
             foreach ($prgoram as $value) {
                 $result = result::find($data[$i]);
-                $result->marks = $request->input($value->name);
+                $result->marks = $request->input($value->id);
                 $result->h_marks = $value->marks;
                 $result->priority = $value->prority;
                 $result->c_name = $value->name;
@@ -118,6 +119,7 @@ class ResultController extends Controller
                 $result->judges_id = Auth::id(); //////Join with user no fk from user table
                 $result->insertedBy = Auth::id();
                 $result->s_id = $request->s_id;
+                $request->result_ind = 0;
                 $result->save();
                 $i = $i+1;
             }
