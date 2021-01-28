@@ -22,9 +22,9 @@
                                         <a href="#">
                                             <span title="Number of Poster"
                                                   class="badge badge-primary  cursor-pointer">{{$data->poster}}</span></a>
-                                        <a href="{{ route("admin.program") }}"><span title="Number of Program"
+                                        <a href="{{ route("admin.program",$data->id) }}"><span title="Number of Program"
                                                          class="badge badge-secondary cursor-pointer ">{{$data->sub_program}}</span></a>
-                                        <a href="{{ route("admin.index") }}"><span title="Number of Participant"
+                                        <a href="{{ route("admin.studentList",$data->id) }}"><span title="Number of Participant"
                                                          class="badge badge-success cursor-pointer ">{{$data->participant}}</span></a>
                                         <a href="{{ route("admin.index") }}"><span title="Number of SuperVisor"
                                                          class="badge badge-danger  cursor-pointer">{{$data->noofsupervisor}}</span></a>

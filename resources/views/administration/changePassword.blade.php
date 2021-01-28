@@ -1,74 +1,65 @@
+@php
+    $user_info = \Illuminate\Support\Facades\Auth::user();
+$user_type = $user_info->userType;
+
+@endphp
+
 @extends("administration.master")
-
-@push("convener_css")
-    <link rel="stylesheet" href="../../assets/css/app.min.css">
-    <link rel="stylesheet" href="../../assets/bundles/datatables/datatables.min.css">
-    <link rel="stylesheet" href="../../assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css">
-    <!-- Template CSS -->
-    <link rel="stylesheet" href="../../assets/css/style.css">
-    <link rel="stylesheet" href="../../assets/css/components.css">
-    <!-- Custom style CSS -->
-    <link rel="stylesheet" href="../../assets/css/custom.css">
-    <link rel='shortcut icon' type='image/x-icon' href='../../assets/img/favicon.ico'/>
-@endpush
-
-
 @section("content")
     <div class="main-content">
         <section class="section">
             <div class="section-body">
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-12 col-md-12 col-lg-12">
+                        @include("alert_message")
                         <div class="card">
-                            <div class="card-header">
-                                <h4>Program Info</h4>
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-striped" id="table-1">
-                                        <thead>
-                                        <tr>
-                                            <th class="text-center">
-                                                #
-                                            </th>
-                                            <th>Programe Name</th>
-                                            <th>Purpose</th>
-                                            <th>Program Date</th>
-                                            <th>Registered Student</th>
-                                            <th>Status</th>
-
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        @if(!empty($program))
-                                            @foreach($program as $value)
-                                                <tr>
-                                                    <td>
-                                                        {{$loop->iteration}}
-                                                    </td>
-                                                    <td>{{ $value->program_name  }}</td>
-                                                    <td class="align-middle">
-                                                        {{ $value->purpose  }}
-                                                    </td>
-                                                    <td>
-                                                        {{ date("d M,Y",strtotime( $value->program_date))  }}
-                                                    </td>
-                                                    <td class="text-left">     {{ $value->studentCount  }} </td>
-                                                    <td>
-                                                        @if($value->status == 1)
-                                                            <div class="badge badge-success badge-shadow">Running</div>
-                                                        @else
-                                                            <div class="badge badge-danger badge-shadow">Stopped</div>
-                                                        @endif
-                                                    </td>
-
-                                                </tr>
-                                            @endforeach
-                                        @endif
-                                        </tbody>
-                                    </table>
+                            <form class="needs-validation" novalidate="" action="{{ route("changepassword.update") }}"
+                                  method="post">
+                                @csrf
+                                <div class="card-header">
+                                    <h4>Change Password</h4>
                                 </div>
-                            </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="form-group col-md-6">
+                                            <label>User Email</label>
+                                            <input type="email" class="form-control" name="email" value="{{ $user_info->email }}" disabled>
+                                            <div class="invalid-feedback">
+
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>Old PassWord</label>
+                                            <input type="password" class="form-control" name="old_pass">
+                                            <div class="invalid-feedback">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-md-6">
+                                            <label>New Password</label>
+                                            <input type="password" class="form-control" name="new_pass">
+                                            <div class="invalid-feedback">
+
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>Confirm Password</label>
+                                            <input type="password" class="form-control" name="confirm_pass">
+                                            <div class="invalid-feedback">
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="card-footer text-right">
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -85,8 +76,8 @@
                         <h6 class="font-medium m-b-10">Select Layout</h6>
                         <div class="selectgroup layout-color w-50">
                             <label class="selectgroup-item">
-                                <input type="radio" name="value" value="1" class="selectgroup-input-radio select-layout"
-                                       checked>
+                                <input type="radio" name="value" value="1"
+                                       class="selectgroup-input-radio select-layout" checked>
                                 <span class="selectgroup-button">Light</span>
                             </label>
                             <label class="selectgroup-item">
@@ -106,8 +97,8 @@
                                       data-original-title="Light Sidebar"><i class="fas fa-sun"></i></span>
                             </label>
                             <label class="selectgroup-item">
-                                <input type="radio" name="icon-input" value="2" class="selectgroup-input select-sidebar"
-                                       checked>
+                                <input type="radio" name="icon-input" value="2"
+                                       class="selectgroup-input select-sidebar" checked>
                                 <span class="selectgroup-button selectgroup-button-icon" data-toggle="tooltip"
                                       data-original-title="Dark Sidebar"><i class="fas fa-moon"></i></span>
                             </label>
@@ -170,20 +161,4 @@
             </div>
         </div>
     </div>
-
-
 @endsection
-
-@push("convener_js")
-    <script src="../../assets/js/app.min.js"></script>
-    <!-- JS Libraies -->
-    <script src="../../assets/bundles/datatables/datatables.min.js"></script>
-    <script src="../../assets/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js"></script>
-    <script src="../../assets/bundles/jquery-ui/jquery-ui.min.js"></script>
-    <!-- Page Specific JS File -->
-    <script src="../../assets/js/page/datatables.js"></script>
-    <!-- Template JS File -->
-    <script src="../../assets/js/scripts.js"></script>
-    <!-- Custom JS File -->
-    <script src="../../assets/js/custom.js"></script>
-@endpush

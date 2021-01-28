@@ -4,7 +4,6 @@
         <section class="section">
             <div class="section-body">
                 <div class="row">
-
                     <div class="col-12 col-md-12 col-lg-12">
                         @include("alert_message")
                         <div class="card">
@@ -24,7 +23,8 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Purpose</label>
-                                        <textarea class="form-control" id="" name="purpose" cols="30" rows="10"></textarea>
+                                        <textarea class="form-control" id="" name="purpose" cols="30"
+                                                  rows="10"></textarea>
                                         <div class="invalid-feedback">
                                             What's Program or Organization Name name?
                                         </div>
