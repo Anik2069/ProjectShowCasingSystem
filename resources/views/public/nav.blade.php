@@ -1,7 +1,7 @@
 <div class="wm-main-header">
     <div class="" style="margin-left: 131px;">
         <div class="row">
-            <div class="col-md-3"><a href="index-2.html" class="wm-logo"><img
+            <div class="col-md-3"><a href="/" class="wm-logo"><img
                         src="{{asset("assets/public/images/diu.png")}}"
                         alt=""></a></div>
             <div class="col-md-9">
@@ -24,7 +24,7 @@
                             </li>
                             <li class="active"><a href="/result">Result</a>
                             </li>
-                            <li class="active"><a href="/">Previous Program</a>
+                            <li class="active"><a href="/">Project Idea</a>
                             </li>
                             <li class="active"><a href="{{ route("login") }}">Login</a>
                             </li>

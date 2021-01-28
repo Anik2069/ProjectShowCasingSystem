@@ -59,6 +59,9 @@ Route::get("/convener/view_supervisor", "MemberController@view_supervisor");
 Route::get("/convener/view_judges", "MemberController@judges");
 Route::get("/convener/studentList/{id}", "ConvenerController@studentList");
 Route::get("/convener/result_finalize/{id}", "ConvenerController@result_finalize_list");
+Route::get("/convener/final_result/{id}","ConvenerController@final_result");
+Route::get("/convener/check_marks_modal","ConvenerController@check_marks");
+
 Route::get("/convener/resultCriteria", "ConvenerController@resultCriteria");
 Route::post("/convener/resultCriteria", "ResultCriteriaController@store");
 Route::get("/convener/assign_judges", "ConvenerController@assign_judges");
