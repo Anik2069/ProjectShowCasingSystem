@@ -53,12 +53,12 @@
                                                     <td>{{ $student->project_name }}</td>
                                                     <td>{{ $student->institution }}</td>
                                                     <td>{{ $student->email }}</td>
-                                                    <td>{{ $student->total_mark }}</td>
+                                                    <td>{{ isset($marks_array[$student->program_id][$student->id])? $marks_array[$student->program_id][$student->id] : "0" }}</td>
 
                                                     <td>
                                                         <button type="button" class="btn btn-info"
                                                                 data-toggle="modal" data-target="#exampleModal"
-                                                                onclick="openCheckMarkModal(this)" data-program-id= "{{ $student->programs_id }}"
+                                                                    onclick="openCheckMarkModal(this)" data-program-id= "{{ $student->program_id }}"
                                                                 data-id="{{ $student->id }}">Check Marks
                                                         </button>
                                                     </td>
