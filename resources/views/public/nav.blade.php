@@ -24,7 +24,7 @@
                             </li>
                             <li class="active"><a href="/result">Result</a>
                             </li>
-                            <li class="active"><a href="/">Project Idea</a>
+                            <li class="active"><a href="{{ route("projectIdea") }}">Project Idea</a>
                             </li>
                             <li class="active"><a href="{{ route("login") }}">Login</a>
                             </li>

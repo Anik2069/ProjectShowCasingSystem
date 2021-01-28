@@ -24,7 +24,10 @@ Route::get("/getProgramInfo", "ProgramController@getProgramInfo");
 Route::get("/result", "publicview@result");
 Route::get("/gotolive/{id?}/{name?}", "publicview@live_result");
 Route::get("/student_profile/{id}/{programid}/{user_no_fk}","publicview@student_profile");
+Route::get("/idea_details/{id}/{programid}","publicview@idea_details");
 Route::get("/registation", "publicview@studentRegistration")->name("registration");
+
+Route::get("/project_idea","publicview@show_project_idea")->name("projectIdea");
 
 
 Route::get('/home', 'administration@dashboard')->name('home');

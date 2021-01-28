@@ -81,4 +81,19 @@ class publicview extends Controller
         return view("public.student_profile",compact("student_info","project_info"));
 
     }
+    public function idea_details($student_id, $program_id)
+    {
+        $student_info = student::where("user_no_fk",$student_id)->first();
+        $project_info = project::where("student_id",$student_info->user_no_fk)->where("program_id",$program_id)->first();
+        /*dd($project_info);*/
+
+
+        return view("public.student_profile",compact("student_info","project_info"));
+
+    }
+    public function show_project_idea(){
+        $report_Data =  project::orderBy("id","desc")->get();
+
+        return view("public.project_idea",compact("report_Data"));
+    }
 }
