@@ -11,7 +11,7 @@
                     </h6>
                     <time datetime="2008-02-14 20:00">Date: {{ $pro->program_date }}</time>
                     <p> {{ $pro->purpose }} </p>
-                    <a href="#" class="wm-banner-btn">check event</a>
+                    <a href="/gotolive/{{$pro->program_id}}" class="wm-banner-btn">check event</a>
                 </div>
             </li>
         @endforeach

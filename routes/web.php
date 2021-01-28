@@ -23,21 +23,24 @@ Route::get("/getProgramInfo", "ProgramController@getProgramInfo");
 
 Route::get("/result", "publicview@result");
 Route::get("/gotolive/{id?}/{name?}", "publicview@live_result");
-Route::get("/student_profile/{id}/{programid}/{user_no_fk}","publicview@student_profile");
-Route::get("/idea_details/{id}/{programid}","publicview@idea_details");
+Route::get("/student_profile/{id}/{programid}/{user_no_fk}", "publicview@student_profile");
+Route::get("/idea_details/{id}/{programid}", "publicview@idea_details");
 Route::get("/registation", "publicview@studentRegistration")->name("registration");
 
-Route::get("/project_idea","publicview@show_project_idea")->name("projectIdea");
+Route::get("/project_idea", "publicview@show_project_idea")->name("projectIdea");
 
 
 Route::get('/home', 'administration@dashboard')->name('home');
 //Adminstration
+Route::get("users/change_password","administration@changePassword")->name("user.changePassword");
+Route::post("users/change_password","administration@changePassword_update")->name("changepassword.update");
+
 Route::get("/administration/login", "administration@index");
 Route::get("/administration/dashboard", "administration@dashboard");
 
-Route::get("/administration/program", "administration@program")->name("admin.program");
-Route::get("/administration/dashboard", "administration@dashboard")->name("admin.index");
-Route::get("/administration/dashboard", "administration@dashboard")->name("admin.index");
+Route::get("/administration/program/{id}", "administration@program")->name("admin.program");
+Route::get("/administration/studentList/{id}", "administration@studentList")->name("admin.studentList");
+
 Route::get("/administration/dashboard", "administration@dashboard")->name("admin.index");
 
 Route::get("/administration/report", "administration@report")->name("admin.report");
@@ -63,8 +66,8 @@ Route::get("/convener/view_supervisor", "MemberController@view_supervisor");
 Route::get("/convener/view_judges", "MemberController@judges");
 Route::get("/convener/studentList/{id}", "ConvenerController@studentList");
 Route::get("/convener/result_finalize/{id}", "ConvenerController@result_finalize_list");
-Route::get("/convener/final_result/{id}","ConvenerController@final_result");
-Route::get("/convener/check_marks_modal","ConvenerController@check_marks");
+Route::get("/convener/final_result/{id}", "ConvenerController@final_result");
+Route::get("/convener/check_marks_modal", "ConvenerController@check_marks");
 
 Route::get("/convener/resultCriteria", "ConvenerController@resultCriteria");
 Route::post("/convener/resultCriteria", "ResultCriteriaController@store");
@@ -124,6 +127,9 @@ Route::prefix('students')->group(function () {
 });
 
 Route::resource("followup", "FollowupController");
+
+Route::resource("contactus", "ContactUsController");
+
 
 
 

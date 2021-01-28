@@ -49,7 +49,7 @@
                 </ul>
             </li>
             <li class="menu-header">Setting</li>
-            <li class="dropdown">
+{{--            <li class="dropdown">
                 <a href="#" class="menu-toggle nav-link has-dropdown"><i
                         data-feather="briefcase"></i><span>System Settings</span></a>
                 <ul class="dropdown-menu">
@@ -58,10 +58,10 @@
                     <li><a class="nav-link" href="widget-data.html">Panel Settings</a></li>
                     <li><a class="nav-link" href="widget-data.html">User Access Settings</a></li>
                 </ul>
-            </li>
+            </li>--}}
 
             <li class="dropdown ">
-                <a href="index.html" class="nav-link"><i data-feather="monitor"></i><span>Change Password</span></a>
+                <a href="{{ route("user.changePassword") }}" class="nav-link"><i data-feather="monitor"></i><span>Change Password</span></a>
             </li>
             <li class="dropdown ">
                 <a class="nav-link" href="{{ route('logout') }}"

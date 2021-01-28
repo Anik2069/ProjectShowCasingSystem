@@ -31,36 +31,30 @@
                                             <th class="text-center">
                                                 #
                                             </th>
-                                            <th>Programe Name</th>
-                                            <th>Purpose</th>
-                                            <th>Program Date</th>
-                                            <th>Registered Student</th>
-                                            <th>Status</th>
+                                            <th>Student Name</th>
+                                            <th>Phone</th>
+                                            <th>Institution</th>
+                                            <th>Department</th>
+
 
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @if(!empty($program))
-                                            @foreach($program as $value)
+                                        @if(!empty($studentList))
+                                            @foreach($studentList as $value)
                                                 <tr>
                                                     <td>
                                                         {{$loop->iteration}}
                                                     </td>
-                                                    <td>{{ $value->program_name  }}</td>
+                                                    <td>{{ $value->name  }}</td>
                                                     <td class="align-middle">
-                                                        {{ $value->purpose  }}
+                                                        {{ $value->phone  }}
                                                     </td>
                                                     <td>
-                                                        {{ date("d M,Y",strtotime( $value->program_date))  }}
+                                                        {{ $value->institution  }}
                                                     </td>
-                                                    <td class="text-left">     {{ $value->studentCount  }} </td>
-                                                    <td>
-                                                        @if($value->status == 1)
-                                                            <div class="badge badge-success badge-shadow">Running</div>
-                                                        @else
-                                                            <div class="badge badge-danger badge-shadow">Stopped</div>
-                                                        @endif
-                                                    </td>
+                                                    <td class="text-left">     {{ $value->department  }} </td>
+
 
                                                 </tr>
                                             @endforeach

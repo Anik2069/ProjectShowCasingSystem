@@ -31,7 +31,7 @@
                             <li class="active"><a href="{{ route("registration") }}">Registration</a>
                             </li>
 
-                            <li class="wm-megamenu-li"><a href="#">Contact</a>
+                            <li class="wm-megamenu-li"><a href="{{ route("contactus.index") }}">Contact</a>
                                 <ul class="wm-megamenu">
                                     <li class="row">
                                         <div class="col-md-2">
