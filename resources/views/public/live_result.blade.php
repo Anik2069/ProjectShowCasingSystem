@@ -58,14 +58,16 @@
                                         <tbody>
                                         @if(!empty($student))
                                             @foreach($student as $stu)
-                                            <tr>
-                                                <td>{{ $loop->iteration }}</td>
-                                                <td>{{$stu->name}}</td>
-                                                <td>{{$stu->project_name}}</td>
-                                                <td>{{$stu->members_name}}</td>
-                                                <td>{{$stu->marks}}</td>
-                                                <td><button type="button" class="btn btn-info"> Details </button></td>
-                                            </tr>
+                                                <tr>
+                                                    <td>{{ $loop->iteration }}</td>
+                                                    <td>{{$stu->name}}</td>
+                                                    <td>{{$stu->project_name}}</td>
+                                                    <td>{{$stu->members_name}}</td>
+                                                    <td>{{$stu->total_mark}}</td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-info"> Details</button>
+                                                    </td>
+                                                </tr>
 
                                             @endforeach
                                         @endif
@@ -105,35 +107,33 @@
                         <div class="wm-event-options">
                             <ul>
                                 <li>
+                                    <img
+                                        src="data:image/png;base64,{{DNS1D::getBarcodePNG($programDetails->id, 'C39')}}"
+                                        alt="barcode"/><br>
+                                    <small >Program Code: {{ $programDetails->id }} </small>
+                                </li>
+                                <li>
                                     <i class="wmicon-time2"></i>
                                     <span>Date:</span>
-                                    <p>23 May to 17 June</p>
+                                    <p>{{ date("d M,Y",strtotime($programDetails->program_date)) }}</p>
                                 </li>
                                 <li>
                                     <i class="wmicon-clock2"></i>
-                                    <span>time:</span>
-                                    <p>9:00am - 12:30pm</p>
+                                    <span>Registration Date:</span>
+                                    <p>{{ date("d M,Y",strtotime($programDetails->lastDateOfRegistration)) }}</p>
                                 </li>
                                 <li>
                                     <i class="wmicon-location"></i>
-                                    <span>Location:</span>
-                                    <p>3252 Hornor Avenue Claremore, OK 7401</p>
+                                    <span>Available Seats:</span>
+                                    <p>{{ $programDetails->no_of_student }}</p>
                                 </li>
                                 <li>
                                     <i class="fa fa-folder-open-o"></i>
-                                    <span>Event category:</span>
-                                    <p>Open House</p>
+                                    <span>Number of Judges</span>
+                                    <p>{{ $programDetails->no_of_judges }}</p>
                                 </li>
-                                <li>
-                                    <i class="wmicon-black"></i>
-                                    <span>organizer:</span>
-                                    <p>Jennifer Horse</p>
-                                </li>
-                                <li>
-                                    <i class="wmicon-technology4"></i>
-                                    <span>Phone:</span>
-                                    <p>(012) 345-6789</p>
-                                </li>
+
+
                             </ul>
                         </div>
 

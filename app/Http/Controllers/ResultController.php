@@ -55,7 +55,7 @@ class ResultController extends Controller
                 $result->save();
             }
         }
-        return redirect("/judges/student_list/" . $request->s_id);
+        return redirect("/students/student_list/" . $request->p_id);
     }
 
     /**
@@ -124,6 +124,6 @@ class ResultController extends Controller
                 $i = $i+1;
             }
         }
-        return redirect("/judges/student_list/" . $request->s_id);
+        return redirect("/students/student_list/" . $request->p_id);
     }
 }

@@ -7,6 +7,8 @@ use App\member;
 use App\panel;
 use App\program;
 use App\project;
+use App\result;
+use App\ResultCriteria;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -131,13 +133,60 @@ class ConvenerController extends Controller
 
     public function result_finalize_list($id)
     {
-        $studentlist = DB::table("projects")
-            ->join("students", "students.user_no_fk", "projects.student_id")
-            ->join("programs", "programs.id", "projects.program_id")
-            ->select("students.id", "programs.program_name", "projects.project_name", "students.name", "students.phone",
-                "students.institution", "students.email", "projects.description", "projects.supervisor_id")
+        $studentlist = DB::table("rresults")
+            ->join("projects", "results.s_id", "projects.student_id")
+            ->join("students", "students.id", "results.s_id")
+            ->join("programs", "programs.id", "results.program_id")
+            ->select("results.s_id as id", "programs.program_name", "projects.project_name", "students.name", "students.phone",
+                "students.institution", "students.email", "projects.description", "programs.id as programs_id",
+                DB::raw("sum(results.marks) as total_mark"))
             ->where("programs.insertedBy", Auth::id())->where("programs.id", $id)
+            ->groupBy("results.s_id", "students.name", "projects.project_name", "students.phone",
+                "students.institution", "students.email", "projects.description",  "programs.id", "programs.program_name")
             ->get();
 
+        $programId = $id;
+        return view("convener.result_info", compact("studentlist", "programId"));
+
     }
+
+    public function check_marks()
+    {
+        $programId = $_GET["programId"];
+        $resultCriteria = ResultCriteria::where("program", $programId)->get();
+        $s_id = $_GET["s_id"];
+
+        $marks = DB::table("results")
+            ->select("members.name", "results.created_at", DB::Raw("sum(results.marks) as total_marks"))
+            ->join("members", "members.user_no_fk", "results.judges_id")
+            ->where([
+                ["program_id", "=", $programId],
+                ["s_id", "=", $s_id]
+            ])->groupBy("members.name", "results.created_at")
+            ->get();
+
+        $route = '';
+        if ($marks->isEmpty()) {
+            $route = route("assignResult.store");
+        } else {
+            $route = route("assignResult.updateData");
+        }
+
+        return view("convener.open_modal", compact("resultCriteria", "s_id", "programId", "marks", "route"));
+
+    }
+
+    public function final_result($id)
+    {
+        $result = result::where("program_id", $id)->get();
+        if(!empty($result)){
+            foreach ($result as $value){
+                $data = result::find($value->id);
+                $data->result_ind = 1;
+                $data->save();
+            }
+        }
+        return redirect("/convener/result_finalize/".$id);
+    }
+
 }

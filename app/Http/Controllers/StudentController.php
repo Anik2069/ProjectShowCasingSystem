@@ -18,10 +18,7 @@ class StudentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+
     public function index()
     {
         //
@@ -144,7 +141,7 @@ class StudentController extends Controller
                                 students.id as s_id from programs 
                                 join assign_judges on assign_judges.program_id =programs.id
                                 join projects on projects.program_id =programs.id
-                                join members on members.id =projects.supervisor_id 
+                                left join members on members.id =projects.supervisor_id 
                                 join students on students.user_no_fk = projects.student_id 
                                 and assign_judges.judges_id= $judges_id ");
 
