@@ -133,7 +133,7 @@ class ConvenerController extends Controller
 
     public function result_finalize_list($id)
     {
-        $studentlist = DB::table("rresults")
+/*        $studentlist = DB::table("results")
             ->join("projects", "results.s_id", "projects.student_id")
             ->join("students", "students.id", "results.s_id")
             ->join("programs", "programs.id", "results.program_id")
@@ -143,10 +143,30 @@ class ConvenerController extends Controller
             ->where("programs.insertedBy", Auth::id())->where("programs.id", $id)
             ->groupBy("results.s_id", "students.name", "projects.project_name", "students.phone",
                 "students.institution", "students.email", "projects.description",  "programs.id", "programs.program_name")
+            ->get();*/
+        $studentlist = DB::table("students")
+            ->join("projects", "students.user_no_fk", "projects.student_id")
+            ->leftjoin("members", "members.id", "projects.supervisor_id")
+            ->join("programs", "programs.id", "projects.program_id")
+            ->select("students.id", "projects.program_id","programs.program_name", "students.name", "projects.project_name", "students.phone",
+                "students.institution", "students.email", "projects.description","members.name as members_name")
+            ->where("programs.insertedBy", Auth::id())->where("programs.id", $id)
             ->get();
+        $result = DB::table("results")
+            ->select("program_id", "s_id", DB::Raw("sum(marks) as total_marks"))
+            ->where("results.program_id", $id)
+            ->groupBy("program_id", "s_id")->get();
+
+        $marks_array = [];
+        if (!empty($result)) {
+            foreach ($result as $value) {
+                $marks_array[$value->program_id][$value->s_id] = $value->total_marks;
+            }
+        }
+
 
         $programId = $id;
-        return view("convener.result_info", compact("studentlist", "programId"));
+        return view("convener.result_info", compact("studentlist", "programId","marks_array"));
 
     }
 
@@ -162,7 +182,8 @@ class ConvenerController extends Controller
             ->where([
                 ["program_id", "=", $programId],
                 ["s_id", "=", $s_id]
-            ])->groupBy("members.name", "results.created_at")
+            ])
+            ->groupBy("members.name", "results.created_at")
             ->get();
 
         $route = '';

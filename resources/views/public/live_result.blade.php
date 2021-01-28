@@ -46,7 +46,7 @@
                                     <table class="table-responsive ">
                                         <thead>
                                         <tr>
-                                            <th>Ranking</th>
+                                            <th>Sl</th>
                                             <th>Participant</th>
                                             <th>Project Name</th>
                                             <th>Supervisor Name</th>
@@ -63,9 +63,9 @@
                                                     <td>{{$stu->name}}</td>
                                                     <td>{{$stu->project_name}}</td>
                                                     <td>{{$stu->members_name}}</td>
-                                                    <td>{{$stu->total_mark}}</td>
+                                                    <td>{{ isset($marks_array[$stu->program_id][$stu->id])? $marks_array[$stu->program_id][$stu->id] : "0" }}</td>
                                                     <td>
-                                                        <button type="button" class="btn btn-info"> Details</button>
+                                                        <a href="/student_profile/{{ $stu->id }}/{{ $stu->program_id }}/{{ $stu->user_no_fk }}" class="btn btn-info"> Details</a>
                                                     </td>
                                                 </tr>
 
