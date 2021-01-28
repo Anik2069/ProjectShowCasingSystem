@@ -35,32 +35,14 @@ class publicview extends Controller
 
         $programDetails = program::find($id);
         //$student = DB::table("students")->join("projects","students.id","projects.student_id")->leftJoin("members","members.id","projects.supervisor_id")->get();
-     /*   $student = DB::table("results")
-            ->join("projects", "results.s_id", "projects.student_id")
-            ->join("students", "students.id", "results.s_id")
-            ->join("programs", "programs.id", "results.program_id")
-            ->leftJoin("members","members.id","projects.supervisor_id")
-            ->select("results.s_id", "programs.program_name", "projects.project_name", "students.name", "students.phone",
-                "students.institution", "students.email", "projects.description","members.name as members_name", "projects.supervisor_id", "programs.id as programs_id",
-                DB::raw("sum(results.marks) as total_mark"))
-            ->where("programs.id", $id)
-            ->where("results.result_ind",1)
-            ->groupBy("results.s_id", "students.name", "projects.project_name", "students.phone",
-                "students.institution", "students.email", "projects.description",  "programs.id","members.name")
-            ->get();*/
-        $student = DB::table("results")
-            ->join("projects", "results.s_id", "projects.student_id")
-            ->join("students", "students.id", "results.s_id")
-            ->join("programs", "programs.id", "results.program_id")
-            ->select("results.s_id as id", "programs.program_name", "projects.project_name", "students.name", "students.phone",
-                "students.institution", "students.email", "projects.description", "programs.id as programs_id",
-                DB::raw("sum(results.marks) as total_mark"))
-
-            ->groupBy("results.s_id", "students.name", "projects.project_name", "students.phone",
-                "students.institution", "students.email", "projects.description",  "programs.id", "programs.program_name")
+        $student =  DB::table("students")
+            ->join("projects","students.user_no_fk","projects.student_id")
+            ->leftjoin("members","members.id","projects.supervisor_id")
+            ->select("students.id","projects.program_id","students.name","projects.project_name","members.name")
+            ->where("projects.program_id",$id)
             ->get();
 
-
+        dd($student);
 
         return view("public.live_result", compact('programDetails', 'student'));
     }
